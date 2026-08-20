@@ -123,9 +123,15 @@ export const servicesData: ServiceCardData[] = [
   },
 ];
 
-export default function ServicesSection() {
+export interface ServicesSectionProps {
+  showAll?: boolean;
+}
+
+export default function ServicesSection({ showAll = false }: ServicesSectionProps = {}) {
+  const displayedServices = servicesData;
+
   return (
-    <section className="wpo-service-section py-8 sm:py-10 lg:py-12 relative z-10 bg-white overflow-hidden font-[family-name:var(--font-parkinsans)]">
+    <section id="services" className="wpo-service-section py-8 sm:py-10 lg:py-12 relative z-10 bg-white overflow-hidden font-[family-name:var(--font-parkinsans)]">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Top Subtitle & Header */}
         <div className="text-left mb-8 sm:mb-10">
@@ -138,9 +144,9 @@ export default function ServicesSection() {
           </h2>
         </div>
 
-        {/* 4 Cards Grid */}
+        {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-7">
-          {servicesData.map((item) => (
+          {displayedServices.map((item) => (
             <div
               key={item.id}
               className="group relative rounded-[32px] p-3.5 pb-5 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-gradient-to-b from-[#FFD6D6] via-[#FFEAEB]/85 to-[#FFF5F5] border-t-4 border-[#DC2626] border-x border-b border-red-100/60 shadow-sm"

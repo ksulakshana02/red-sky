@@ -1,12 +1,15 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+import { Phone, Star, ShieldCheck, ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <div className="w-full px-3 sm:px-4 lg:px-6 py-4">
-      {/* Outer Hero Box matching .static-hero.box-style */}
-      <section className="relative w-full max-w-[1691px] mx-auto min-h-[620px] sm:min-h-[700px] lg:h-[759px] rounded-[24px] overflow-hidden flex items-center bg-slate-100 shadow-sm">
+    <div className="w-full px-3 sm:px-6 lg:px-8 py-3 sm:py-4 font-[family-name:var(--font-parkinsans)]">
+      {/* Outer Hero Box matching theme rounded-[32px] sm:rounded-[40px] */}
+      <section className="relative w-full max-w-[1691px] mx-auto min-h-[580px] sm:min-h-[660px] lg:h-[730px] rounded-[32px] sm:rounded-[40px] overflow-hidden flex items-center bg-gradient-to-r from-[#FEE5E5] via-[#FFF0F0] to-[#FDE8E8] border border-red-200/80 shadow-sm">
+
         {/* Background Image of Professional Cleaner on Right Side */}
         <div
           className="absolute inset-0 w-full h-full bg-no-repeat bg-cover z-0"
@@ -16,13 +19,13 @@ export default function Hero() {
           }}
         />
 
-        {/* Left Curved Gradient Shape Overlay (#FFE5B5 to #D6E2EA) */}
+        {/* Left Curved Gradient Shape Overlay (Rich Warm RedSky Tones) */}
         <div className="absolute inset-0 w-full h-full z-[1] pointer-events-none">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 948 759"
             fill="none"
-            className="h-full w-full sm:w-auto max-w-none lg:w-[60%] xl:w-[56%] object-cover sm:object-fill opacity-95 sm:opacity-100"
+            className="h-full w-full sm:w-auto max-w-none lg:w-[62%] xl:w-[58%] object-cover sm:object-fill opacity-98"
             preserveAspectRatio="none"
           >
             <path
@@ -38,83 +41,78 @@ export default function Hero() {
                 y2="255.481"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0%" stopColor="#FFE4DC" />
-                <stop offset="55%" stopColor="#FEE2E2" />
-                <stop offset="100%" stopColor="#E2E8F0" />
+                <stop offset="0%" stopColor="#FED7D7" />
+                <stop offset="45%" stopColor="#FEE2E2" />
+                <stop offset="85%" stopColor="#FCE7E7" />
+                <stop offset="100%" stopColor="#FBD5D5" />
               </linearGradient>
             </defs>
           </svg>
         </div>
 
-        {/* Subtle Sweeping White Decorative Swirl Line */}
-        <div className="absolute inset-0 w-full h-full z-[2] pointer-events-none overflow-hidden">
-          <svg
-            viewBox="0 0 1600 759"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M-50 520 C 350 480, 500 760, 680 500 C 820 300, 1050 220, 1650 250"
-              stroke="#FFFFFF"
-              strokeWidth="45"
-              strokeLinecap="round"
-              opacity="0.3"
-            />
-            <path
-              d="M-30 530 C 370 490, 510 740, 670 510 C 800 320, 1030 230, 1620 260"
-              stroke="#FFFFFF"
-              strokeWidth="12"
-              strokeLinecap="round"
-              opacity="0.45"
-            />
-          </svg>
-        </div>
-
         {/* Content Container */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-12 lg:px-20 py-10 sm:py-16 flex items-center">
-          <div className="max-w-xl lg:max-w-2xl text-left bg-white/70 sm:bg-transparent backdrop-blur-xs sm:backdrop-blur-none p-5 sm:p-0 rounded-[20px] sm:rounded-none">
-            {/* Tagline Badge */}
-            <div className="mb-4 sm:mb-6">
-              <span className="inline-block px-3.5 sm:px-4 py-1.5 rounded-full bg-red-100/90 border border-red-200 text-[#DC2626] font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xs">
-                Because Clean Feels Better
-              </span>
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16 py-10 sm:py-16 flex items-center">
+          <div className="max-w-xl lg:max-w-2xl text-left bg-[#FFF0ED]/90 sm:bg-transparent backdrop-blur-xs sm:backdrop-blur-none p-6 sm:p-0 rounded-[28px] sm:rounded-none">
+
+            {/* Standardized Theme Topic Subtitle Badge */}
+            <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-3 sm:mb-4">
+              <span>BECAUSE CLEAN FEELS BETTER</span>
+              <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[58px] xl:text-[64px] font-extrabold text-[#032532] leading-[1.14] tracking-tight mb-4 sm:mb-6 font-serif">
-              Glowing Residential<br />
+            <h1 className="text-3xl sm:text-5xl lg:text-[56px] xl:text-[62px] font-normal text-[#0E152B] leading-[1.12] tracking-tight mb-4 sm:mb-6 font-serif">
+              Glowing Residential &amp;<br />
               Commercial Cleaning
             </h1>
 
             {/* Description */}
-            <p className="text-sm sm:text-[17px] text-[#032532]/85 font-normal leading-[1.65] max-w-lg mb-6 sm:mb-10">
+            <p className="text-sm sm:text-base lg:text-[17px] text-[#0E152B]/80 font-normal leading-[1.7] max-w-lg mb-8 sm:mb-10">
               Expert cleaning for homes and offices. We deliver reliable, spotless, and glowing results making every space fresh, clean, and welcoming.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6">
-              {/* Red Book Now Button with Arrow */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-4 sm:mb-6">
+              {/* Primary RedSky Red Pill Button */}
               <a
                 href="#booking"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:py-4 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-sm sm:text-base shadow-lg shadow-red-500/25 hover:shadow-red-500/40 transition-all duration-200 text-center"
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 sm:py-4 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-sm sm:text-base shadow-md hover:shadow-lg shadow-red-500/20 hover:shadow-red-500/35 transition-all duration-200 text-center group cursor-pointer"
               >
-                <span>Book Now</span>
-                <span className="text-lg leading-none">→</span>
+                <span>Book a Clean</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
 
-              {/* About Us Link with Arrow */}
+              {/* About Us Link */}
               <a
                 href="#about"
-                className="inline-flex items-center justify-center gap-2 text-[#032532] hover:text-[#DC2626] font-extrabold text-sm sm:text-base transition-colors duration-200 py-2 sm:py-0"
+                className="inline-flex items-center justify-center gap-2 text-[#0E152B] hover:text-[#DC2626] font-bold text-sm sm:text-base transition-colors duration-200 py-2 sm:py-0 px-4"
               >
                 <span>About Us</span>
-                <span className="text-lg leading-none">→</span>
+                <ArrowRight className="w-4 h-4" />
               </a>
             </div>
+
+            {/* Trust Highlights Badges (No horizontal line) */}
+            {/* <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-[#0E152B]/85 font-medium">
+              <div className="flex items-center gap-1.5">
+                <div className="flex items-center text-[#FFD700]">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                  ))}
+                </div>
+                <span className="font-bold text-[#0E152B]">4.9/5</span>
+                <span className="text-[#0E152B]/60">(1,200+ Reviews)</span>
+              </div>
+
+              <div className="flex items-center gap-1.5 text-[#0E152B]">
+                <ShieldCheck className="w-4 h-4 text-[#DC2626]" />
+                <span>100% Eco-Friendly &amp; Insured</span>
+              </div>
+            </div> */}
+
           </div>
         </div>
+
       </section>
     </div>
   );

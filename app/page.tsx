@@ -50,6 +50,8 @@ export default function Home() {
       {/* Verified Client Testimonials Carousel */}
       <TestimonialsSection />
 
+      <BookingSection />
+
       {/* FAQ Accordion */}
       <FaqSection />
 
@@ -57,7 +59,7 @@ export default function Home() {
       <BlogSection />
 
       {/* Booking & Appointment Reservation Form */}
-      <BookingSection />
+
 
       {/* Site Footer */}
       <Footer />
