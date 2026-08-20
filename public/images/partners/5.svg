@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" fill="none">
+  <path d="M22 10L33 20L22 30L11 20L22 10Z" stroke="#42C652" stroke-width="3" fill="none"/>
+  <circle cx="22" cy="20" r="4" fill="#0E152B"/>
+  <text x="48" y="32" font-family="'Nunito', sans-serif" font-size="18" font-weight="800" fill="#0E152B" opacity="0.85" letter-spacing="1">PRIME</text>
+</svg>

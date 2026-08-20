@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" fill="none" width="280" height="60">
+  <defs>
+    <filter id="redShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#DC2626" flood-opacity="0.25" />
+    </filter>
+    <linearGradient id="redSquareGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444" />
+      <stop offset="60%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#B91C1C" />
+    </linearGradient>
+  </defs>
+
+  <!-- Red Emblem Box with Rounded Corners -->
+  <g transform="translate(6, 6)" filter="url(#redShadow)">
+    <rect width="48" height="48" rx="8" fill="url(#redSquareGrad)" />
+    
+    <!-- White Squeegee & 'R' Shape inside Emblem -->
+    <!-- Squeegee Top Bar -->
+    <path d="M6 9.5H42C42.5 9.5 43 9.9 43 10.5C43 11.1 42.5 11.5 42 11.5L40 12.8C39.6 13.1 39 13.1 38.5 12.8L7.5 12.8C7 13.1 6.4 13.1 6 12.8L6 9.5Z" fill="#FFFFFF" />
+    
+    <!-- Squeegee Handle & Arm forming Left Pillar -->
+    <path d="M22 13.5C22 13.5 24 14.5 24 16.5V28C22.5 29 21 31 20 33L16 43H12L17.5 30C18.5 27.5 19.5 24.5 19.5 20C19.5 16.5 22 13.5 22 13.5Z" fill="#FFFFFF" />
+    
+    <!-- 'R' Arch & Leg -->
+    <path d="M22 15H33C38.5 15 42 18.5 42 24C42 29 38.5 32.5 33 32.5H23V27.5H32C34.5 27.5 36.5 26 36.5 24C36.5 21.8 34.5 20.2 32 20.2H22V15Z" fill="#FFFFFF" />
+    <path d="M30 31L41.5 43H34.5L25 31H30Z" fill="#FFFFFF" />
+  </g>
+
+  <!-- Typography: RED SKY -->
+  <text x="66" y="32" font-family="'Parkinsans', 'Nunito', system-ui, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">
+    <tspan fill="#DC2626">RED</tspan><tspan fill="#0E152B">SKY</tspan>
+  </text>
+
+  <!-- Typography: CLEANING SERVICE -->
+  <text x="67" y="47" font-family="'Nunito', system-ui, sans-serif" font-size="8.5" font-weight="800" fill="#64748B" letter-spacing="3.2">
+    CLEANING SERVICE
+  </text>
+</svg>

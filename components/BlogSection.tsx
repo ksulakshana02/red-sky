@@ -1,0 +1,126 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Calendar } from "lucide-react";
+
+interface BlogPost {
+  title: string;
+  category: string;
+  date: string;
+  image: string;
+  excerpt: string;
+  link: string;
+}
+
+const blogPosts: BlogPost[] = [
+  {
+    title: "The Deep Cleaning and Organizing",
+    category: "Organizing",
+    date: "Jan 15, 2025",
+    image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1417038143-1024x631.jpg",
+    excerpt: "Practical tips and room-by-room strategies to declutter, deep clean, and keep your living spaces organized all year round.",
+    link: "/blog/the-deep-cleaning-and-organizing",
+  },
+  {
+    title: "Eco Friendly Products for Cleaning",
+    category: "Cleaning",
+    date: "Jan 15, 2025",
+    image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1357162123-1024x631.jpg",
+    excerpt: "Discover the best non-toxic, plant-based cleaning solutions that keep your home sparkling without harsh chemical residues.",
+    link: "/blog/eco-friendly-products-for-cleaning",
+  },
+  {
+    title: "House Cleaning Services Before Moving in",
+    category: "Tips",
+    date: "Jan 15, 2025",
+    image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1714910979-1024x631.jpg",
+    excerpt: "Why a thorough pre-move-in deep sanitization is essential before settling into your new residence.",
+    link: "/blog/house-cleaning-services-before-moving-in",
+  },
+];
+
+export default function BlogSection() {
+  return (
+    <section id="blog" className="py-8 sm:py-10 lg:py-12 bg-white relative z-10 overflow-hidden font-[family-name:var(--font-parkinsans)]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-3">
+            <span>FROM OUR BLOG</span>
+            <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-normal text-[#0E152B] leading-[1.15] font-serif tracking-tight">
+            Cleaning Tips From Pros
+          </h2>
+        </div>
+
+        {/* 3-Card Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-12 sm:mb-14">
+          {blogPosts.map((post, idx) => (
+            <article
+              key={idx}
+              className="group flex flex-col items-start bg-white rounded-[32px] transition-all duration-300"
+            >
+              {/* Featured Image Container */}
+              <Link
+                href={post.link}
+                className="relative w-full aspect-[16/10] rounded-[32px] overflow-hidden mb-5 bg-slate-100 shadow-xs block"
+              >
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 rounded-[32px]"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </Link>
+
+              {/* Meta: Category & Date */}
+              <div className="flex items-center gap-3 px-1 mb-3 text-xs sm:text-sm">
+                <span className="font-bold uppercase tracking-wider text-[#DC2626]">
+                  {post.category}
+                </span>
+                <span className="text-slate-300">•</span>
+                <span className="text-slate-400 font-medium flex items-center gap-1">
+                  <Calendar className="w-3.5 h-3.5" />
+                  {post.date}
+                </span>
+              </div>
+
+              {/* Post Title */}
+              <h3 className="text-xl sm:text-[22px] font-bold text-[#0E152B] font-serif leading-snug px-1 mb-3 group-hover:text-[#DC2626] transition-colors">
+                <Link href={post.link}>{post.title}</Link>
+              </h3>
+
+              {/* Post Excerpt */}
+              <p className="text-sm sm:text-[14.5px] text-[#0E152B]/70 leading-relaxed px-1 mb-5 line-clamp-2">
+                {post.excerpt}
+              </p>
+
+              {/* Read More Link */}
+              <Link
+                href={post.link}
+                className="inline-flex items-center gap-1.5 text-sm font-bold text-[#0E152B] group-hover:text-[#DC2626] transition-colors px-1 mt-auto"
+              >
+                <span>Read More</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </article>
+          ))}
+        </div>
+
+        {/* Center Bottom "More Tips" Button */}
+        <div className="text-center">
+          <Link
+            href="/blog"
+            className="inline-flex items-center justify-center px-9 py-4 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-sm tracking-wide shadow-md transition-all duration-200"
+          >
+            More Tips
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}

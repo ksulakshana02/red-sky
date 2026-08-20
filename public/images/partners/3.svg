@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" fill="none">
+  <rect x="10" y="14" width="22" height="22" rx="4" stroke="#0E152B" stroke-width="3" fill="none" opacity="0.75"/>
+  <path d="M16 25L21 30L27 19" stroke="#42C652" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="45" y="32" font-family="'Nunito', sans-serif" font-size="18" font-weight="800" fill="#0E152B" opacity="0.85" letter-spacing="1">CLEANPRO</text>
+</svg>

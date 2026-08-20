@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" fill="none">
+  <path d="M12 36V14L28 25L12 36Z" fill="#3CA200" opacity="0.85"/>
+  <path d="M28 25L38 18V32L28 25Z" fill="#FFD700" opacity="0.85"/>
+  <text x="50" y="32" font-family="'Nunito', sans-serif" font-size="18" font-weight="800" fill="#0E152B" opacity="0.85" letter-spacing="1">NEXUS</text>
+</svg>
