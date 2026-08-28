@@ -4,27 +4,27 @@ import React from "react";
 
 export default function HowItWorks() {
   return (
-    <section className="wpo-work-section py-8 sm:py-10 lg:py-12 bg-white relative z-10 overflow-hidden font-[family-name:var(--font-parkinsans)]">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+    <section className="wpo-work-section py-10 sm:py-14 lg:py-16 bg-white relative z-10 overflow-hidden font-[family-name:var(--font-parkinsans)]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Subtitle & Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-3">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
             <span>HOW IT WORKS</span>
             <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-normal text-[#0E152B] leading-[1.15] font-serif tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
             Quick and Easy
           </h2>
         </div>
 
         {/* 3 Steps Row */}
         <div className="max-w-[1240px] mx-auto">
-          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 lg:gap-4 relative">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-4 relative">
 
             {/* Step 1: Free Quote */}
             <div className="flex flex-col items-center text-center max-w-[300px] w-full group">
               {/* Circle Container */}
-              <div className="relative mb-8">
+              <div className="relative mb-6 sm:mb-8">
                 {/* Floating Leaf 1 */}
                 <div className="absolute -top-3 -right-2 z-20 pointer-events-none">
                   <svg
@@ -44,8 +44,8 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Main Light Red Circle */}
-                <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-[#FEF2F2] border border-[#F87171]/70 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-xs">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="66" height="83" viewBox="0 0 66 83" className="scale-90 sm:scale-100">
+                <div className="w-36 h-36 sm:w-44 sm:h-44 lg:w-48 lg:h-48 rounded-full bg-[#FEF2F2] border border-[#F87171]/70 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-xs">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="66" height="83" viewBox="0 0 66 83" className="scale-85 sm:scale-95 lg:scale-100">
                     <g fill="none" fillRule="evenodd">
                       <path fill="#FFF" d="M1.18 15.34h63.64v66H1.18z" />
                       <path d="M65.2 82.34c-13.81 0-64.32-.17-64.83-.17a.34.34 0 0 1-.24-.1.3.3 0 0 1-.1-.2c0-.46 1.08-45.8-.03-66.64 0-.08.03-.17.1-.23.06-.05.15-.09.24-.09 8.07 0 18.77.05 30.09.1 12.24.05 24.9.1 35.23.1.1 0 .18.04.24.1.07.06.1.14.1.22-.86 13.75-.63 31.74-.44 46.17.12 9.35.21 16.74 0 20.43 0 .08-.04.16-.1.22a.36.36 0 0 1-.25.09ZM.73 81.57c4.46 0 50.53.16 64.17.16.2-3.75.11-11 0-20.1-.19-14.36-.42-32.19.41-45.91-10.26 0-22.76-.05-34.87-.11-11.16-.04-21.71-.1-29.74-.1C1.73 35.6.8 77.54.72 81.56v.02Z" fill="#000" fillRule="nonzero" />
@@ -61,10 +61,10 @@ export default function HowItWorks() {
               </div>
 
               {/* Title & Text */}
-              <h3 className="text-2xl sm:text-[28px] font-bold text-[#0E152B] mb-3 font-serif">
+              <h3 className="text-xl sm:text-2xl font-normal text-[#0E152B] mb-2 sm:mb-3 font-serif">
                 Free Quote
               </h3>
-              <p className="text-sm sm:text-[15px] text-[#0E152B]/75 leading-relaxed">
+              <p className="text-[14px] sm:text-[15px] text-[#0E152B]/75 leading-relaxed">
                 Tell us about your home and choose the date you want.
               </p>
             </div>
@@ -95,7 +95,7 @@ export default function HowItWorks() {
             {/* Step 2: Clean */}
             <div className="flex flex-col items-center text-center max-w-[300px] w-full group">
               {/* Circle Container */}
-              <div className="relative mb-8">
+              <div className="relative mb-6 sm:mb-8">
                 {/* Floating Leaf 2 */}
                 <div className="absolute -top-2 -right-3 z-20 pointer-events-none">
                   <svg
@@ -115,8 +115,8 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Main Light Red Circle */}
-                <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-[#FEF2F2] border border-[#F87171]/70 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-xs">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="59" height="84" viewBox="0 0 59 84" className="scale-90 sm:scale-100">
+                <div className="w-36 h-36 sm:w-44 sm:h-44 lg:w-48 lg:h-48 rounded-full bg-[#FEF2F2] border border-[#F87171]/70 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-xs">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="59" height="84" viewBox="0 0 59 84" className="scale-85 sm:scale-95 lg:scale-100">
                     <g fill="none" fillRule="evenodd">
                       <g transform="translate(.3 .28)">
                         <path d="M0 0c1 20.98 0 66.27 0 66.27s45.46.17 57.96.17c.52-9.33-.86-43.76.4-66.24C40.67.2 15.05 0 0 0Z" fill="#DC2626" />
@@ -142,10 +142,10 @@ export default function HowItWorks() {
               </div>
 
               {/* Title & Text */}
-              <h3 className="text-2xl sm:text-[28px] font-bold text-[#0E152B] mb-3 font-serif">
+              <h3 className="text-xl sm:text-2xl font-normal text-[#0E152B] mb-2 sm:mb-3 font-serif">
                 Clean
               </h3>
-              <p className="text-sm sm:text-[15px] text-[#0E152B]/75 leading-relaxed">
+              <p className="text-[14px] sm:text-[15px] text-[#0E152B]/75 leading-relaxed">
                 Our seasoned team of full-time cleaners will transform your home.
               </p>
             </div>
@@ -176,7 +176,7 @@ export default function HowItWorks() {
             {/* Step 3: Relax */}
             <div className="flex flex-col items-center text-center max-w-[300px] w-full group">
               {/* Circle Container */}
-              <div className="relative mb-8">
+              <div className="relative mb-6 sm:mb-8">
                 {/* Floating Leaf 3 */}
                 <div className="absolute top-10 -right-6 z-20 pointer-events-none">
                   <svg
@@ -197,8 +197,8 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Main Light Red Circle */}
-                <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-[#FEF2F2] border border-[#F87171]/70 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-xs">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="67" height="82" viewBox="0 0 67 82" className="scale-90 sm:scale-100">
+                <div className="w-36 h-36 sm:w-44 sm:h-44 lg:w-48 lg:h-48 rounded-full bg-[#FEF2F2] border border-[#F87171]/70 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-xs">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="67" height="82" viewBox="0 0 67 82" className="scale-85 sm:scale-95 lg:scale-100">
                     <g fillRule="nonzero" fill="none">
                       <path d="M63.3 30.48c-1.8 7.4-4 14.7-6.63 21.87a54.77 54.77 0 0 1-6.58 12.56 7.9 7.9 0 0 1-4.46 3.4c0-1.88-1.84-2.98-1.99-4.88-.16-2.32 1.51-4.21.3-6.36a33.41 33.41 0 0 1-4.2-12.93c-.37-3.64-.07-7.41 1.9-10.56a12.2 12.2 0 0 1 10.44-5.48c3.34.07 8.77.04 11.21 2.38Z" fill="#DC2626" />
                       <path d="M45.63 68.78a.5.5 0 0 1-.28-.09.44.44 0 0 1-.19-.39 4.07 4.07 0 0 0-.95-2.26 5.43 5.43 0 0 1-1.08-2.57c-.03-.94.1-1.87.39-2.77.31-1.22.6-2.27 0-3.4a33.7 33.7 0 0 1-4.26-13.12c-.46-4.45.2-7.99 2-10.84a12.65 12.65 0 0 1 10.78-5.67h.54c3.41.07 8.58.16 11.03 2.5a.5.5 0 0 1 .13.45 200.8 200.8 0 0 1-6.68 21.91 54.58 54.58 0 0 1-6.68 12.68 8.33 8.33 0 0 1-4.68 3.57h-.07Zm6.17-40.22c-3.93.02-7.6 2-9.73 5.27-1.69 2.67-2.3 6.03-1.91 10.26a32.69 32.69 0 0 0 4.13 12.75c.82 1.46.48 2.83.14 4.1-.26.8-.38 1.63-.37 2.46.14.78.46 1.52.96 2.14.46.64.78 1.36.95 2.12a7.27 7.27 0 0 0 3.67-3.01 54.16 54.16 0 0 0 6.52-12.46 199.41 199.41 0 0 0 6.54-21.55c-2.27-1.9-7.02-2-10.2-2.06h-.53l-.17-.02Z" fill="#000" />
@@ -213,10 +213,10 @@ export default function HowItWorks() {
               </div>
 
               {/* Title & Text */}
-              <h3 className="text-2xl sm:text-[28px] font-bold text-[#0E152B] mb-3 font-serif">
+              <h3 className="text-xl sm:text-2xl font-normal text-[#0E152B] mb-2 sm:mb-3 font-serif">
                 Relax
               </h3>
-              <p className="text-sm sm:text-[15px] text-[#0E152B]/75 leading-relaxed">
+              <p className="text-[14px] sm:text-[15px] text-[#0E152B]/75 leading-relaxed">
                 Sit back and enjoy how amazing your home or business looks now.
               </p>
             </div>

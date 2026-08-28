@@ -131,15 +131,15 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
   const displayedServices = servicesData;
 
   return (
-    <section id="services" className="wpo-service-section py-8 sm:py-10 lg:py-12 relative z-10 bg-white overflow-hidden font-[family-name:var(--font-parkinsans)]">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+    <section id="services" className="wpo-service-section py-10 sm:py-14 lg:py-16 relative z-10 bg-white overflow-hidden font-[family-name:var(--font-parkinsans)]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Subtitle & Header */}
         <div className="text-left mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-3">
+          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
             <span>OUR SERVICES</span>
             <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-normal text-[#0E152B] leading-[1.12] font-serif tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
             Here’s What We Can<br />Do for You
           </h2>
         </div>
@@ -149,26 +149,22 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
           {displayedServices.map((item) => (
             <div
               key={item.id}
-              className="group relative rounded-[32px] p-3.5 pb-5 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-gradient-to-b from-[#FFD6D6] via-[#FFEAEB]/85 to-[#FFF5F5] border-t-4 border-[#DC2626] border-x border-b border-red-100/60 shadow-sm"
+              className="group relative rounded-[24px] sm:rounded-[32px] p-3.5 sm:p-4 pb-4 sm:pb-5 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-gradient-to-b from-[#FFD6D6] via-[#FFEAEB]/85 to-[#FFF5F5] border-t-4 border-[#DC2626] border-x border-b border-red-100/60 shadow-sm"
             >
               <div>
                 {/* Top Image Box with Absolute SVG Badge */}
-                <div className="relative w-full aspect-[1/0.88] rounded-[24px] overflow-hidden mb-6 bg-slate-100 shadow-xs">
+                <div className="relative w-full aspect-[1/0.88] rounded-[20px] sm:rounded-[24px] overflow-hidden mb-4 sm:mb-6 bg-slate-100 shadow-xs">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 rounded-[24px]"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 rounded-[20px] sm:rounded-[24px]"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
-                  {/* Floating Icon Badge at Top-Left */}
-                  {/* <div className="absolute top-3.5 left-3.5 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/90 backdrop-blur-xs flex items-center justify-center shadow-md">
-                    {item.icon}
-                  </div> */}
                 </div>
 
                 {/* Card Title */}
-                <h3 className="text-2xl sm:text-[26px] font-bold text-[#0E152B] font-serif px-2 mb-6 leading-tight group-hover:text-[#DC2626] transition-colors">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#0E152B] font-serif px-1 mb-4 leading-snug group-hover:text-[#DC2626] transition-colors">
                   <Link href={item.link}>{item.title}</Link>
                 </h3>
               </div>
@@ -176,9 +172,9 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
               {/* Bottom "Learn more" Button */}
               <Link
                 href={item.link}
-                className="w-full bg-white rounded-full py-3.5 px-5 flex items-center justify-between shadow-xs transition-all duration-300 group-hover:bg-[#DC2626] group-hover:text-white border border-red-50"
+                className="w-full bg-white rounded-full py-3 sm:py-3.5 px-4 sm:px-5 flex items-center justify-between shadow-xs transition-all duration-300 group-hover:bg-[#DC2626] group-hover:text-white border border-red-50"
               >
-                <span className="text-sm sm:text-[15px] font-bold text-[#0E152B] group-hover:text-white transition-colors">
+                <span className="text-xs sm:text-sm font-bold text-[#0E152B] group-hover:text-white transition-colors">
                   Learn more
                 </span>
                 <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#FEE2E2] text-[#DC2626] flex items-center justify-center group-hover:bg-white group-hover:text-[#DC2626] transition-all">

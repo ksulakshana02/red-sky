@@ -22,40 +22,40 @@ export default function BookingSection() {
   };
 
   return (
-    <section id="booking" className="py-8 sm:py-10 lg:py-12 bg-white relative z-10 overflow-hidden font-[family-name:var(--font-parkinsans)]">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+    <section id="booking" className="py-10 sm:py-14 lg:py-16 bg-white relative z-10 overflow-hidden font-[family-name:var(--font-parkinsans)]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           
           {/* Left Column: Get a Quote Form Card (lg:col-span-6) */}
           <div className="lg:col-span-6 flex flex-col">
-            <div className="h-full rounded-[28px] sm:rounded-[36px] p-5 sm:p-10 lg:p-12 bg-gradient-to-br from-[#FFE2E2] via-[#FFF1F1] to-[#FFF9F9] border border-red-200/60 shadow-sm flex flex-col justify-between">
+            <div className="h-full rounded-[24px] sm:rounded-[36px] p-5 sm:p-8 lg:p-12 bg-gradient-to-br from-[#FFE2E2] via-[#FFF1F1] to-[#FFF9F9] border border-red-200/60 shadow-sm flex flex-col justify-between">
               
               <div>
                 {/* Subtitle */}
-                <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5">
+                <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
                   <span>GET YOUR FREE ESTIMATE</span>
                   <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
                 </div>
 
                 {/* Title */}
-                <h2 className="text-2xl sm:text-4xl lg:text-[46px] font-normal text-[#0E152B] leading-tight font-serif tracking-tight mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight mb-5 sm:mb-8">
                   Get a Quote
                 </h2>
 
                 {submitted ? (
-                  <div className="bg-white/90 backdrop-blur-xs p-8 rounded-[28px] text-center space-y-4 border border-red-200 shadow-sm animate-in fade-in duration-300 my-auto">
-                    <div className="w-14 h-14 rounded-full bg-[#FEF2F2] text-[#DC2626] flex items-center justify-center mx-auto shadow-xs">
-                      <CheckCircle2 className="w-8 h-8" />
+                  <div className="bg-white/90 backdrop-blur-xs p-6 sm:p-8 rounded-[24px] text-center space-y-4 border border-red-200 shadow-sm animate-in fade-in duration-300 my-auto">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#FEF2F2] text-[#DC2626] flex items-center justify-center mx-auto shadow-xs">
+                      <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8" />
                     </div>
-                    <h3 className="text-2xl font-serif text-[#0E152B]">Quote Request Received!</h3>
-                    <p className="text-sm text-[#0E152B]/75 leading-relaxed max-w-sm mx-auto">
+                    <h3 className="text-xl sm:text-2xl font-serif text-[#0E152B]">Quote Request Received!</h3>
+                    <p className="text-xs sm:text-sm text-[#0E152B]/75 leading-relaxed max-w-sm mx-auto">
                       Thank you, <strong className="text-[#0E152B]">{formData.name || "Valued Customer"}</strong>! Our dispatch team will send your customized estimate and contact you at{" "}
                       <strong className="text-[#0E152B]">{formData.phone || formData.email}</strong> shortly.
                     </p>
                     <button
                       type="button"
                       onClick={() => setSubmitted(false)}
-                      className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-[#0E152B] hover:bg-[#DC2626] text-white text-sm font-bold transition-colors"
+                      className="inline-flex items-center justify-center px-7 py-2.5 sm:px-8 sm:py-3 rounded-full bg-[#0E152B] hover:bg-[#DC2626] text-white text-xs sm:text-sm font-bold transition-colors"
                     >
                       Request Another Quote
                     </button>
@@ -74,7 +74,7 @@ export default function BookingSection() {
                           placeholder="John Smith"
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full bg-white border border-slate-200/80 rounded-[14px] h-[48px] sm:h-[52px] px-4 text-sm text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] transition-all shadow-2xs"
+                          className="w-full bg-white border border-slate-200/80 rounded-[14px] h-[46px] sm:h-[50px] px-4 text-sm text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] transition-all shadow-2xs"
                         />
                       </div>
 
@@ -88,7 +88,7 @@ export default function BookingSection() {
                           placeholder="e.g. john@youremail.com"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full bg-white border border-slate-200/80 rounded-[14px] h-[48px] sm:h-[52px] px-4 text-sm text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] transition-all shadow-2xs"
+                          className="w-full bg-white border border-slate-200/80 rounded-[14px] h-[46px] sm:h-[50px] px-4 text-sm text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] transition-all shadow-2xs"
                         />
                       </div>
                     </div>
@@ -105,7 +105,7 @@ export default function BookingSection() {
                           placeholder="e.g. (1) 23 4567 891"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full bg-white border border-slate-200/80 rounded-[14px] h-[48px] sm:h-[52px] px-4 text-sm text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] transition-all shadow-2xs"
+                          className="w-full bg-white border border-slate-200/80 rounded-[14px] h-[46px] sm:h-[50px] px-4 text-sm text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] transition-all shadow-2xs"
                         />
                       </div>
 
@@ -119,7 +119,7 @@ export default function BookingSection() {
                           placeholder="e.g. 120"
                           value={formData.sqft}
                           onChange={(e) => setFormData({ ...formData, sqft: e.target.value })}
-                          className="w-full bg-white border border-slate-200/80 rounded-[14px] h-[48px] sm:h-[52px] px-4 text-sm text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] transition-all shadow-2xs"
+                          className="w-full bg-white border border-slate-200/80 rounded-[14px] h-[46px] sm:h-[50px] px-4 text-sm text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] transition-all shadow-2xs"
                         />
                       </div>
                     </div>
@@ -133,7 +133,7 @@ export default function BookingSection() {
                         required
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full bg-white border border-slate-200/80 rounded-[14px] h-[48px] sm:h-[52px] px-4 text-sm text-[#0E152B] focus:outline-none focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] transition-all shadow-2xs cursor-pointer"
+                        className="w-full bg-white border border-slate-200/80 rounded-[14px] h-[46px] sm:h-[50px] px-4 text-sm text-[#0E152B] focus:outline-none focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] transition-all shadow-2xs cursor-pointer"
                       >
                         <option value="">Select a service</option>
                         <option value="House cleaning">House cleaning</option>
@@ -164,7 +164,7 @@ export default function BookingSection() {
                     <div className="pt-2">
                       <button
                         type="submit"
-                        className="inline-flex items-center justify-center px-8 py-3.5 sm:py-4 rounded-full bg-[#0E152B] hover:bg-[#DC2626] text-white font-bold text-sm tracking-wide shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+                        className="inline-flex items-center justify-center px-7 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#0E152B] hover:bg-[#DC2626] text-white font-bold text-xs sm:text-sm tracking-wide shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                       >
                         I’d Like a Quote
                       </button>
@@ -180,39 +180,39 @@ export default function BookingSection() {
           <div className="lg:col-span-6 flex flex-col justify-between gap-6">
             
             {/* Top Featured Image Box */}
-            <div className="relative w-full aspect-[16/10.5] rounded-[32px] overflow-hidden shadow-lg border border-slate-100 bg-slate-100 flex-1 min-h-[260px]">
+            <div className="relative w-full aspect-[16/10.5] rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-lg border border-slate-100 bg-slate-100 flex-1 min-h-[240px]">
               <Image
                 src="https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-931846460.jpg"
                 alt="Professional Cleaning Team"
                 fill
-                className="object-cover rounded-[32px] hover:scale-105 transition-transform duration-700"
+                className="object-cover rounded-[24px] sm:rounded-[32px] hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
             </div>
 
             {/* Bottom 100% Satisfaction Guarantee Box */}
-            <div className="rounded-[32px] p-7 sm:p-8 bg-[#F6F7F5] border border-slate-200/60 relative overflow-hidden flex flex-col justify-center">
+            <div className="rounded-[24px] sm:rounded-[32px] p-5 sm:p-8 bg-[#F6F7F5] border border-slate-200/60 relative overflow-hidden flex flex-col justify-center">
               
               <div className="relative z-10 max-w-md">
                 {/* Title with Checkmark Badge (RedSky Red) */}
-                <div className="flex items-center gap-3 mb-2.5">
-                  <div className="w-7 h-7 rounded-full bg-[#DC2626] text-white flex items-center justify-center shrink-0 shadow-xs">
-                    <Check className="w-4 h-4 stroke-[3]" />
+                <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-2.5">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#DC2626] text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[3]" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#0E152B] leading-tight">
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-[#0E152B] leading-tight">
                     100% Satisfaction Guarantee
                   </h3>
                 </div>
 
                 {/* Guarantee Copy */}
-                <p className="text-sm sm:text-[14.5px] text-[#0E152B]/75 leading-relaxed pl-10">
+                <p className="text-[13.5px] sm:text-[14.5px] text-[#0E152B]/75 leading-relaxed pl-8 sm:pl-10">
                   Your satisfaction is our top priority! We proudly offer a 100% Happiness Guarantee on all our cleanings.
                 </p>
               </div>
 
               {/* Decorative Floating Botanical Leaves Artwork in RedSky Red on the Right */}
-              <div className="absolute -right-4 -bottom-4 w-36 h-36 pointer-events-none opacity-90 hidden sm:block">
+              <div className="absolute -right-4 -bottom-4 w-32 h-32 sm:w-36 sm:h-36 pointer-events-none opacity-90 hidden sm:block">
                 <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                   <path
                     d="M90 20C75 25 65 40 70 60C85 55 95 40 90 20Z"

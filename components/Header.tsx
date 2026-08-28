@@ -20,8 +20,8 @@ export function TopBar() {
   const [currency, setCurrency] = useState("USD");
 
   return (
-    <div className="topbar bg-[#FFD700] rounded-b-[10px] px-4 sm:px-8 py-2 text-black text-xs sm:text-[14px] font-semibold">
-      <div className="container-fluid max-w-[1440px] mx-auto">
+    <div className="topbar w-full bg-[#FFD700] px-4 sm:px-8 lg:px-12 py-2 text-black text-xs sm:text-[14px] font-semibold">
+      <div className="w-full max-w-[1691px] mx-auto">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-2.5">
           {/* Left Contact Info */}
           <div className="w-full lg:w-auto">
@@ -140,25 +140,14 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="wpo-site-header font-[family-name:var(--font-parkinsans)]">
-      <nav className="navigation navbar bg-white py-3.5 px-4 sm:px-8 border-b border-slate-100">
-        <div className="container-fluid max-w-[1440px] mx-auto flex items-center justify-between">
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden">
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="w-10 h-10 bg-[#DC2626] text-white flex items-center justify-center rounded-md hover:bg-[#B91C1C] transition-colors cursor-pointer"
-              aria-label="Toggle navigation"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
-
+    <div className="wpo-site-header w-full font-[family-name:var(--font-parkinsans)] relative">
+      <nav className="navigation navbar w-full bg-white py-3 sm:py-3.5 px-4 sm:px-8 lg:px-12 border-b border-slate-100 relative z-50">
+        <div className="w-full max-w-[1691px] mx-auto flex items-center justify-between gap-3 sm:gap-8">
+          
           {/* RedSky Cleaning Service Brand Logo */}
-          <div className="navbar-header flex items-center">
+          <div className="navbar-header flex items-center shrink-0">
             <Link href="/" className="navbar-brand flex items-center group py-1">
-              <div className="relative w-36 sm:w-48 lg:w-52 h-10 sm:h-12 shrink-0 group-hover:scale-[1.02] transition-transform">
+              <div className="relative w-36 sm:w-48 lg:w-52 h-9 sm:h-11 lg:h-12 shrink-0 group-hover:scale-[1.02] transition-transform">
                 <Image
                   src="/redsky-horizontal.svg"
                   alt="RedSky Cleaning Service"
@@ -170,93 +159,134 @@ export function Navbar() {
             </Link>
           </div>
 
-          {/* Clean Desktop Navigation Links (Pages, Projects, Shop removed) */}
-          <div className="hidden lg:flex items-center gap-8 font-medium text-[16px] text-[#0E152B]">
-            <Link href="/" className="hover:text-[#DC2626] transition-colors py-2">
+          {/* Clean Desktop Navigation Links */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8 2xl:gap-10 font-medium text-[15px] xl:text-[16px] text-[#0E152B] shrink-0">
+            <Link href="/" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
               Home
             </Link>
-            <Link href="/#about" className="hover:text-[#DC2626] transition-colors py-2">
+            <Link href="/#about" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
               About
             </Link>
-            <Link href="#services" className="hover:text-[#DC2626] transition-colors py-2">
+            <Link href="#services" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
               Services
             </Link>
-            <Link href="/#faq" className="hover:text-[#DC2626] transition-colors py-2">
+            <Link href="/#faq" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
               FAQ
             </Link>
-            <Link href="/#blog" className="hover:text-[#DC2626] transition-colors py-2">
+            <Link href="/#blog" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
               Blog
             </Link>
-            <Link href="#contact" className="hover:text-[#DC2626] transition-colors py-2">
+            <Link href="#contact" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
               Contact
             </Link>
           </div>
 
-          {/* Header Right Actions (Search & Cart removed, Free Quote retained) */}
-          <div className="header-right flex items-center gap-3 sm:gap-4">
-            {/* Free Quote Button */}
-            <div className="close-form">
+          {/* Header Right Actions */}
+          <div className="header-right flex items-center gap-2 sm:gap-4 shrink-0">
+            {/* Free Quote Button (Desktop & Tablet) */}
+            <div className="hidden sm:block">
               <a
                 href="#booking"
-                className="inline-flex items-center justify-center px-6 py-2.5 sm:px-7 sm:py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-sm tracking-wide shadow-xs transition-all duration-200"
+                className="inline-flex items-center justify-center px-5 py-2.5 sm:px-7 sm:py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-xs sm:text-sm tracking-wide shadow-xs hover:shadow-md transition-all duration-200 whitespace-nowrap"
               >
                 <span>Free Quote</span>
               </a>
+            </div>
+
+            {/* Mobile Hamburger Toggle Button (Right Side on Mobile) */}
+            <div className="lg:hidden">
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="w-10 h-10 bg-slate-50 hover:bg-red-50 text-[#0E152B] hover:text-[#DC2626] border border-slate-200 rounded-xl flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Toggle navigation"
+                aria-expanded={mobileMenuOpen}
+              >
+                {mobileMenuOpen ? <X className="w-5 h-5 text-[#DC2626]" /> : <Menu className="w-5 h-5" />}
+              </button>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Slide-out Menu */}
+      {/* Mobile Dropdown Menu (Drops down directly below Navbar, not from the side) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex">
-          <div className="w-[290px] bg-gradient-to-b from-[#8B0000] via-[#991B1B] to-[#450A0A] h-full p-6 flex flex-col justify-between text-white shadow-2xl">
-            <div>
-              <div className="flex items-center justify-between pb-6 border-b border-white/20">
-                <div className="flex items-center gap-2.5">
-                  <div className="relative w-9 h-9 rounded-md overflow-hidden bg-white p-0.5">
-                    <Image
-                      src="/Group.png"
-                      alt="RedSky Logo"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-base font-extrabold leading-none text-white tracking-wide">
-                      RED<span className="text-amber-300">SKY</span>
-                    </span>
-                    <span className="text-[8px] font-bold tracking-[0.2em] text-white/80 uppercase">
-                      Cleaning Service
-                    </span>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-8 h-8 border border-white/40 rounded-sm flex items-center justify-center text-white hover:bg-white/10 cursor-pointer"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
+        <div className="lg:hidden w-full bg-white border-b border-slate-200 shadow-xl absolute top-full left-0 right-0 z-50 animate-in slide-in-from-top-2 duration-200">
+          <div className="px-4 py-6 max-w-lg mx-auto flex flex-col gap-1">
+            {/* Nav Links */}
+            <nav className="flex flex-col space-y-1">
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 rounded-xl text-[#0E152B] hover:text-[#DC2626] hover:bg-red-50/60 font-semibold text-[15px] transition-colors flex items-center justify-between"
+              >
+                <span>Home</span>
+              </Link>
+              <Link
+                href="/#about"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 rounded-xl text-[#0E152B] hover:text-[#DC2626] hover:bg-red-50/60 font-semibold text-[15px] transition-colors flex items-center justify-between"
+              >
+                <span>About</span>
+              </Link>
+              <Link
+                href="#services"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 rounded-xl text-[#0E152B] hover:text-[#DC2626] hover:bg-red-50/60 font-semibold text-[15px] transition-colors flex items-center justify-between"
+              >
+                <span>Services</span>
+              </Link>
+              <Link
+                href="/#faq"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 rounded-xl text-[#0E152B] hover:text-[#DC2626] hover:bg-red-50/60 font-semibold text-[15px] transition-colors flex items-center justify-between"
+              >
+                <span>FAQ</span>
+              </Link>
+              <Link
+                href="/#blog"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 rounded-xl text-[#0E152B] hover:text-[#DC2626] hover:bg-red-50/60 font-semibold text-[15px] transition-colors flex items-center justify-between"
+              >
+                <span>Blog</span>
+              </Link>
+              <Link
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 rounded-xl text-[#0E152B] hover:text-[#DC2626] hover:bg-red-50/60 font-semibold text-[15px] transition-colors flex items-center justify-between"
+              >
+                <span>Contact</span>
+              </Link>
+            </nav>
 
-              <div className="flex flex-col gap-4 mt-6 text-sm font-semibold text-white">
-                <Link href="/" onClick={() => setMobileMenuOpen(false)} className="hover:text-amber-300 transition-colors">Home</Link>
-                <Link href="/#about" onClick={() => setMobileMenuOpen(false)} className="hover:text-amber-300 transition-colors">About</Link>
-                <Link href="#services" onClick={() => setMobileMenuOpen(false)} className="hover:text-amber-300 transition-colors">Services</Link>
-                <Link href="/#faq" onClick={() => setMobileMenuOpen(false)} className="hover:text-amber-300 transition-colors">FAQ</Link>
-                <Link href="/#blog" onClick={() => setMobileMenuOpen(false)} className="hover:text-amber-300 transition-colors">Blog</Link>
-                <Link href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-amber-300 transition-colors">Contact</Link>
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-white/20">
+            {/* Mobile Dropdown Actions */}
+            <div className="pt-4 mt-2 border-t border-slate-100 flex flex-col gap-3">
               <a
                 href="#booking"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full block text-center py-3 bg-white text-[#DC2626] font-bold rounded-lg text-sm shadow-md hover:bg-slate-100 transition-colors"
+                className="w-full text-center py-3.5 bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold rounded-full text-sm shadow-md shadow-red-500/20 transition-all"
               >
                 Free Quote
               </a>
+
+              {/* Quick Contact Hotline */}
+              <div className="flex items-center justify-center gap-4 pt-1 text-xs text-slate-600">
+                <a
+                  href="tel:+17189044450"
+                  className="inline-flex items-center gap-1.5 hover:text-[#DC2626] font-medium"
+                >
+                  <Phone className="w-3.5 h-3.5 text-[#DC2626]" />
+                  <span>+1 718-904-4450</span>
+                </a>
+                <span className="text-slate-300">|</span>
+                <a
+                  href="mailto:support@redskycleaning.com"
+                  className="inline-flex items-center gap-1.5 hover:text-[#DC2626] font-medium"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#DC2626]" />
+                  <span>Email Us</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -267,7 +297,7 @@ export function Navbar() {
 
 export default function Header() {
   return (
-    <header id="header" className="box-style max-w-[1691px] mx-auto">
+    <header id="header" className="w-full bg-white relative z-40">
       {/* <TopBar /> */}
       <Navbar />
     </header>

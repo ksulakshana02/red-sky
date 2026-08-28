@@ -21,15 +21,15 @@ export default function Footer() {
       <div className="max-w-[1691px] mx-auto">
         
         {/* Main Soft Card Container (Warm red-touching tone rounded-[40px]) */}
-        <div className="rounded-[28px] sm:rounded-[40px] p-6 sm:p-12 lg:p-16 bg-gradient-to-br from-[#FEF2F2] via-[#FFF5F5] to-[#FDF2F2] border border-red-100/80 relative overflow-hidden font-[family-name:var(--font-parkinsans)] shadow-xs">
+        <div className="rounded-[24px] sm:rounded-[40px] p-5 sm:p-10 lg:p-14 bg-gradient-to-br from-[#FEF2F2] via-[#FFF5F5] to-[#FDF2F2] border border-red-100/80 relative overflow-hidden font-[family-name:var(--font-parkinsans)] shadow-xs">
           
           {/* Top Row: Heading + CTA Button (Left) & Newsletter Subscription (Right moved down to align) */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 pb-8 sm:pb-12 border-b border-red-100/80">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 pb-6 sm:pb-10 border-b border-red-100/80">
             
             {/* Left Box: Title & "Get a Free Quote" Button */}
             <div className="max-w-xl">
-              <div className="mb-5 sm:mb-8">
-                <h2 className="text-2xl sm:text-4xl lg:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
+              <div className="mb-4 sm:mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
                   Our Goal is to Wow<br />You With Every Clean
                 </h2>
               </div>
@@ -38,7 +38,7 @@ export default function Footer() {
               <div>
                 <a
                   href="#booking"
-                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-sm tracking-wide shadow-md transition-all duration-200"
+                  className="inline-flex items-center justify-center px-7 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-xs sm:text-sm tracking-wide shadow-md transition-all duration-200"
                 >
                   Get a Free Quote
                 </a>
@@ -47,27 +47,27 @@ export default function Footer() {
 
             {/* Right Box: Subscribe to Our Newsletter (Moved down to align seamlessly) */}
             <div className="w-full lg:max-w-md pb-1">
-              <h6 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-3">
+              <h6 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3">
                 SUBSCRIBE TO OUR NEWSLETTER
               </h6>
 
               {subscribed ? (
-                <div className="p-4 rounded-full bg-white text-[#DC2626] text-sm font-semibold shadow-xs text-center border border-red-200">
+                <div className="p-3.5 sm:p-4 rounded-full bg-white text-[#DC2626] text-xs sm:text-sm font-semibold shadow-xs text-center border border-red-200">
                   ✓ Thank you for subscribing!
                 </div>
               ) : (
-                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-center gap-3">
+                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3">
                   <input
                     type="email"
                     required
-                    placeholder="Enter our email address"
+                    placeholder="Enter your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-white rounded-full h-[50px] px-6 text-sm text-[#0E152B] placeholder:text-slate-400 shadow-2xs border border-red-100/60 focus:outline-none focus:ring-2 focus:ring-[#DC2626] transition-all"
+                    className="w-full bg-white rounded-full h-[46px] sm:h-[50px] px-5 sm:px-6 text-sm text-[#0E152B] placeholder:text-slate-400 shadow-2xs border border-red-100/60 focus:outline-none focus:ring-2 focus:ring-[#DC2626] transition-all"
                   />
                   <button
                     type="submit"
-                    className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center px-8 h-[50px] rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-sm tracking-wide shadow-md transition-colors cursor-pointer"
+                    className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center px-7 sm:px-8 h-[46px] sm:h-[50px] rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-xs sm:text-sm tracking-wide shadow-md transition-colors cursor-pointer"
                   >
                     Subscribe
                   </button>

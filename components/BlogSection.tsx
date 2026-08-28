@@ -43,42 +43,42 @@ const blogPosts: BlogPost[] = [
 
 export default function BlogSection() {
   return (
-    <section id="blog" className="py-8 sm:py-10 lg:py-12 bg-white relative z-10 overflow-hidden font-[family-name:var(--font-parkinsans)]">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+    <section id="blog" className="py-10 sm:py-14 lg:py-16 bg-white relative z-10 overflow-hidden font-[family-name:var(--font-parkinsans)]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-3">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
             <span>FROM OUR BLOG</span>
             <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-normal text-[#0E152B] leading-[1.15] font-serif tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
             Cleaning Tips From Pros
           </h2>
         </div>
 
         {/* 3-Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-12 sm:mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mb-8 sm:mb-12">
           {blogPosts.map((post, idx) => (
             <article
               key={idx}
-              className="group flex flex-col items-start bg-white rounded-[32px] transition-all duration-300"
+              className="group flex flex-col items-start bg-white rounded-[24px] sm:rounded-[32px] transition-all duration-300"
             >
               {/* Featured Image Container */}
               <Link
                 href={post.link}
-                className="relative w-full aspect-[16/10] rounded-[32px] overflow-hidden mb-5 bg-slate-100 shadow-xs block"
+                className="relative w-full aspect-[16/10] rounded-[20px] sm:rounded-[28px] overflow-hidden mb-4 sm:mb-5 bg-slate-100 shadow-xs block"
               >
                 <Image
                   src={post.image}
                   alt={post.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 rounded-[32px]"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 rounded-[20px] sm:rounded-[28px]"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </Link>
 
               {/* Meta: Category & Date */}
-              <div className="flex items-center gap-3 px-1 mb-3 text-xs sm:text-sm">
+              <div className="flex items-center gap-2.5 sm:gap-3 px-1 mb-2.5 sm:mb-3 text-xs sm:text-sm">
                 <span className="font-bold uppercase tracking-wider text-[#DC2626]">
                   {post.category}
                 </span>
@@ -90,22 +90,22 @@ export default function BlogSection() {
               </div>
 
               {/* Post Title */}
-              <h3 className="text-xl sm:text-[22px] font-bold text-[#0E152B] font-serif leading-snug px-1 mb-3 group-hover:text-[#DC2626] transition-colors">
+              <h3 className="text-lg sm:text-xl md:text-[22px] font-bold text-[#0E152B] font-serif leading-snug px-1 mb-2 sm:mb-3 group-hover:text-[#DC2626] transition-colors">
                 <Link href={post.link}>{post.title}</Link>
               </h3>
 
               {/* Post Excerpt */}
-              <p className="text-sm sm:text-[14.5px] text-[#0E152B]/70 leading-relaxed px-1 mb-5 line-clamp-2">
+              <p className="text-[13.5px] sm:text-[14.5px] text-[#0E152B]/70 leading-relaxed px-1 mb-4 sm:mb-5 line-clamp-2">
                 {post.excerpt}
               </p>
 
               {/* Read More Link */}
               <Link
                 href={post.link}
-                className="inline-flex items-center gap-1.5 text-sm font-bold text-[#0E152B] group-hover:text-[#DC2626] transition-colors px-1 mt-auto"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#0E152B] group-hover:text-[#DC2626] transition-colors px-1 mt-auto"
               >
                 <span>Read More</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </article>
           ))}
@@ -115,7 +115,7 @@ export default function BlogSection() {
         <div className="text-center">
           <Link
             href="/blog"
-            className="inline-flex items-center justify-center px-9 py-4 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-sm tracking-wide shadow-md transition-all duration-200"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-xs sm:text-sm tracking-wide shadow-md transition-all duration-200"
           >
             More Tips
           </Link>

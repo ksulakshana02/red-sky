@@ -43,17 +43,17 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="wpo-testimonials-section py-8 sm:py-10 lg:py-12 relative z-10 bg-white overflow-hidden font-[family-name:var(--font-parkinsans)]">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+    <section className="wpo-testimonials-section py-10 sm:py-14 lg:py-16 relative z-10 bg-white overflow-hidden font-[family-name:var(--font-parkinsans)]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Soft wrap card */}
-        <div className="bg-[#F8F9FA] border border-slate-100 rounded-[36px] p-6 sm:p-8 lg:p-10 relative overflow-hidden">
+        <div className="bg-[#F8F9FA] border border-slate-100 rounded-[24px] sm:rounded-[36px] p-5 sm:p-8 lg:p-10 relative overflow-hidden">
           {/* Section Title */}
-          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-            <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-3">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+            <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
               <span>TESTIMONIALS</span>
               <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-normal text-[#0E152B] leading-[1.15] font-serif tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
               What Our Happy Clients Say About Our Work
             </h2>
           </div>
@@ -65,12 +65,12 @@ export default function TestimonialsSection() {
               {testimonials.map((item, idx) => (
                 <div
                   key={idx}
-                  className="wpo-testimonial-item bg-white border border-slate-100 hover:border-red-200 rounded-[20px] p-6 sm:p-8 flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300 relative group"
+                  className="wpo-testimonial-item bg-white border border-slate-100 hover:border-red-200 rounded-[20px] p-5 sm:p-7 flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300 relative group"
                 >
                   <div>
                     {/* Top Quote Icon & Stars */}
-                    <div className="flex items-center justify-between mb-4">
-                      <Quote className="w-8 h-8 text-[#DC2626]/30 rotate-180" />
+                    <div className="flex items-center justify-between mb-3.5 sm:mb-4">
+                      <Quote className="w-7 h-7 sm:w-8 sm:h-8 text-[#DC2626]/30 rotate-180" />
                       <div className="flex items-center gap-1 text-[#FFD700]">
                         {[...Array(item.rating)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 fill-current" />
@@ -79,13 +79,13 @@ export default function TestimonialsSection() {
                     </div>
 
                     {/* Quote Body */}
-                    <p className="text-sm sm:text-base text-[#032532]/85 italic leading-relaxed">
+                    <p className="text-[13.5px] sm:text-[15px] text-[#032532]/85 italic leading-relaxed">
                       “{item.quote}”
                     </p>
                   </div>
 
                   {/* Author Info */}
-                  <div className="pt-6 mt-6 border-t border-slate-100">
+                  <div className="pt-5 mt-5 sm:pt-6 sm:mt-6 border-t border-slate-100">
                     <h4 className="text-base sm:text-lg font-bold text-[#0E152B]">
                       {item.name}
                     </h4>
@@ -99,10 +99,10 @@ export default function TestimonialsSection() {
 
             {/* Mobile Single Card Slider */}
             <div className="block md:hidden">
-              <div className="wpo-testimonial-item bg-white border border-slate-100 rounded-[20px] p-6 flex flex-col justify-between shadow-sm min-h-[280px]">
+              <div className="wpo-testimonial-item bg-white border border-slate-100 rounded-[20px] p-5 flex flex-col justify-between shadow-sm min-h-[260px]">
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <Quote className="w-7 h-7 text-[#DC2626]/30 rotate-180" />
+                  <div className="flex items-center justify-between mb-3.5">
+                    <Quote className="w-6 h-6 text-[#DC2626]/30 rotate-180" />
                     <div className="flex items-center gap-1 text-[#FFD700]">
                       {[...Array(testimonials[current].rating)].map((_, i) => (
                         <Star key={i} className="w-3.5 h-3.5 fill-current" />
@@ -110,13 +110,13 @@ export default function TestimonialsSection() {
                     </div>
                   </div>
 
-                  <p className="text-sm text-[#032532]/85 italic leading-relaxed">
+                  <p className="text-[13.5px] text-[#032532]/85 italic leading-relaxed">
                     “{testimonials[current].quote}”
                   </p>
                 </div>
 
-                <div className="pt-5 mt-5 border-t border-slate-100">
-                  <h4 className="text-base font-bold text-[#0E152B]">
+                <div className="pt-4 mt-4 border-t border-slate-100">
+                  <h4 className="text-[15px] font-bold text-[#0E152B]">
                     {testimonials[current].name}
                   </h4>
                   <span className="text-xs font-semibold text-[#DC2626]">
@@ -126,7 +126,7 @@ export default function TestimonialsSection() {
               </div>
 
               {/* Mobile Dots */}
-              <div className="flex justify-center items-center gap-2 mt-5">
+              <div className="flex justify-center items-center gap-2 mt-4">
                 {testimonials.map((_, idx) => (
                   <button
                     key={idx}

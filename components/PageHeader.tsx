@@ -72,16 +72,17 @@ export default function PageHeader({
       </div>
 
       {/* Content */}
-      <div className="container max-w-[1440px] mx-auto px-4 text-center relative z-10">
+      <div className="container max-w-[1440px] mx-auto px-4 py-8 text-center relative z-10">
         <div className="row">
           <div className="col-12">
-            <div className="breadcumb-wrap space-y-2 sm:space-y-4">
-              <h2 className="text-[#DC2626] font-serif text-lg sm:text-2xl font-bold capitalize tracking-wide">
-                {subtitle}
-              </h2>
-              <h3 className="text-5xl sm:text-7xl lg:text-[80px] font-normal text-[#0E152B] font-serif leading-none tracking-tight">
+            <div className="breadcumb-wrap space-y-2 sm:space-y-3">
+              <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-1">
+                <span>{subtitle}</span>
+                <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
+              </div>
+              <h1 className="text-3xl xs:text-4xl sm:text-6xl lg:text-[76px] font-normal text-[#0E152B] font-serif leading-[1.1] tracking-tight">
                 {title}
-              </h3>
+              </h1>
             </div>
           </div>
         </div>
