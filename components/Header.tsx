@@ -164,19 +164,19 @@ export function Navbar() {
             <Link href="/" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
               Home
             </Link>
-            <Link href="/#about" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
+            <Link href="/about" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
               About
             </Link>
-            <Link href="#services" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
+            <Link href="/services" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
               Services
             </Link>
-            <Link href="/#faq" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
+            <Link href="/faq" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
               FAQ
             </Link>
-            <Link href="/#blog" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
+            <Link href="/blog" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
               Blog
             </Link>
-            <Link href="#contact" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
+            <Link href="/contact" className="hover:text-[#DC2626] transition-colors py-2 whitespace-nowrap">
               Contact
             </Link>
           </div>
@@ -185,12 +185,12 @@ export function Navbar() {
           <div className="header-right flex items-center gap-2 sm:gap-4 shrink-0">
             {/* Free Quote Button (Desktop & Tablet) */}
             <div className="hidden sm:block">
-              <a
-                href="#booking"
-                className="inline-flex items-center justify-center px-5 py-2.5 sm:px-7 sm:py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-xs sm:text-sm tracking-wide shadow-xs hover:shadow-md transition-all duration-200 whitespace-nowrap"
+              <Link
+                href="/quote"
+                className="inline-flex items-center justify-center px-5 py-2.5 sm:px-7 sm:py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium text-xs sm:text-sm tracking-wide shadow-xs hover:shadow-md transition-all duration-200 whitespace-nowrap"
               >
                 <span>Free Quote</span>
-              </a>
+              </Link>
             </div>
 
             {/* Mobile Hamburger Toggle Button (Right Side on Mobile) */}
@@ -223,35 +223,35 @@ export function Navbar() {
                 <span>Home</span>
               </Link>
               <Link
-                href="/#about"
+                href="/about"
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-4 py-3 rounded-xl text-[#0E152B] hover:text-[#DC2626] hover:bg-red-50/60 font-semibold text-[15px] transition-colors flex items-center justify-between"
               >
                 <span>About</span>
               </Link>
               <Link
-                href="#services"
+                href="/services"
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-4 py-3 rounded-xl text-[#0E152B] hover:text-[#DC2626] hover:bg-red-50/60 font-semibold text-[15px] transition-colors flex items-center justify-between"
               >
                 <span>Services</span>
               </Link>
               <Link
-                href="/#faq"
+                href="/faq"
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-4 py-3 rounded-xl text-[#0E152B] hover:text-[#DC2626] hover:bg-red-50/60 font-semibold text-[15px] transition-colors flex items-center justify-between"
               >
                 <span>FAQ</span>
               </Link>
               <Link
-                href="/#blog"
+                href="/blog"
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-4 py-3 rounded-xl text-[#0E152B] hover:text-[#DC2626] hover:bg-red-50/60 font-semibold text-[15px] transition-colors flex items-center justify-between"
               >
                 <span>Blog</span>
               </Link>
               <Link
-                href="#contact"
+                href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-4 py-3 rounded-xl text-[#0E152B] hover:text-[#DC2626] hover:bg-red-50/60 font-semibold text-[15px] transition-colors flex items-center justify-between"
               >
@@ -261,13 +261,13 @@ export function Navbar() {
 
             {/* Mobile Dropdown Actions */}
             <div className="pt-4 mt-2 border-t border-slate-100 flex flex-col gap-3">
-              <a
-                href="#booking"
+              <Link
+                href="/quote"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-3.5 bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold rounded-full text-sm shadow-md shadow-red-500/20 transition-all"
+                className="w-full text-center py-3 bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium rounded-full text-sm shadow-xs transition-colors"
               >
                 Free Quote
-              </a>
+              </Link>
 
               {/* Quick Contact Hotline */}
               <div className="flex items-center justify-center gap-4 pt-1 text-xs text-slate-600">

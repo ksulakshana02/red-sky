@@ -36,12 +36,12 @@ export default function Footer() {
 
               {/* RedSky Red Pill Button: Get a Free Quote */}
               <div>
-                <a
-                  href="#booking"
-                  className="inline-flex items-center justify-center px-7 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-xs sm:text-sm tracking-wide shadow-md transition-all duration-200"
+                <Link
+                  href="/quote"
+                  className="inline-flex items-center justify-center px-7 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium text-xs sm:text-sm tracking-wide shadow-xs transition-colors"
                 >
                   Get a Free Quote
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -88,22 +88,22 @@ export default function Footer() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8 text-sm sm:text-[15px]">
                 <ul className="space-y-2.5">
                   <li>
-                    <Link href="#services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
+                    <Link href="/services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
                       House cleaning
                     </Link>
                   </li>
                   <li>
-                    <Link href="#services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
+                    <Link href="/services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
                       Office cleaning
                     </Link>
                   </li>
                   <li>
-                    <Link href="#services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
+                    <Link href="/services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
                       Apartment cleaning
                     </Link>
                   </li>
                   <li>
-                    <Link href="#services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
+                    <Link href="/services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
                       Airbnb cleaning
                     </Link>
                   </li>
@@ -111,22 +111,22 @@ export default function Footer() {
 
                 <ul className="space-y-2.5">
                   <li>
-                    <Link href="#services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
+                    <Link href="/services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
                       Deep cleaning
                     </Link>
                   </li>
                   <li>
-                    <Link href="#services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
+                    <Link href="/services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
                       Move in out cleaning
                     </Link>
                   </li>
                   <li>
-                    <Link href="#services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
+                    <Link href="/services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
                       Post construction cleaning
                     </Link>
                   </li>
                   <li>
-                    <Link href="#services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
+                    <Link href="/services" className="text-[#0E152B]/75 hover:text-[#DC2626] transition-colors">
                       Recurring cleaning
                     </Link>
                   </li>
@@ -187,10 +187,30 @@ export default function Footer() {
 
           </div>
 
-          {/* Bottom Row: Copyright (Left) & Social Media Icons (Right) */}
+          {/* Bottom Row: Copyright & Nav Links (Left) & Social Media Icons (Right) */}
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#0E152B]/60">
-            <div>
-              © 2026 RedSky. All Rights Reserved
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+              <span>© 2026 RedSky. All Rights Reserved</span>
+              <span className="text-slate-300 hidden sm:inline">|</span>
+              <Link href="/about" className="hover:text-[#DC2626] font-medium transition-colors">
+                About Us
+              </Link>
+              <span className="text-slate-300 hidden sm:inline">|</span>
+              <Link href="/services" className="hover:text-[#DC2626] font-medium transition-colors">
+                Services
+              </Link>
+              <span className="text-slate-300 hidden sm:inline">|</span>
+              <Link href="/blog" className="hover:text-[#DC2626] font-medium transition-colors">
+                Blog
+              </Link>
+              <span className="text-slate-300 hidden sm:inline">|</span>
+              <Link href="/contact" className="hover:text-[#DC2626] font-medium transition-colors">
+                Contact
+              </Link>
+              <span className="text-slate-300 hidden sm:inline">|</span>
+              <Link href="/faq" className="hover:text-[#DC2626] font-medium transition-colors">
+                FAQ
+              </Link>
             </div>
 
             {/* Social Icons */}

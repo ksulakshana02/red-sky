@@ -30,12 +30,12 @@ export default function QuoteCalculator() {
     pet: false,
   });
 
-  const addonPrices: { [key: string]: { label: string; price: number; icon: string } } = {
-    oven: { label: "Inside Oven Deep Clean", price: 35, icon: "🍳" },
-    fridge: { label: "Inside Refrigerator", price: 30, icon: "🧊" },
-    windows: { label: "Interior Window Panels", price: 45, icon: "🪟" },
-    carpet: { label: "Carpet Steam Shampoo", price: 75, icon: "🧼" },
-    pet: { label: "Pet Hair & Dander Treatment", price: 25, icon: "🐾" },
+  const addonPrices: { [key: string]: { label: string; price: number } } = {
+    oven: { label: "Inside Oven Deep Clean", price: 35 },
+    fridge: { label: "Inside Refrigerator", price: 30 },
+    windows: { label: "Interior Window Panels", price: 45 },
+    carpet: { label: "Carpet Steam Shampoo", price: 75 },
+    pet: { label: "Pet Hair & Dander Treatment", price: 25 },
   };
 
   const toggleAddon = (key: string) => {
@@ -301,7 +301,6 @@ export default function QuoteCalculator() {
                       }`}
                     >
                       <div className="flex items-center gap-2.5">
-                        <span className="text-xl">{item.icon}</span>
                         <div>
                           <p className="font-bold text-xs">{item.label}</p>
                           <p className="text-[11px] text-slate-500">+${item.price}</p>
@@ -350,7 +349,7 @@ export default function QuoteCalculator() {
 
                 {discountAmount > 0 && (
                   <div className="mt-3 inline-block bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold px-3 py-1 rounded-full">
-                    🎉 You save ${Math.round(discountAmount)} on this plan!
+                    Special: You save ${Math.round(discountAmount)} on this recurring plan
                   </div>
                 )}
               </div>

@@ -1,14 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export interface ServiceCardData {
   id: string;
   title: string;
+  category: "residential" | "commercial" | "specialty";
   image: string;
   link: string;
+  desc?: string;
   icon: React.ReactNode;
 }
 
@@ -16,8 +18,10 @@ export const servicesData: ServiceCardData[] = [
   {
     id: "house-cleaning",
     title: "House Cleaning",
+    category: "residential",
     image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1456829834.jpg",
     link: "/service-single",
+    desc: "Routine surface sanitization, dusting, vacuuming, and floor care for pristine home environments.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="34" viewBox="0 0 32 37">
         <g fill="none" fillRule="evenodd">
@@ -40,8 +44,10 @@ export const servicesData: ServiceCardData[] = [
   {
     id: "office-cleaning",
     title: "Office Cleaning",
+    category: "commercial",
     image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1350786822-1.jpg",
     link: "/service-single",
+    desc: "Workstation disinfection, boardroom detailing, breakrooms, and after-hours business hygiene.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="38" height="25" viewBox="0 0 46 29">
         <g fill="none" fillRule="evenodd">
@@ -72,8 +78,10 @@ export const servicesData: ServiceCardData[] = [
   {
     id: "deep-cleaning",
     title: "Deep Cleaning",
+    category: "specialty",
     image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1724689200.jpg",
     link: "/service-single",
+    desc: "Hand-scrubbed baseboards, grout descaling, vent cleaning, and intensive high-touch disinfection.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="38" height="22" viewBox="0 0 45 26">
         <g fill="none" fillRule="evenodd">
@@ -104,8 +112,10 @@ export const servicesData: ServiceCardData[] = [
   {
     id: "move-in-out-cleaning",
     title: "Move In Out Cleaning",
+    category: "specialty",
     image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1226346559-1.jpg",
     link: "/service-single",
+    desc: "100% deposit-pass bond clean covering inside empty cabinets, pantries, oven, and appliances.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 42 38">
         <g fill="none" fillRule="evenodd">
@@ -121,6 +131,35 @@ export const servicesData: ServiceCardData[] = [
       </svg>
     ),
   },
+  {
+    id: "carpet-cleaning",
+    title: "Carpet Cleaning",
+    category: "specialty",
+    image: "/images/service/service-5.jpg",
+    link: "/service-single",
+    desc: "High-temperature hot water soil extraction and pet stain neutralization for fresh, soft carpets.",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 34 30">
+        <rect x="2" y="4" width="30" height="22" rx="3" fill="#FFF" stroke="#000" strokeWidth="2" />
+        <path d="M6 10h22M6 15h22M6 20h22" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeDasharray="2 3" />
+      </svg>
+    ),
+  },
+  {
+    id: "commercial-cleaning",
+    title: "Commercial Sanitization",
+    category: "commercial",
+    image: "/images/service/service-6.jpg",
+    link: "/service-single",
+    desc: "Hospital-grade facility sanitation, floor buffing, retail turnover, and construction cleanup.",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="30" viewBox="0 0 36 30">
+        <rect x="3" y="6" width="30" height="20" rx="2" fill="#FFF" stroke="#000" strokeWidth="2" />
+        <path d="M8 12h5v10H8zM16 12h5v10h-5zM24 12h4v10h-4z" fill="#DC2626" />
+        <path d="M12 2h12v4H12z" fill="#FFF" stroke="#000" strokeWidth="2" />
+      </svg>
+    ),
+  },
 ];
 
 export interface ServicesSectionProps {
@@ -128,51 +167,97 @@ export interface ServicesSectionProps {
 }
 
 export default function ServicesSection({ showAll = false }: ServicesSectionProps = {}) {
-  const displayedServices = servicesData;
+  const [activeCategory, setActiveCategory] = useState<"all" | "residential" | "commercial" | "specialty">("all");
+
+  const displayedServices = useMemo(() => {
+    if (!showAll) {
+      // Show default 4 cards on home page
+      return servicesData.slice(0, 4);
+    }
+    if (activeCategory === "all") return servicesData;
+    return servicesData.filter((item) => item.category === activeCategory);
+  }, [showAll, activeCategory]);
 
   return (
     <section id="services" className="wpo-service-section py-10 sm:py-14 lg:py-16 relative z-10 bg-white overflow-hidden font-[family-name:var(--font-parkinsans)]">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Top Subtitle & Header */}
-        <div className="text-left mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
-            <span>OUR SERVICES</span>
-            <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+          <div className="text-left">
+            <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
+              <span>OUR SERVICES</span>
+              <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
+              Here’s What We Can<br />Do for You
+            </h2>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
-            Here’s What We Can<br />Do for You
-          </h2>
+
+          {/* Clean text-only category filter tabs (shown when showAll is true) */}
+          {showAll && (
+            <div className="flex items-center gap-2 flex-wrap pt-2 sm:pt-0">
+              {[
+                { id: "all", label: "All Services" },
+                { id: "residential", label: "Residential" },
+                { id: "commercial", label: "Commercial" },
+                { id: "specialty", label: "Specialty" },
+              ].map((tab) => {
+                const isActive = activeCategory === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveCategory(tab.id as any)}
+                    className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                      isActive
+                        ? "bg-[#DC2626] text-white shadow-xs"
+                        : "bg-slate-100 text-[#0E152B] hover:bg-slate-200"
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 xl:gap-8">
           {displayedServices.map((item) => (
             <div
               key={item.id}
-              className="group relative rounded-[24px] sm:rounded-[32px] p-3.5 sm:p-4 pb-4 sm:pb-5 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-gradient-to-b from-[#FFD6D6] via-[#FFEAEB]/85 to-[#FFF5F5] border-t-4 border-[#DC2626] border-x border-b border-red-100/60 shadow-sm"
+              className="group relative rounded-[24px] sm:rounded-[32px] p-4 sm:p-5 pb-5 sm:pb-6 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-gradient-to-b from-[#FFD6D6] via-[#FFEAEB]/85 to-[#FFF5F5] border-t-4 border-[#DC2626] border-x border-b border-red-100/60 shadow-sm"
             >
               <div>
-                {/* Top Image Box with Absolute SVG Badge */}
-                <div className="relative w-full aspect-[1/0.88] rounded-[20px] sm:rounded-[24px] overflow-hidden mb-4 sm:mb-6 bg-slate-100 shadow-xs">
+                {/* Top Image Box */}
+                <div className="relative w-full aspect-[4/3] rounded-[20px] sm:rounded-[24px] overflow-hidden mb-4 sm:mb-5 bg-slate-100 shadow-xs">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500 rounded-[20px] sm:rounded-[24px]"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
 
                 {/* Card Title */}
-                <h3 className="text-xl sm:text-2xl font-bold text-[#0E152B] font-serif px-1 mb-4 leading-snug group-hover:text-[#DC2626] transition-colors">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#0E152B] font-serif px-1 mb-2 leading-snug group-hover:text-[#DC2626] transition-colors">
                   <Link href={item.link}>{item.title}</Link>
                 </h3>
+
+                {/* Description */}
+                {item.desc && (
+                  <p className="text-xs sm:text-sm text-[#0E152B]/75 leading-relaxed px-1 mb-5">
+                    {item.desc}
+                  </p>
+                )}
               </div>
 
               {/* Bottom "Learn more" Button */}
               <Link
                 href={item.link}
-                className="w-full bg-white rounded-full py-3 sm:py-3.5 px-4 sm:px-5 flex items-center justify-between shadow-xs transition-all duration-300 group-hover:bg-[#DC2626] group-hover:text-white border border-red-50"
+                className="w-full bg-white rounded-full py-3 sm:py-3.5 px-4 sm:px-5 flex items-center justify-between shadow-xs transition-all duration-300 group-hover:bg-[#DC2626] group-hover:text-white border border-red-50 mt-2"
               >
                 <span className="text-xs sm:text-sm font-bold text-[#0E152B] group-hover:text-white transition-colors">
                   Learn more
