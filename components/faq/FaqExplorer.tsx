@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Search, Plus, Minus } from "lucide-react";
 import { faqData, FaqItem } from "@/lib/faqData";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function FaqExplorer() {
   const [activeCategory, setActiveCategory] = useState<string>("All Questions");
@@ -36,53 +37,68 @@ export default function FaqExplorer() {
     <section className="py-8 sm:py-12 lg:py-16 bg-white relative z-10 font-[family-name:var(--font-parkinsans)]">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Search Bar Container */}
-        <div className="max-w-xl mx-auto mb-8 sm:mb-10">
-          <div className="relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
-            <input
-              type="text"
-              placeholder="Search questions (e.g. pets, pricing, keys, supplies)..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#FBFBFB] border border-slate-200/80 rounded-full h-[48px] pl-11 pr-5 text-sm text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] focus:bg-white transition-all shadow-2xs font-normal"
-            />
-            {searchQuery && (
-              <button
-                type="button"
-                onClick={() => setSearchQuery("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
-              >
-                Clear
-              </button>
-            )}
+        {/* Search Bar & Categories Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-8 sm:mb-12"
+        >
+          {/* Search Bar Container */}
+          <div className="max-w-xl mx-auto mb-6 sm:mb-8">
+            <div className="relative">
+              <Search className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                type="text"
+                placeholder="Search questions (e.g. pets, pricing, keys, supplies)..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-[#FBFBFB] border border-slate-200/80 rounded-full h-[48px] pl-11 pr-5 text-sm text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] focus:bg-white transition-all shadow-2xs font-normal"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 cursor-pointer"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
           </div>
-        </div>
 
-        {/* Category Filter Pills */}
-        <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap justify-center mb-8 sm:mb-12">
-          {categories.map((cat) => {
-            const isActive = activeCategory === cat;
-            return (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] font-medium transition-all cursor-pointer ${
-                  isActive
-                    ? "bg-[#DC2626] text-white shadow-xs"
-                    : "bg-[#F8FAFC] text-[#0E152B]/80 hover:bg-slate-100 border border-slate-200/80"
-                }`}
-              >
-                {cat}
-              </button>
-            );
-          })}
-        </div>
+          {/* Category Filter Pills */}
+          <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap justify-center">
+            {categories.map((cat) => {
+              const isActive = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] font-medium transition-all cursor-pointer ${
+                    isActive
+                      ? "bg-[#DC2626] text-white shadow-xs"
+                      : "bg-[#F8FAFC] text-[#0E152B]/80 hover:bg-slate-100 border border-slate-200/80"
+                  }`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
+        </motion.div>
 
         {/* FAQ Accordion List */}
         {filteredFaqs.length > 0 ? (
-          <div className="space-y-3 sm:space-y-3.5 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-3 sm:space-y-3.5 max-w-4xl mx-auto"
+          >
             {filteredFaqs.map((faq) => {
               const isOpen = openIndex === faq.id;
               return (
@@ -122,21 +138,25 @@ export default function FaqExplorer() {
                   </button>
 
                   {/* Smooth Animated Collapsible Content */}
-                  <div
-                    className={`grid transition-all duration-300 ease-in-out ${
-                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                    }`}
-                  >
-                    <div className="overflow-hidden">
-                      <div className="px-4 sm:px-5 lg:px-6 pb-5 sm:pb-6 pt-1 text-[13.5px] sm:text-[14.5px] text-[#0E152B]/75 leading-relaxed border-t border-red-100/60 font-normal">
-                        {faq.answer}
-                      </div>
-                    </div>
-                  </div>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-1 text-[13.5px] sm:text-[14.5px] text-[#0E152B]/75 leading-relaxed border-t border-red-100/60 font-normal">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
-          </div>
+          </motion.div>
         ) : (
           <div className="text-center py-12 text-slate-500 max-w-md mx-auto">
             <p className="text-sm font-normal mb-2">No matching questions found for &ldquo;{searchQuery}&rdquo;.</p>

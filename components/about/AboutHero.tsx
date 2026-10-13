@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function AboutHero() {
   const narrativeMetrics = [
@@ -18,7 +19,12 @@ export default function AboutHero() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
             
             {/* Left Content Column */}
-            <div className="lg:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="lg:col-span-7"
+            >
               <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
                 Our Story &amp; Philosophy
               </span>
@@ -56,10 +62,15 @@ export default function AboutHero() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            {/* Right Desktop Visual */}
-            <div className="hidden lg:block lg:col-span-5">
+            {/* Right Desktop Photo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="hidden lg:block lg:col-span-5"
+            >
               <div className="rounded-[20px] overflow-hidden border border-[#E8DFD7] relative w-full aspect-[4/3] shadow-xs">
                 <Image
                   src="/images/about/about-img-1.jpg"
@@ -70,7 +81,7 @@ export default function AboutHero() {
                   className="object-cover"
                 />
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { CheckCircle2, Check, Phone, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ServiceBookingForm() {
   const [formData, setFormData] = useState({
@@ -51,7 +52,13 @@ export default function ServiceBookingForm() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
           {/* Left Column: Booking Form (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 flex flex-col"
+          >
             <div className="h-full rounded-[28px] sm:rounded-[36px] p-6 sm:p-9 lg:p-12 bg-gradient-to-br from-[#FFE8E8] via-[#FFF3F3] to-[#FFF9F9] border border-red-200/80 shadow-xs flex flex-col justify-between">
               <div>
                 
@@ -251,10 +258,16 @@ export default function ServiceBookingForm() {
                 )}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Visual Trust & Guarantee Cards (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between gap-6">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 flex flex-col justify-between gap-6"
+          >
             
             {/* Top Photo */}
             <div className="relative w-full aspect-[16/10.5] rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-lg border border-slate-100 bg-slate-100 flex-1 min-h-[220px]">
@@ -302,7 +315,7 @@ export default function ServiceBookingForm() {
               </div>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
       </div>

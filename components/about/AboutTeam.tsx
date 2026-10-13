@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function AboutTeam() {
   const teamMembers = [
@@ -36,7 +37,13 @@ export default function AboutTeam() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
+        >
           <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
             Our Team
           </span>
@@ -46,14 +53,19 @@ export default function AboutTeam() {
           <p className="text-sm sm:text-base text-[#0E152B]/70 mt-2 font-normal leading-relaxed">
             Our leadership and supervisory team support our cleaners in delivering careful, dependable service.
           </p>
-        </div>
+        </motion.div>
 
         {/* 4 Team Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
           {teamMembers.map((member, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="bg-white rounded-[24px] overflow-hidden border border-slate-200/80 shadow-2xs flex flex-col justify-between"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-[24px] overflow-hidden border border-slate-200/80 shadow-2xs hover:shadow-md transition-shadow duration-300 flex flex-col justify-between"
             >
               <div>
                 {/* Photo */}
@@ -80,7 +92,7 @@ export default function AboutTeam() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { CheckCircle2, Phone, ShieldCheck, ArrowRight, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ContactFormSection() {
   const [formData, setFormData] = useState({
@@ -38,7 +39,13 @@ export default function ContactFormSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* Left Column: Form (7 cols) */}
-          <div className="lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7"
+          >
             <div className="rounded-[28px] sm:rounded-[36px] p-6 sm:p-9 lg:p-10 bg-white border border-slate-200/80 shadow-2xs">
               <div className="mb-6">
                 <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
@@ -181,10 +188,16 @@ export default function ContactFormSection() {
                 </form>
               )}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Support Details & Coverage (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 space-y-6"
+          >
             
             {/* Service Coverage Card */}
             <div className="rounded-[28px] p-6 sm:p-7 bg-white border border-slate-200/80 shadow-2xs">
@@ -260,7 +273,7 @@ export default function ContactFormSection() {
               </a>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
       </div>

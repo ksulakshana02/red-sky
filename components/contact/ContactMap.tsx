@@ -2,6 +2,7 @@
 
 import React from "react";
 import { MapPin, Navigation } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ContactMap() {
   return (
@@ -9,7 +10,13 @@ export default function ContactMap() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8"
+        >
           <div>
             <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2">
               Our Location
@@ -23,10 +30,16 @@ export default function ContactMap() {
             <MapPin className="w-4 h-4 text-[#DC2626]" />
             <span>72 Kneeland St, Suite 305, Boston, MA 02111</span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Responsive Map Container */}
-        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-slate-200/80 shadow-2xs bg-slate-100">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-slate-200/80 shadow-2xs bg-slate-100"
+        >
           <iframe
             title="RedSky Cleaning Office Map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2948.7774783307613!2d-71.06346292348559!3d42.34990997119426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e37a78377755b9%3A0xb355153ca265d66d!2s72%20Kneeland%20St%20%23305%2C%20Boston%2C%20MA%2002111!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
@@ -53,7 +66,7 @@ export default function ContactMap() {
               <span>Get directions</span>
             </a>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Leaf, Clock } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
@@ -13,7 +14,12 @@ export default function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
             
             {/* Left Column: Clean & Breathable */}
-            <div className="lg:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="lg:col-span-7"
+            >
               <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
                 Health-First Cleaning • Greater Boston
               </span>
@@ -42,7 +48,7 @@ export default function Hero() {
               <div className="flex flex-wrap items-center gap-3 mb-6 sm:mb-8">
                 <a
                   href="#booking"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium text-xs sm:text-sm transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium text-xs sm:text-sm transition-all shadow-xs"
                 >
                   <span>Book a Clean</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -50,7 +56,7 @@ export default function Hero() {
 
                 <Link
                   href="/quote"
-                  className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-white text-[#0E152B] hover:text-[#DC2626] border border-[#DDD3C9] font-medium text-xs sm:text-sm transition-colors"
+                  className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-white text-[#0E152B] hover:text-[#DC2626] border border-[#DDD3C9] font-medium text-xs sm:text-sm transition-colors shadow-2xs"
                 >
                   <span>Instant Estimate</span>
                 </Link>
@@ -71,10 +77,15 @@ export default function Hero() {
                   <span>24h Guarantee</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Column: Clean Desktop Photo */}
-            <div className="hidden lg:block lg:col-span-5">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="hidden lg:block lg:col-span-5"
+            >
               <div className="rounded-[20px] overflow-hidden border border-[#E8DFD7] relative w-full aspect-[4/3] shadow-xs">
                 <Image
                   src="/images/slider/bg-img.jpg"
@@ -85,7 +96,7 @@ export default function Hero() {
                   className="object-cover object-center"
                 />
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>

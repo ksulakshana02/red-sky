@@ -1,27 +1,40 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function HowItWorks() {
   return (
     <section className="wpo-work-section py-10 sm:py-14 lg:py-16 bg-white relative z-10 overflow-hidden font-[family-name:var(--font-parkinsans)]">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Subtitle & Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-2xl mx-auto mb-8 sm:mb-12"
+        >
           <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
             How It Works
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
             Quick and Easy
           </h2>
-        </div>
+        </motion.div>
 
         {/* 3 Steps Row */}
         <div className="max-w-[1240px] mx-auto">
           <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-4 relative">
 
             {/* Step 1: Free Quote */}
-            <div className="flex flex-col items-center text-center max-w-[300px] w-full group">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col items-center text-center max-w-[300px] w-full group"
+            >
               {/* Circle Container */}
               <div className="relative mb-6 sm:mb-8">
                 {/* Floating Leaf 1 */}
@@ -66,10 +79,16 @@ export default function HowItWorks() {
               <p className="text-[14px] sm:text-[15px] text-[#0E152B]/75 leading-relaxed">
                 Tell us about your home and choose the date you want.
               </p>
-            </div>
+            </motion.div>
 
             {/* Connecting Arrow 1 */}
-            <div className="hidden lg:flex items-center justify-center pt-20 px-2">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="hidden lg:flex items-center justify-center pt-20 px-2"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="130"
@@ -89,10 +108,16 @@ export default function HowItWorks() {
                   />
                 </g>
               </svg>
-            </div>
+            </motion.div>
 
             {/* Step 2: Clean */}
-            <div className="flex flex-col items-center text-center max-w-[300px] w-full group">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col items-center text-center max-w-[300px] w-full group"
+            >
               {/* Circle Container */}
               <div className="relative mb-6 sm:mb-8">
                 {/* Floating Leaf 2 */}
@@ -147,10 +172,16 @@ export default function HowItWorks() {
               <p className="text-[14px] sm:text-[15px] text-[#0E152B]/75 leading-relaxed">
                 Our seasoned team of full-time cleaners will transform your home.
               </p>
-            </div>
+            </motion.div>
 
             {/* Connecting Arrow 2 */}
-            <div className="hidden lg:flex items-center justify-center pt-20 px-2">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="hidden lg:flex items-center justify-center pt-20 px-2"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="130"
@@ -170,10 +201,16 @@ export default function HowItWorks() {
                   />
                 </g>
               </svg>
-            </div>
+            </motion.div>
 
             {/* Step 3: Relax */}
-            <div className="flex flex-col items-center text-center max-w-[300px] w-full group">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col items-center text-center max-w-[300px] w-full group"
+            >
               {/* Circle Container */}
               <div className="relative mb-6 sm:mb-8">
                 {/* Floating Leaf 3 */}
@@ -218,7 +255,7 @@ export default function HowItWorks() {
               <p className="text-[14px] sm:text-[15px] text-[#0E152B]/75 leading-relaxed">
                 Sit back and enjoy how amazing your home or business looks now.
               </p>
-            </div>
+            </motion.div>
 
           </div>
         </div>

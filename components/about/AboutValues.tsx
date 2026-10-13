@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ShieldCheck, HeartHandshake, Eye, Leaf } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function AboutValues() {
   const values = [
@@ -36,7 +37,13 @@ export default function AboutValues() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
+        >
           <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
             Our Principles
           </span>
@@ -46,16 +53,21 @@ export default function AboutValues() {
           <p className="text-sm sm:text-base text-[#0E152B]/70 mt-2 font-normal leading-relaxed">
             Good cleaning comes down to the products we bring into your home and how we treat the people doing the work.
           </p>
-        </div>
+        </motion.div>
 
         {/* 4 Value Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
           {values.map((val, idx) => {
             const Icon = val.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="bg-white rounded-[24px] p-6 sm:p-7 border border-red-100/70 shadow-2xs flex flex-col justify-between"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -5 }}
+                className="bg-white rounded-[24px] p-6 sm:p-7 border border-red-100/70 shadow-2xs hover:shadow-md transition-shadow duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="w-11 h-11 rounded-2xl bg-[#FEF2F2] text-[#DC2626] flex items-center justify-center mb-4">
@@ -73,7 +85,7 @@ export default function AboutValues() {
                     {val.desc}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

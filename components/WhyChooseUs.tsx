@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function WhyChooseUs() {
   const [activeItem, setActiveItem] = useState(1);
@@ -19,7 +20,13 @@ export default function WhyChooseUs() {
         <div className="max-w-[1350px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             {/* Left Image & 50+ Team Member Box */}
-            <div className="lg:col-span-6">
+            <motion.div
+              initial={{ opacity: 0, x: -32 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-6"
+            >
               <div className="wpo-choose-left-side relative">
                 {/* Image */}
                 <div className="wpo-choose-left-img rounded-[24px] sm:rounded-[28px] overflow-hidden shadow-lg aspect-[4/3] relative">
@@ -33,7 +40,13 @@ export default function WhyChooseUs() {
                 </div>
 
                 {/* Floating 50+ Team Member Box */}
-                <div className="wpo-choose-left-box absolute left-0 bottom-0 p-1.5 sm:p-2.5 bg-white rounded-tr-[16px] sm:rounded-tr-[20px]">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                  className="wpo-choose-left-box absolute left-0 bottom-0 p-1.5 sm:p-2.5 bg-white rounded-tr-[16px] sm:rounded-tr-[20px]"
+                >
                   <div className="wrap w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] lg:w-[179px] lg:h-[174px] bg-[#DC2626] text-white rounded-[12px] sm:rounded-[16px] flex flex-col items-center justify-center p-2.5 sm:p-5 text-center shadow-lg shadow-red-500/20">
                     <h3 className="text-2xl sm:text-4xl md:text-5xl font-medium text-white leading-none font-sans">
                       50+
@@ -42,12 +55,18 @@ export default function WhyChooseUs() {
                       Team Members
                     </p>
                   </div>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Side Content */}
-            <div className="lg:col-span-6">
+            <motion.div
+              initial={{ opacity: 0, x: 32 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-6"
+            >
               <div className="wpo-choose-right-side">
                 {/* Topic & Title */}
                 <div className="text-left mb-6 sm:mb-8">
@@ -65,8 +84,12 @@ export default function WhyChooseUs() {
                 {/* Pill Badges List */}
                 <ul className="space-y-3 sm:space-y-3.5">
                   {pillars.map((pillar, idx) => (
-                    <li
+                    <motion.li
                       key={idx}
+                      initial={{ opacity: 0, y: 14 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.15 + idx * 0.08 }}
                       onClick={() => setActiveItem(idx)}
                       className="cursor-pointer"
                     >
@@ -88,11 +111,11 @@ export default function WhyChooseUs() {
                         </span>
                         {pillar}
                       </span>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

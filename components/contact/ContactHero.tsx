@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Phone, Mail, Clock } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ContactHero() {
   return (
@@ -12,7 +13,12 @@ export default function ContactHero() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
             
             {/* Left Content Column */}
-            <div className="lg:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="lg:col-span-7"
+            >
               <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
                 Local Dispatch &amp; Support
               </span>
@@ -41,7 +47,7 @@ export default function ContactHero() {
               <div className="flex flex-wrap items-center gap-3 mb-6">
                 <a
                   href="tel:+17189044450"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium text-xs sm:text-sm transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium text-xs sm:text-sm transition-colors shadow-xs"
                 >
                   <Phone className="w-3.5 h-3.5" />
                   <span>+1 718-904-4450</span>
@@ -49,7 +55,7 @@ export default function ContactHero() {
 
                 <a
                   href="mailto:support@redskycleaning.com"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white text-[#0E152B] hover:text-[#DC2626] border border-[#DDD3C9] font-medium text-xs sm:text-sm transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white text-[#0E152B] hover:text-[#DC2626] border border-[#DDD3C9] font-medium text-xs sm:text-sm transition-colors shadow-2xs"
                 >
                   <Mail className="w-3.5 h-3.5 text-[#DC2626]" />
                   <span>support@redskycleaning.com</span>
@@ -59,12 +65,17 @@ export default function ContactHero() {
               {/* Hours note */}
               <div className="flex items-center gap-2 text-xs text-slate-500 pt-4 border-t border-[#E8DFD7]">
                 <Clock className="w-3.5 h-3.5 text-[#DC2626]" />
-                <span>Mon – Sat: 8:00 AM – 7:00 PM • Fast dispatch response</span>
+                <span>Mon – Sat: 7:30 AM – 7:00 PM • Sunday: Closed</span>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Right Desktop Visual */}
-            <div className="hidden lg:block lg:col-span-5">
+            {/* Right Desktop Photo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="hidden lg:block lg:col-span-5"
+            >
               <div className="rounded-[20px] overflow-hidden border border-[#E8DFD7] relative w-full aspect-[4/3] shadow-xs">
                 <Image
                   src="/images/contact.jpg"
@@ -75,7 +86,7 @@ export default function ContactHero() {
                   className="object-cover"
                 />
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>

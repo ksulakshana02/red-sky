@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import { Check, Leaf, Users, ShieldAlert, Heart } from "lucide-react";
+import { Check, Leaf, Users, Heart } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function AboutStory() {
   const pillars = [
@@ -31,7 +32,13 @@ export default function AboutStory() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center mb-12 sm:mb-16">
           
           {/* Left Text Narrative (6 cols) */}
-          <div className="lg:col-span-6 text-left max-w-xl">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 text-left max-w-xl"
+          >
             <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
               Our Origin &amp; Purpose
             </span>
@@ -55,10 +62,16 @@ export default function AboutStory() {
                 — Elena Vance, Founder &amp; CEO
               </span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Visual Composition (6 cols) */}
-          <div className="lg:col-span-6 relative">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 relative"
+          >
             <div className="relative w-full aspect-[4/3.2] rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-lg border border-slate-100 bg-slate-100">
               <Image
                 src="/images/about/about-img-2.jpg"
@@ -81,7 +94,7 @@ export default function AboutStory() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
@@ -90,9 +103,14 @@ export default function AboutStory() {
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="bg-[#F8FAFC] rounded-[28px] p-6 sm:p-8 border border-slate-200/80 hover:border-red-200 hover:bg-[#FEF2F2]/40 transition-all duration-300 flex flex-col justify-between"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.5, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -5 }}
+                className="bg-[#F8FAFC] rounded-[28px] p-6 sm:p-8 border border-slate-200/80 hover:border-red-200 hover:bg-[#FEF2F2]/40 transition-colors duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="w-12 h-12 rounded-2xl bg-white border border-red-100 text-[#DC2626] flex items-center justify-center mb-5 shadow-2xs">
@@ -112,7 +130,7 @@ export default function AboutStory() {
                   <Check className="w-4 h-4 stroke-[2.5]" />
                   <span>Guaranteed in every appointment</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -121,4 +139,3 @@ export default function AboutStory() {
     </section>
   );
 }
-

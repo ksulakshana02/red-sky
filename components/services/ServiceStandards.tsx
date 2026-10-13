@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ShieldCheck, Leaf, Award, HeartHandshake } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ServiceStandards() {
   const standards = [
@@ -32,7 +33,13 @@ export default function ServiceStandards() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
+        >
           <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
             Our Quality Standards
           </span>
@@ -42,16 +49,21 @@ export default function ServiceStandards() {
           <p className="text-sm sm:text-base text-[#0E152B]/75 mt-2.5 leading-relaxed">
             Every technician is trained on hospital-grade sanitization protocols so you can relax with complete confidence.
           </p>
-        </div>
+        </motion.div>
 
         {/* 4 Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
           {standards.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="bg-white rounded-[28px] p-6 sm:p-7 border border-red-100/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -5 }}
+                className="bg-white rounded-[28px] p-6 sm:p-7 border border-red-100/80 shadow-xs hover:shadow-md transition-shadow duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="w-12 h-12 rounded-2xl bg-[#FEF2F2] text-[#DC2626] flex items-center justify-center mb-5 shadow-2xs">
@@ -70,7 +82,7 @@ export default function ServiceStandards() {
                 <div className="pt-4 mt-5 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-medium text-[#DC2626]">
                   <span>✓ Standard on all cleans</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -79,4 +91,3 @@ export default function ServiceStandards() {
     </section>
   );
 }
-

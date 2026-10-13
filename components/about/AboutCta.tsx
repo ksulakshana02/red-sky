@@ -3,11 +3,18 @@
 import React from "react";
 import Link from "next/link";
 import { Phone, Mail, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function AboutCta() {
   return (
     <div className="w-full px-3 sm:px-6 lg:px-8 py-8 sm:py-14 font-[family-name:var(--font-parkinsans)]">
-      <section className="relative w-full max-w-[1440px] mx-auto rounded-[28px] sm:rounded-[36px] bg-[#FFF8F8] border border-red-100 p-6 sm:p-10 lg:p-12 shadow-2xs">
+      <motion.section
+        initial={{ opacity: 0, y: 24, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full max-w-[1440px] mx-auto rounded-[28px] sm:rounded-[36px] bg-[#FFF8F8] border border-red-100 p-6 sm:p-10 lg:p-12 shadow-2xs"
+      >
         <div className="max-w-3xl mx-auto text-center">
           
           {/* Clean Kicker */}
@@ -65,7 +72,7 @@ export default function AboutCta() {
           </div>
 
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

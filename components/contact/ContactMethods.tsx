@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Phone, Mail, MapPin, ShieldAlert } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ContactMethods() {
   const methods = [
@@ -44,7 +45,13 @@ export default function ContactMethods() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-2xl mx-auto mb-8 sm:mb-12"
+        >
           <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
             Ways To Connect
           </span>
@@ -54,15 +61,20 @@ export default function ContactMethods() {
           <p className="text-sm sm:text-base text-[#0E152B]/70 mt-2 font-normal leading-relaxed">
             Choose the method that works best for you. No automated call routing—you will speak directly with a local coordinator.
           </p>
-        </div>
+        </motion.div>
 
         {/* 4 Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {methods.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -5 }}
                 className="bg-[#FBFBFB] rounded-[24px] p-6 border border-slate-200/70 hover:border-red-200 hover:bg-[#FFF9F9] transition-all flex flex-col justify-between"
               >
                 <div>
@@ -89,7 +101,7 @@ export default function ContactMethods() {
                 <div className="pt-3 border-t border-slate-200/50 text-[11px] text-slate-500 font-normal">
                   {item.detail}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -98,4 +110,3 @@ export default function ContactMethods() {
     </section>
   );
 }
-

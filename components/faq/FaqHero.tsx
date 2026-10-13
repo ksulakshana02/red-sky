@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function FaqHero() {
   const quickCategories = [
@@ -12,7 +13,12 @@ export default function FaqHero() {
 
   return (
     <div className="w-full px-3 sm:px-6 lg:px-8 py-3 sm:py-5 font-[family-name:var(--font-parkinsans)]">
-      <section className="relative w-full max-w-[1691px] mx-auto rounded-[20px] xs:rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#FAF8F5] border border-[#EBE3DC] px-5 xs:px-7 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-14 text-center">
+      <motion.section
+        initial={{ opacity: 0, y: 25 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full max-w-[1691px] mx-auto rounded-[20px] xs:rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#FAF8F5] border border-[#EBE3DC] px-5 xs:px-7 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-14 text-center"
+      >
         <div className="max-w-2xl mx-auto">
           <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
             Help &amp; Support
@@ -38,7 +44,7 @@ export default function FaqHero() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

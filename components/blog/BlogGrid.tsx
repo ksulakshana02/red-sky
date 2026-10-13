@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Clock, Calendar } from "lucide-react";
 import { BlogPost, blogPosts } from "@/lib/blogData";
+import { motion } from "framer-motion";
 
 export default function BlogGrid() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -32,7 +33,13 @@ export default function BlogGrid() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Category Filter Tabs */}
-        <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap justify-start sm:justify-center mb-8 sm:mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex items-center gap-2 sm:gap-2.5 flex-wrap justify-start sm:justify-center mb-8 sm:mb-12"
+        >
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
@@ -50,11 +57,17 @@ export default function BlogGrid() {
               </button>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Featured Post Card (When "All" or if posts exist) */}
         {featuredPost && (
-          <div className="mb-10 sm:mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-10 sm:mb-14"
+          >
             <div className="group rounded-[28px] sm:rounded-[36px] bg-[#FFF8F8] border border-red-100/90 overflow-hidden shadow-2xs hover:shadow-md transition-all duration-300">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center p-5 sm:p-8 lg:p-10">
                 
@@ -142,15 +155,19 @@ export default function BlogGrid() {
 
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
 
         {/* Regular Posts Grid */}
         {gridPosts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {gridPosts.map((post) => (
-              <article
+            {gridPosts.map((post, idx) => (
+              <motion.article
                 key={post.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.5, delay: (idx % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="group flex flex-col justify-between bg-white rounded-[26px] p-4 sm:p-5 border border-slate-200/80 hover:border-red-200 hover:shadow-md transition-all duration-300"
               >
                 <div>
@@ -220,7 +237,7 @@ export default function BlogGrid() {
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         ) : (
@@ -232,7 +249,13 @@ export default function BlogGrid() {
         )}
 
         {/* Clean Service Booking Help Card */}
-        <div className="mt-12 sm:mt-16 rounded-[24px] sm:rounded-[32px] p-6 sm:p-9 bg-[#FFF8F8] border border-red-100 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-12 sm:mt-16 rounded-[24px] sm:rounded-[32px] p-6 sm:p-9 bg-[#FFF8F8] border border-red-100 flex flex-col sm:flex-row items-center justify-between gap-6"
+        >
           <div className="text-left max-w-xl">
             <h3 className="text-lg sm:text-xl font-normal font-serif text-[#0E152B] mb-1">
               Prefer professional hands to handle the cleaning?
@@ -249,7 +272,7 @@ export default function BlogGrid() {
             <span>Book a cleaning</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
-        </div>
+        </motion.div>
 
       </div>
     </section>

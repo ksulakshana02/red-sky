@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Calendar } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface BlogPost {
   title: string;
@@ -46,21 +47,32 @@ export default function BlogSection() {
     <section id="blog" className="py-10 sm:py-14 lg:py-16 bg-white relative z-10 overflow-hidden font-[family-name:var(--font-parkinsans)]">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-2xl mx-auto mb-8 sm:mb-12"
+        >
           <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
             From Our Blog
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
             Cleaning Tips From Pros
           </h2>
-        </div>
+        </motion.div>
 
         {/* 3-Card Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mb-8 sm:mb-12">
           {blogPosts.map((post, idx) => (
-            <article
+            <motion.article
               key={idx}
-              className="group flex flex-col items-start bg-white rounded-[24px] sm:rounded-[32px] transition-all duration-300"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -6 }}
+              className="group flex flex-col items-start bg-white rounded-[24px] sm:rounded-[32px] transition-shadow duration-300"
             >
               {/* Featured Image Container */}
               <Link
@@ -106,19 +118,25 @@ export default function BlogSection() {
                 <span>Read More</span>
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-            </article>
+            </motion.article>
           ))}
         </div>
 
         {/* Center Bottom "More Tips" Button */}
-        <div className="text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center"
+        >
           <Link
             href="/blog"
             className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium text-xs sm:text-sm tracking-wide shadow-md transition-all duration-200"
           >
             More Tips
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

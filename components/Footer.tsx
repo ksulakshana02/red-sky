@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Phone } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -21,7 +22,13 @@ export default function Footer() {
       <div className="max-w-[1691px] mx-auto">
         
         {/* Main Soft Card Container (Warm red-touching tone rounded-[40px]) */}
-        <div className="rounded-[24px] sm:rounded-[40px] p-5 sm:p-10 lg:p-14 bg-gradient-to-br from-[#FEF2F2] via-[#FFF5F5] to-[#FDF2F2] border border-red-100/80 relative overflow-hidden font-[family-name:var(--font-parkinsans)] shadow-xs">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="rounded-[24px] sm:rounded-[40px] p-5 sm:p-10 lg:p-14 bg-gradient-to-br from-[#FEF2F2] via-[#FFF5F5] to-[#FDF2F2] border border-red-100/80 relative overflow-hidden font-[family-name:var(--font-parkinsans)] shadow-xs"
+        >
           
           {/* Top Row: Heading + CTA Button (Left) & Newsletter Subscription (Right moved down to align) */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 pb-6 sm:pb-10 border-b border-red-100/80">
@@ -265,7 +272,7 @@ export default function Footer() {
             </div>
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
     </footer>

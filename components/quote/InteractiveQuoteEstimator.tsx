@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   CheckCircle2,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function InteractiveQuoteEstimator() {
   const [propertyType, setPropertyType] = useState<"apartment" | "house" | "office">("house");
@@ -88,24 +89,30 @@ export default function InteractiveQuoteEstimator() {
   };
 
   return (
-    <section className="py-8 sm:py-14 lg:py-16 bg-white relative z-10 font-[family-name:var(--font-parkinsans)]">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="quote-estimator" className="py-8 sm:py-14 lg:py-16 bg-white relative z-10 font-[family-name:var(--font-parkinsans)]">
+      <div className="max-w-[1440px] mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
         
         {/* Main Grid: Left Controls (8 cols), Right Light Summary (4 cols) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
           {/* Left Column: Interactive Parameters (8 cols) */}
-          <div className="lg:col-span-8 bg-[#FBFBFB] rounded-[28px] sm:rounded-[36px] p-6 sm:p-9 border border-slate-200/80 shadow-2xs space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-8 bg-[#FBFBFB] rounded-[24px] sm:rounded-[36px] p-4 xs:p-6 sm:p-9 border border-slate-200/80 shadow-2xs space-y-6 sm:space-y-8"
+          >
             
             {/* Step 1: Property Type */}
             <div>
               <span className="text-xs uppercase tracking-wider text-slate-500 font-medium block mb-3">
                 1. Select Property Type
               </span>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3">
                 {[
                   { id: "apartment", label: "Apartment", icon: Home },
-                  { id: "house", label: "House / Townhome", icon: Home },
+                  { id: "house", label: "House / Town", icon: Home },
                   { id: "office", label: "Office / Studio", icon: Building },
                 ].map((item) => {
                   const Icon = item.icon;
@@ -115,14 +122,14 @@ export default function InteractiveQuoteEstimator() {
                       key={item.id}
                       type="button"
                       onClick={() => setPropertyType(item.id as any)}
-                      className={`flex flex-col items-center justify-center p-4 rounded-2xl border text-xs sm:text-sm font-medium transition-all cursor-pointer ${
+                      className={`flex flex-col items-center justify-center p-2.5 xs:p-3 sm:p-4 rounded-xl sm:rounded-2xl border text-[11px] xs:text-xs sm:text-sm font-medium transition-all cursor-pointer ${
                         active
                           ? "bg-[#DC2626] text-white border-[#DC2626] shadow-xs"
                           : "bg-white text-slate-700 border-slate-200 hover:border-red-200"
                       }`}
                     >
-                      <Icon className={`w-5 h-5 mb-1.5 ${active ? "text-white" : "text-[#DC2626]"}`} />
-                      <span>{item.label}</span>
+                      <Icon className={`w-4 h-4 xs:w-5 xs:h-5 mb-1 sm:mb-1.5 ${active ? "text-white" : "text-[#DC2626]"}`} />
+                      <span className="text-center leading-tight">{item.label}</span>
                     </button>
                   );
                 })}
@@ -317,10 +324,16 @@ export default function InteractiveQuoteEstimator() {
               </div>
             </div>
 
-          </div>
+          </motion.div>
 
           {/* Right Column: Light Live Quote Summary & Booking Card (4 cols) - NOT DARK */}
-          <div className="lg:col-span-4 sticky top-20">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-4 sticky top-20"
+          >
             <div className="rounded-[28px] sm:rounded-[36px] bg-[#FFF8F8] text-[#0E152B] p-6 sm:p-7 border border-red-200 shadow-sm space-y-5">
               
               {/* Header */}
@@ -337,9 +350,15 @@ export default function InteractiveQuoteEstimator() {
               <div className="text-center py-2">
                 <div className="flex items-baseline justify-center gap-1">
                   <span className="text-xl font-normal text-slate-400 font-serif">$</span>
-                  <span className="text-4xl sm:text-5xl font-normal font-serif text-[#0E152B]">
+                  <motion.span
+                    key={finalPrice}
+                    initial={{ opacity: 0, y: -3, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.2 }}
+                    className="text-4xl sm:text-5xl font-normal font-serif text-[#0E152B]"
+                  >
                     {finalPrice}
-                  </span>
+                  </motion.span>
                 </div>
                 <p className="text-xs text-slate-500 mt-1 font-normal">
                   {frequency === "onetime" ? "Estimated single clean" : `Estimated per visit (${frequency})`}
@@ -385,75 +404,91 @@ export default function InteractiveQuoteEstimator() {
               </div>
 
               {/* Reservation Form Inside Summary */}
-              {submitted ? (
-                <div className="p-4 rounded-2xl bg-white border border-red-100 text-center space-y-2 animate-in fade-in duration-200">
-                  <div className="w-9 h-9 rounded-full bg-[#FFF5F5] text-[#DC2626] flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-sm font-normal font-serif text-[#0E152B]">
-                    Estimate Saved
-                  </h4>
-                  <p className="text-xs text-slate-500 font-normal leading-relaxed">
-                    Thank you, {bookingForm.name || "friend"}. Our dispatch coordinator will confirm your spot at {bookingForm.phone || bookingForm.email} within 15 minutes.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setSubmitted(false)}
-                    className="text-xs text-[#DC2626] hover:underline cursor-pointer block mx-auto pt-1"
+              <AnimatePresence mode="wait">
+                {submitted ? (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.96 }}
+                    transition={{ duration: 0.25 }}
+                    className="p-4 rounded-2xl bg-white border border-red-100 text-center space-y-2"
                   >
-                    Modify details
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleBookingSubmit} className="space-y-3 pt-1">
-                  <div>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Your Name *"
-                      value={bookingForm.name}
-                      onChange={(e) => setBookingForm({ ...bookingForm, name: e.target.value })}
-                      className="w-full bg-white border border-slate-200 rounded-[12px] h-[40px] px-3.5 text-xs text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] shadow-2xs font-normal"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-2">
-                    <input
-                      type="tel"
-                      required
-                      placeholder="Phone *"
-                      value={bookingForm.phone}
-                      onChange={(e) => setBookingForm({ ...bookingForm, phone: e.target.value })}
-                      className="w-full bg-white border border-slate-200 rounded-[12px] h-[40px] px-3.5 text-xs text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] shadow-2xs font-normal"
-                    />
-                    <input
-                      type="email"
-                      required
-                      placeholder="Email *"
-                      value={bookingForm.email}
-                      onChange={(e) => setBookingForm({ ...bookingForm, email: e.target.value })}
-                      className="w-full bg-white border border-slate-200 rounded-[12px] h-[40px] px-3.5 text-xs text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] shadow-2xs font-normal"
-                    />
-                  </div>
-
-                  <div>
-                    <input
-                      type="date"
-                      value={bookingForm.date}
-                      onChange={(e) => setBookingForm({ ...bookingForm, date: e.target.value })}
-                      className="w-full bg-white border border-slate-200 rounded-[12px] h-[40px] px-3.5 text-xs text-[#0E152B] focus:outline-none focus:border-[#DC2626] shadow-2xs font-normal"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium text-xs sm:text-sm transition-colors shadow-xs cursor-pointer mt-1"
+                    <div className="w-9 h-9 rounded-full bg-[#FFF5F5] text-[#DC2626] flex items-center justify-center mx-auto">
+                      <CheckCircle2 className="w-5 h-5" />
+                    </div>
+                    <h4 className="text-sm font-normal font-serif text-[#0E152B]">
+                      Estimate Saved
+                    </h4>
+                    <p className="text-xs text-slate-500 font-normal leading-relaxed">
+                      Thank you, {bookingForm.name || "friend"}. Our dispatch coordinator will confirm your spot at {bookingForm.phone || bookingForm.email} within 15 minutes.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setSubmitted(false)}
+                      className="text-xs text-[#DC2626] hover:underline cursor-pointer block mx-auto pt-1"
+                    >
+                      Modify details
+                    </button>
+                  </motion.div>
+                ) : (
+                  <motion.form
+                    key="form"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onSubmit={handleBookingSubmit}
+                    className="space-y-3 pt-1"
                   >
-                    <span>Reserve this estimate</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </form>
-              )}
+                    <div>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Your Name *"
+                        value={bookingForm.name}
+                        onChange={(e) => setBookingForm({ ...bookingForm, name: e.target.value })}
+                        className="w-full bg-white border border-slate-200 rounded-[12px] h-[40px] px-3.5 text-xs text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] shadow-2xs font-normal"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2">
+                      <input
+                        type="tel"
+                        required
+                        placeholder="Phone *"
+                        value={bookingForm.phone}
+                        onChange={(e) => setBookingForm({ ...bookingForm, phone: e.target.value })}
+                        className="w-full bg-white border border-slate-200 rounded-[12px] h-[40px] px-3.5 text-xs text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] shadow-2xs font-normal"
+                      />
+                      <input
+                        type="email"
+                        required
+                        placeholder="Email *"
+                        value={bookingForm.email}
+                        onChange={(e) => setBookingForm({ ...bookingForm, email: e.target.value })}
+                        className="w-full bg-white border border-slate-200 rounded-[12px] h-[40px] px-3.5 text-xs text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] shadow-2xs font-normal"
+                      />
+                    </div>
+
+                    <div>
+                      <input
+                        type="date"
+                        value={bookingForm.date}
+                        onChange={(e) => setBookingForm({ ...bookingForm, date: e.target.value })}
+                        className="w-full bg-white border border-slate-200 rounded-[12px] h-[40px] px-3.5 text-xs text-[#0E152B] focus:outline-none focus:border-[#DC2626] shadow-2xs font-normal"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium text-xs sm:text-sm transition-colors shadow-xs cursor-pointer mt-1"
+                    >
+                      <span>Reserve this estimate</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </motion.form>
+                )}
+              </AnimatePresence>
 
               {/* Peace of mind note */}
               <div className="pt-2 text-[11px] text-slate-400 space-y-1.5 font-normal">
@@ -468,7 +503,7 @@ export default function InteractiveQuoteEstimator() {
               </div>
 
             </div>
-          </div>
+          </motion.div>
 
         </div>
 

@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ServicesHero() {
   return (
@@ -13,7 +14,12 @@ export default function ServicesHero() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
             
             {/* Left Column: Clean & Breathable */}
-            <div className="lg:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="lg:col-span-7"
+            >
               <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
                 Cleaning Services
               </span>
@@ -55,10 +61,15 @@ export default function ServicesHero() {
                   <span>Get a Free Quote</span>
                 </Link>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Column: Clean Desktop Photo */}
-            <div className="hidden lg:block lg:col-span-5">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="hidden lg:block lg:col-span-5"
+            >
               <div className="rounded-[20px] overflow-hidden border border-[#E8DFD7] relative w-full aspect-[4/3] shadow-xs">
                 <Image
                   src="/images/service/service-1.jpg"
@@ -69,7 +80,7 @@ export default function ServicesHero() {
                   className="object-cover"
                 />
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>
@@ -77,4 +88,3 @@ export default function ServicesHero() {
     </div>
   );
 }
-

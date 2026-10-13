@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function AboutSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -26,7 +27,13 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           
           {/* Left Column: Text & Smooth Animated Accordion (lg:col-span-6) */}
-          <div className="lg:col-span-6 flex flex-col items-start max-w-xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 flex flex-col items-start max-w-xl"
+          >
             {/* Subtitle */}
             <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
               Who We Are
@@ -59,9 +66,11 @@ export default function AboutSection() {
                       className="w-full flex items-center justify-between p-4 sm:p-5 lg:p-6 text-left font-medium text-[#0E152B] text-[15px] sm:text-base lg:text-[17px] hover:text-[#DC2626] transition-colors cursor-pointer select-none"
                     >
                       <span>{item.title}</span>
-                      <span
-                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 ml-3 transition-all duration-300 ${
-                          isOpen ? "bg-[#DC2626] text-white rotate-180" : "bg-slate-100 text-slate-700 rotate-0"
+                      <motion.span
+                        animate={{ rotate: isOpen ? 180 : 0 }}
+                        transition={{ duration: 0.25 }}
+                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 ml-3 ${
+                          isOpen ? "bg-[#DC2626] text-white" : "bg-slate-100 text-slate-700"
                         }`}
                       >
                         {isOpen ? (
@@ -74,21 +83,25 @@ export default function AboutSection() {
                             <path d="M0 6h14v2H0z" />
                           </svg>
                         )}
-                      </span>
+                      </motion.span>
                     </button>
 
                     {/* Smooth Collapsible Content Container */}
-                    <div
-                      className={`grid transition-all duration-300 ease-in-out ${
-                        isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                      }`}
-                    >
-                      <div className="overflow-hidden">
-                        <div className="px-4 sm:px-5 lg:px-6 pb-5 sm:pb-6 pt-1 text-[13.5px] sm:text-[14.5px] text-[#0E152B]/75 leading-relaxed border-t border-slate-100">
-                          {item.content}
-                        </div>
-                      </div>
-                    </div>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden border-t border-slate-100"
+                        >
+                          <div className="px-4 sm:px-5 lg:px-6 pb-5 sm:pb-6 pt-3 text-[13.5px] sm:text-[14.5px] text-[#0E152B]/75 leading-relaxed">
+                            {item.content}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })}
@@ -103,10 +116,16 @@ export default function AboutSection() {
                 Learn More
               </Link>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Featured Image with Stable Aspect Ratio (lg:col-span-6) */}
-          <div className="lg:col-span-6 w-full">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 30 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 w-full"
+          >
             <div className="relative w-full aspect-[4/3.2] sm:aspect-[4/3] rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-xl border border-slate-100 bg-slate-100">
               <Image
                 src="/images/about/about-img-2.jpg"
@@ -117,7 +136,7 @@ export default function AboutSection() {
                 priority
               />
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

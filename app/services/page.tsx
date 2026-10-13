@@ -28,14 +28,20 @@ export default function ServicesPage() {
       {/* Filterable Service Catalog & Room-by-Room Checklists */}
       <ServicesExplorer />
 
-      {/* Residential Package Comparison Matrix */}
-      <ServiceComparison />
+      {/* Residential Package Comparison Matrix (Hidden on mobile to eliminate wide table scroll fatigue) */}
+      <div className="hidden md:block">
+        <ServiceComparison />
+      </div>
 
-      {/* Fixed-Price Specialized Add-Ons */}
-      <ServiceAddons />
+      {/* Fixed-Price Specialized Add-Ons (Hidden on mobile; add-ons are directly integrated into the booking form below) */}
+      <div className="hidden md:block">
+        <ServiceAddons />
+      </div>
 
-      {/* Operational Hygiene & Equipment Standards */}
-      <ServiceStandards />
+      {/* Operational Hygiene & Equipment Standards (Hidden on mobile to reduce vertical scroll length) */}
+      <div className="hidden md:block">
+        <ServiceStandards />
+      </div>
 
       {/* Direct Service Reservation Form */}
       <ServiceBookingForm />
@@ -43,8 +49,10 @@ export default function ServicesPage() {
       {/* Cleaning Specific Frequently Asked Questions */}
       <ServicesFaq />
 
-      {/* 24/7 Emergency Dispatch Banner */}
-      <EmergencyCta />
+      {/* 24/7 Emergency Dispatch Banner (Hidden on mobile to avoid CTA repetition after FAQ) */}
+      <div className="hidden md:block">
+        <EmergencyCta />
+      </div>
 
       {/* Global Footer */}
       <Footer />

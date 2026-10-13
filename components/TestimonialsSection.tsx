@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface Testimonial {
   name: string;
@@ -48,23 +49,34 @@ export default function TestimonialsSection() {
         {/* Soft wrap card */}
         <div className="bg-[#F8F9FA] border border-slate-100 rounded-[24px] sm:rounded-[36px] p-5 sm:p-8 lg:p-10 relative overflow-hidden">
           {/* Section Title */}
-          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center max-w-2xl mx-auto mb-8 sm:mb-12"
+          >
             <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
               Testimonials
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
               What Our Happy Clients Say About Our Work
             </h2>
-          </div>
+          </motion.div>
 
           {/* Desktop Grid / Mobile Active Card Carousel */}
           <div className="relative z-10 max-w-[1350px] mx-auto">
             {/* Desktop 3-Card Grid */}
             <div className="hidden md:grid md:grid-cols-3 gap-6">
               {testimonials.map((item, idx) => (
-                <div
+                <motion.div
                   key={idx}
-                  className="wpo-testimonial-item bg-white border border-slate-100 hover:border-red-200 rounded-[20px] p-5 sm:p-7 flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300 relative group"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.55, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ y: -6 }}
+                  className="wpo-testimonial-item bg-white border border-slate-100 hover:border-red-200 rounded-[20px] p-5 sm:p-7 flex flex-col justify-between shadow-xs hover:shadow-xl transition-shadow duration-300 relative group"
                 >
                   <div>
                     {/* Top Quote Icon & Stars */}
@@ -92,7 +104,7 @@ export default function TestimonialsSection() {
                       {item.role}
                     </span>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 

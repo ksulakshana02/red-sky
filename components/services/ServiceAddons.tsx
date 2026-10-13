@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Wind, Layers, Plus } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ServiceAddons() {
   const addons = [
@@ -48,7 +49,13 @@ export default function ServiceAddons() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
+        >
           <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
             Appointment Add-Ons
           </span>
@@ -58,14 +65,19 @@ export default function ServiceAddons() {
           <p className="text-sm sm:text-base text-[#0E152B]/75 mt-2.5 leading-relaxed">
             Need extra attention on specific appliances or rooms? Easily add any of these fixed-price options to your booking.
           </p>
-        </div>
+        </motion.div>
 
         {/* 6 Add-On Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 max-w-6xl mx-auto">
           {addons.map((addon, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="bg-[#F8FAFC] rounded-[24px] p-6 border border-slate-200/80 hover:border-red-200 hover:bg-[#FEF2F2]/40 transition-all duration-300 flex flex-col justify-between"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -4 }}
+              className="bg-[#F8FAFC] rounded-[24px] p-6 border border-slate-200/80 hover:border-red-200 hover:bg-[#FEF2F2]/40 transition-colors duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
@@ -90,7 +102,7 @@ export default function ServiceAddons() {
                 <span>Selectable during booking</span>
                 <Plus className="w-4 h-4" />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -98,4 +110,3 @@ export default function ServiceAddons() {
     </section>
   );
 }
-

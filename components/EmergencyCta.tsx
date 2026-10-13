@@ -2,6 +2,7 @@
 
 import React from "react";
 import { PhoneCall } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function EmergencyCta() {
   const features = [
@@ -17,7 +18,13 @@ export default function EmergencyCta() {
         <div className="wpo-cta-wrap">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {/* Left Box: Emergency Call */}
-            <div className="wpo-cta-box bg-[#F9FAFB] p-5 sm:p-8 lg:p-10 rounded-[24px] sm:rounded-[32px] relative overflow-hidden flex flex-col justify-between border border-slate-100 shadow-xs">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="wpo-cta-box bg-[#F9FAFB] p-5 sm:p-8 lg:p-10 rounded-[24px] sm:rounded-[32px] relative overflow-hidden flex flex-col justify-between border border-slate-100 shadow-xs"
+            >
               <div className="text-left mb-4 sm:mb-6">
                 <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
                   24/7 Emergency Dispatch
@@ -47,10 +54,16 @@ export default function EmergencyCta() {
                   </a>
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Box: Features / Workforce Stats */}
-            <div className="wpo-cta-box bg-[#F9FAFB] p-5 sm:p-8 lg:p-10 rounded-[24px] sm:rounded-[32px] relative overflow-hidden flex flex-col justify-between border border-slate-100 shadow-xs">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="wpo-cta-box bg-[#F9FAFB] p-5 sm:p-8 lg:p-10 rounded-[24px] sm:rounded-[32px] relative overflow-hidden flex flex-col justify-between border border-slate-100 shadow-xs"
+            >
               <div className="text-left mb-4 sm:mb-6">
                 <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
                   Key Advantages
@@ -63,18 +76,22 @@ export default function EmergencyCta() {
               {/* Features List */}
               <ul className="space-y-2.5 sm:space-y-3 mt-2 sm:mt-4">
                 {features.map((feat, idx) => (
-                  <li
+                  <motion.li
                     key={idx}
+                    initial={{ opacity: 0, x: 12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.2 + idx * 0.08 }}
                     className="flex items-center gap-2.5 sm:gap-3 text-[13.5px] sm:text-[15px] font-serif font-normal text-[#0E152B]"
                   >
                     <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-red-100 text-[#DC2626] flex items-center justify-center text-[10px] sm:text-xs font-medium shrink-0">
                       ✓
                     </span>
                     <span>{feat}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

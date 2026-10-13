@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export interface ServiceCardData {
   id: string;
@@ -183,7 +184,13 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Subtitle & Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10"
+        >
           <div className="text-left">
             <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
               Our Services
@@ -219,14 +226,19 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
               })}
             </div>
           )}
-        </div>
+        </motion.div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 xl:gap-8">
-          {displayedServices.map((item) => (
-            <div
+          {displayedServices.map((item, idx) => (
+            <motion.div
               key={item.id}
-              className="group relative rounded-[24px] sm:rounded-[32px] p-4 sm:p-5 pb-5 sm:pb-6 flex flex-col justify-between overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-gradient-to-b from-[#FFD6D6] via-[#FFEAEB]/85 to-[#FFF5F5] border-t-4 border-[#DC2626] border-x border-b border-red-100/60 shadow-sm"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.45, delay: idx * 0.08, ease: "easeOut" }}
+              whileHover={{ y: -6 }}
+              className="group relative rounded-[24px] sm:rounded-[32px] p-4 sm:p-5 pb-5 sm:pb-6 flex flex-col justify-between overflow-hidden transition-shadow duration-300 hover:shadow-xl bg-gradient-to-b from-[#FFD6D6] via-[#FFEAEB]/85 to-[#FFF5F5] border-t-4 border-[#DC2626] border-x border-b border-red-100/60 shadow-sm"
             >
               <div>
                 {/* Top Image Box */}
@@ -276,7 +288,7 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
                   </svg>
                 </span>
               </Link>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

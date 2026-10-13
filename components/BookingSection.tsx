@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { CheckCircle2, Check } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function BookingSection() {
   const [formData, setFormData] = useState({
@@ -27,7 +28,13 @@ export default function BookingSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           
           {/* Left Column: Get a Quote Form Card (lg:col-span-6) */}
-          <div className="lg:col-span-6 flex flex-col">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 flex flex-col"
+          >
             <div className="h-full rounded-[24px] sm:rounded-[36px] p-5 sm:p-8 lg:p-12 bg-gradient-to-br from-[#FFE2E2] via-[#FFF1F1] to-[#FFF9F9] border border-red-200/60 shadow-sm flex flex-col justify-between">
               
               <div>
@@ -173,10 +180,16 @@ export default function BookingSection() {
               </div>
 
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Top Image & Bottom 100% Satisfaction Guarantee Card (lg:col-span-6) */}
-          <div className="lg:col-span-6 flex flex-col justify-between gap-6">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 flex flex-col justify-between gap-6"
+          >
             
             {/* Top Featured Image Box */}
             <div className="relative w-full aspect-[16/10.5] rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-lg border border-slate-100 bg-slate-100 flex-1 min-h-[240px]">
@@ -232,7 +245,7 @@ export default function BookingSection() {
 
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
       </div>

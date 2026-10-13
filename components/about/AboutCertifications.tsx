@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ShieldCheck, Award, CheckCircle2, Lock, Leaf } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function AboutCertifications() {
   const certifications = [
@@ -36,7 +37,13 @@ export default function AboutCertifications() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
+        >
           <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
             Standards &amp; Coverage
           </span>
@@ -46,16 +53,21 @@ export default function AboutCertifications() {
           <p className="text-sm sm:text-base text-[#0E152B]/70 mt-2 font-normal leading-relaxed">
             Every clean is backed by recognized environmental certifications and comprehensive insurance protection.
           </p>
-        </div>
+        </motion.div>
 
         {/* 4 Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
           {certifications.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="bg-[#FBFBFB] rounded-[24px] p-6 border border-slate-200/70 flex flex-col justify-between"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -5 }}
+                className="bg-[#FBFBFB] rounded-[24px] p-6 border border-slate-200/70 hover:border-red-200 hover:shadow-xs transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="w-11 h-11 rounded-2xl bg-white border border-red-100 text-[#DC2626] flex items-center justify-center mb-4 shadow-2xs">
@@ -74,7 +86,7 @@ export default function AboutCertifications() {
                     {item.desc}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

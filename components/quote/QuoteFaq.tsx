@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Plus, Minus, Phone, FileText } from "lucide-react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface FaqItem {
   question: string;
@@ -45,7 +46,13 @@ export default function QuoteFaq() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start content-start">
           
           {/* Left Column: Heading & Contact Card (lg:col-span-5) */}
-          <div className="lg:col-span-5 flex flex-col items-start self-start">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 flex flex-col items-start self-start"
+          >
             <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
               Pricing &amp; Estimation
             </span>
@@ -91,10 +98,16 @@ export default function QuoteFaq() {
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Rounded Accordion Items (lg:col-span-7) */}
-          <div className="lg:col-span-7 space-y-3.5 sm:space-y-4 w-full self-start">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 space-y-3.5 sm:space-y-4 w-full self-start"
+          >
             {faqs.map((faq, idx) => {
               const isOpen = openIndex === idx;
               return (
@@ -128,21 +141,25 @@ export default function QuoteFaq() {
                   </button>
 
                   {/* Smooth Animated Collapsible Content */}
-                  <div
-                    className={`grid transition-all duration-300 ease-in-out ${
-                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                    }`}
-                  >
-                    <div className="overflow-hidden">
-                      <div className="px-4 sm:px-5 lg:px-6 pb-5 sm:pb-6 pt-1 text-[13.5px] sm:text-[14.5px] text-[#0E152B]/75 leading-relaxed border-t border-red-100/60 font-normal">
-                        {faq.answer}
-                      </div>
-                    </div>
-                  </div>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-4 sm:px-5 lg:px-6 pb-5 sm:pb-6 pt-1 text-[13.5px] sm:text-[14.5px] text-[#0E152B]/75 leading-relaxed border-t border-red-100/60 font-normal">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
-          </div>
+          </motion.div>
 
         </div>
       </div>

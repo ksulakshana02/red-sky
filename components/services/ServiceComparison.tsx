@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Check, Minus, ArrowRight, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ServiceComparison() {
   const tiers = [
@@ -74,7 +75,13 @@ export default function ServiceComparison() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
+        >
           <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
             Package Comparison
           </span>
@@ -84,10 +91,16 @@ export default function ServiceComparison() {
           <p className="text-sm sm:text-base text-[#0E152B]/75 mt-2.5 leading-relaxed">
             Choose the level of detail that fits your schedule and home condition. All packages include non-toxic, eco-safe supplies.
           </p>
-        </div>
+        </motion.div>
 
         {/* Comparison Table Container */}
-        <div className="bg-white rounded-[28px] sm:rounded-[36px] border border-slate-200 shadow-sm overflow-hidden max-w-5xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-white rounded-[28px] sm:rounded-[36px] border border-slate-200 shadow-sm overflow-hidden max-w-5xl mx-auto"
+        >
           <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-slate-200">
             <table className="w-full min-w-[680px] text-left border-collapse">
               <thead>
@@ -195,7 +208,7 @@ export default function ServiceComparison() {
               </tbody>
             </table>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>
