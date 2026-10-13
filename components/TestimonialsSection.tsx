@@ -49,10 +49,9 @@ export default function TestimonialsSection() {
         <div className="bg-[#F8F9FA] border border-slate-100 rounded-[24px] sm:rounded-[36px] p-5 sm:p-8 lg:p-10 relative overflow-hidden">
           {/* Section Title */}
           <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-            <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
-              <span>TESTIMONIALS</span>
-              <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
-            </div>
+            <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+              Testimonials
+            </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
               What Our Happy Clients Say About Our Work
             </h2>
@@ -86,10 +85,10 @@ export default function TestimonialsSection() {
 
                   {/* Author Info */}
                   <div className="pt-5 mt-5 sm:pt-6 sm:mt-6 border-t border-slate-100">
-                    <h4 className="text-base sm:text-lg font-bold text-[#0E152B]">
+                    <h4 className="text-base sm:text-lg font-medium text-[#0E152B]">
                       {item.name}
                     </h4>
-                    <span className="text-xs sm:text-sm font-semibold text-[#DC2626]">
+                    <span className="text-xs sm:text-sm font-normal text-[#DC2626]">
                       {item.role}
                     </span>
                   </div>
@@ -116,10 +115,10 @@ export default function TestimonialsSection() {
                 </div>
 
                 <div className="pt-4 mt-4 border-t border-slate-100">
-                  <h4 className="text-[15px] font-bold text-[#0E152B]">
+                  <h4 className="text-[15px] font-medium text-[#0E152B]">
                     {testimonials[current].name}
                   </h4>
-                  <span className="text-xs font-semibold text-[#DC2626]">
+                  <span className="text-xs font-normal text-[#DC2626]">
                     {testimonials[current].role}
                   </span>
                 </div>

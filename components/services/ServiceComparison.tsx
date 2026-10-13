@@ -75,10 +75,9 @@ export default function ServiceComparison() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-600 mb-2 sm:mb-3">
-            <span>Package Comparison</span>
-            <span className="text-[#DC2626] font-sans font-normal text-sm">//</span>
-          </div>
+          <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+            Package Comparison
+          </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
             Compare Residential Tiers
           </h2>

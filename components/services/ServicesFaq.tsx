@@ -46,10 +46,9 @@ export default function ServicesFaq() {
           
           {/* Left Column: Title & Support Card (5 cols) */}
           <div className="lg:col-span-5 flex flex-col items-start self-start">
-            <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-600 mb-2 sm:mb-3">
-              <span>Service Questions</span>
-              <span className="text-[#DC2626] font-sans font-normal text-sm">//</span>
-            </div>
+            <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+              Service Questions
+            </span>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight mb-4">
               Frequently Asked Questions

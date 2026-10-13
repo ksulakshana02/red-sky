@@ -45,10 +45,9 @@ export default function ContactMethods() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-slate-500 mb-2">
-            <span>Ways to connect</span>
-            <span className="text-[#DC2626] font-normal">//</span>
-          </div>
+          <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+            Ways To Connect
+          </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-[#0E152B] leading-[1.25] font-serif tracking-tight">
             Direct channels to reach our team
           </h2>

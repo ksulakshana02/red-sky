@@ -10,11 +10,10 @@ export default function AboutCta() {
       <section className="relative w-full max-w-[1440px] mx-auto rounded-[28px] sm:rounded-[36px] bg-[#FFF8F8] border border-red-100 p-6 sm:p-10 lg:p-12 shadow-2xs">
         <div className="max-w-3xl mx-auto text-center">
           
-          {/* Subtle Category Note */}
-          <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-slate-500 mb-2.5">
-            <span>Get in touch</span>
-            <span className="text-[#DC2626]">//</span>
-          </div>
+          {/* Clean Kicker */}
+          <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2.5">
+            Get In Touch
+          </span>
 
           {/* Simple, Human Headline - Not overly bold */}
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal font-serif text-[#0E152B] leading-[1.25] tracking-tight mb-3">

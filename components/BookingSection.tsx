@@ -32,10 +32,9 @@ export default function BookingSection() {
               
               <div>
                 {/* Subtitle */}
-                <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
-                  <span>GET YOUR FREE ESTIMATE</span>
-                  <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
-                </div>
+                <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+                  Get Your Free Estimate
+                </span>
 
                 {/* Title */}
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight mb-5 sm:mb-8">
@@ -55,7 +54,7 @@ export default function BookingSection() {
                     <button
                       type="button"
                       onClick={() => setSubmitted(false)}
-                      className="inline-flex items-center justify-center px-7 py-2.5 sm:px-8 sm:py-3 rounded-full bg-[#0E152B] hover:bg-[#DC2626] text-white text-xs sm:text-sm font-bold transition-colors"
+                      className="inline-flex items-center justify-center px-7 py-2.5 sm:px-8 sm:py-3 rounded-full bg-[#0E152B] hover:bg-[#DC2626] text-white text-xs sm:text-sm font-medium transition-colors"
                     >
                       Request Another Quote
                     </button>
@@ -110,7 +109,7 @@ export default function BookingSection() {
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold text-[#0E152B] mb-1.5">
+                        <label className="block text-xs font-medium text-[#0E152B] mb-1.5">
                           Total square footage
                         </label>
                         <input
@@ -126,7 +125,7 @@ export default function BookingSection() {
 
                     {/* Row 3: Choose Service */}
                     <div>
-                      <label className="block text-xs font-semibold text-[#0E152B] mb-1.5">
+                      <label className="block text-xs font-medium text-[#0E152B] mb-1.5">
                         Choose a service
                       </label>
                       <select
@@ -155,7 +154,7 @@ export default function BookingSection() {
                         className="mt-1 w-4 h-4 rounded text-[#DC2626] focus:ring-[#DC2626] border-slate-300 cursor-pointer accent-[#DC2626]"
                         required
                       />
-                      <label htmlFor="consent" className="text-xs text-[#0E152B]/75 leading-relaxed cursor-pointer select-none">
+                      <label htmlFor="consent" className="text-xs text-[#0E152B]/75 leading-relaxed cursor-pointer select-none font-normal">
                         By submitting this form, you agree to the processing of your personal data in accordance with the General Data Protection Regulation and our Privacy Policy.
                       </label>
                     </div>
@@ -164,7 +163,7 @@ export default function BookingSection() {
                     <div className="pt-2">
                       <button
                         type="submit"
-                        className="inline-flex items-center justify-center px-7 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#0E152B] hover:bg-[#DC2626] text-white font-bold text-xs sm:text-sm tracking-wide shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+                        className="inline-flex items-center justify-center px-7 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#0E152B] hover:bg-[#DC2626] text-white font-medium text-xs sm:text-sm tracking-wide shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                       >
                         I’d Like a Quote
                       </button>
@@ -182,7 +181,7 @@ export default function BookingSection() {
             {/* Top Featured Image Box */}
             <div className="relative w-full aspect-[16/10.5] rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-lg border border-slate-100 bg-slate-100 flex-1 min-h-[240px]">
               <Image
-                src="https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-931846460.jpg"
+                src="/images/service-single/img-1.jpg"
                 alt="Professional Cleaning Team"
                 fill
                 className="object-cover rounded-[24px] sm:rounded-[32px] hover:scale-105 transition-transform duration-700"
@@ -200,7 +199,7 @@ export default function BookingSection() {
                   <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#DC2626] text-white flex items-center justify-center shrink-0 shadow-xs">
                     <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[3]" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-serif font-bold text-[#0E152B] leading-tight">
+                  <h3 className="text-lg sm:text-xl font-serif font-normal text-[#0E152B] leading-tight">
                     100% Satisfaction Guarantee
                   </h3>
                 </div>

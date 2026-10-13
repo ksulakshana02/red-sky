@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, Award, CheckCircle2, Lock, Sparkles } from "lucide-react";
+import { ShieldCheck, Award, CheckCircle2, Lock, Leaf } from "lucide-react";
 
 export default function AboutCertifications() {
   const certifications = [
@@ -15,7 +15,7 @@ export default function AboutCertifications() {
       title: "Green Seal Certified",
       org: "Standard GS-37",
       desc: "Formulations verified to protect indoor air quality without harsh carcinogens or volatile organic compounds.",
-      icon: Sparkles,
+      icon: Leaf,
     },
     {
       title: "EPA Safer Choice",
@@ -37,10 +37,9 @@ export default function AboutCertifications() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-slate-500 mb-2">
-            <span>Standards &amp; coverage</span>
-            <span className="text-[#DC2626] font-normal">//</span>
-          </div>
+          <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+            Standards &amp; Coverage
+          </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-[#0E152B] leading-[1.25] font-serif tracking-tight">
             Certified standards &amp; full insurance
           </h2>

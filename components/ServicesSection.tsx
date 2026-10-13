@@ -19,7 +19,7 @@ export const servicesData: ServiceCardData[] = [
     id: "house-cleaning",
     title: "House Cleaning",
     category: "residential",
-    image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1456829834.jpg",
+    image: "/images/service/service-1.jpg",
     link: "/service-single",
     desc: "Routine surface sanitization, dusting, vacuuming, and floor care for pristine home environments.",
     icon: (
@@ -45,7 +45,7 @@ export const servicesData: ServiceCardData[] = [
     id: "office-cleaning",
     title: "Office Cleaning",
     category: "commercial",
-    image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1350786822-1.jpg",
+    image: "/images/service/service-2.jpg",
     link: "/service-single",
     desc: "Workstation disinfection, boardroom detailing, breakrooms, and after-hours business hygiene.",
     icon: (
@@ -75,62 +75,62 @@ export const servicesData: ServiceCardData[] = [
       </svg>
     ),
   },
-  {
-    id: "deep-cleaning",
-    title: "Deep Cleaning",
-    category: "specialty",
-    image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1724689200.jpg",
-    link: "/service-single",
-    desc: "Hand-scrubbed baseboards, grout descaling, vent cleaning, and intensive high-touch disinfection.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="38" height="22" viewBox="0 0 45 26">
-        <g fill="none" fillRule="evenodd">
-          <path d="M5.88 4.53c-.29-.18-.64-.28-1-.28H1.92C.87 4.25 0 5.1 0 6.17v19.37c0 .26.2.46.46.46h44.08c.25 0 .46-.2.46-.46V6.17c0-1.06-.87-1.92-1.93-1.92h-2.94c-.37 0-.72.1-1.01.28v-.06A4.49 4.49 0 0 0 34.62 0h-8.08a4.5 4.5 0 0 0-4.04 2.5A4.5 4.5 0 0 0 18.46 0h-8.08c-2.48 0-4.5 2-4.5 4.47v.06Z" fill="#FFF" />
-          <path d="M18.46 0a4.5 4.5 0 0 1 4.04 2.5l.06-.12A4.5 4.5 0 0 1 26.54 0h8.08c2.48 0 4.5 2 4.5 4.47v.06c.29-.18.64-.28 1-.28h2.95c1.06 0 1.93.86 1.93 1.92v19.37c0 .26-.2.46-.46.46H.46a.46.46 0 0 1-.46-.46V6.17C0 5.1.87 4.25 1.93 4.25h2.94c.37 0 .72.1 1.01.28v-.12A4.49 4.49 0 0 1 10.39 0h8.08Zm0 .1h-8.08A4.38 4.38 0 0 0 6 4.48v.06l-.16.1a1.84 1.84 0 0 0-.96-.27H1.93c-1 0-1.82.8-1.82 1.8v19.38c0 .2.16.35.35.35h44.08c.2 0 .35-.15.35-.35V6.17c0-1-.82-1.81-1.82-1.81h-2.94c-.34 0-.67.09-.96.26l-.16-.09v-.06C39 2.07 37.04.1 34.6.1h-8.07a4.4 4.4 0 0 0-3.94 2.44h-.2A4.4 4.4 0 0 0 18.46.1Z" fill="#000" fillRule="nonzero" />
-          <path d="M5.88 6.17v18.92H.92V6.17c0-.56.45-1.01 1.01-1.01h2.94c.56 0 1.02.45 1.02 1Z" fill="#FFF" />
-          <path d="M4.87 5.16c.56 0 1.02.45 1.02 1V25.1H.91V6.17c0-.56.45-1.01 1.01-1.01h2.94Zm0 .23H1.93a.78.78 0 0 0-.78.78v18.68h4.5V6.17c0-.4-.3-.72-.67-.77h-.1Z" fill="#000" fillRule="nonzero" />
-          <path d="M39.12 6.17c0-.56.45-1.01 1-1.01h2.95c.56 0 1.01.45 1.01 1V25.1h-4.96V6.17Z" fill="#FFF" />
-          <path d="M43.07 5.16c.56 0 1.01.45 1.01 1V25.1h-4.96V6.17c0-.56.45-1.01 1-1.01h2.95Zm0 .23h-2.94a.78.78 0 0 0-.78.78v18.68h4.5V6.17c0-.4-.3-.72-.68-.77h-.1Z" fill="#000" fillRule="nonzero" />
-          <path d="M38.2 16.3c0-1.22-1-2.22-2.24-2.22H9.05c-1.24 0-2.25 1-2.25 2.23V19h26.72v.91H6.8v5.17h31.4v-5.17h-4.68v-.9h4.68V16.3Z" fill="#FFF" />
-          <path d="M38.2 19.92v5.17H6.8v-5.17h31.4Zm-.11.11H6.9v4.95H38.1v-4.95Zm-2.13-5.95c1.23 0 2.24 1 2.24 2.23V19H6.8v-2.7c0-1.23 1-2.23 2.25-2.23h26.9Zm0 .11H9.05c-1.18 0-2.14.95-2.14 2.12v2.6H38.1v-2.6c0-1.17-.96-2.12-2.13-2.12Z" fill="#000" fillRule="nonzero" />
-          <path d="M38.2 16.3c0-1.22-1-2.22-2.24-2.22H9.05c-1.24 0-2.25 1-2.25 2.23V19h26.72v.91H6.8h31.4-4.68v-.9h4.68V16.3Z" fill="#DC2626" />
-          <path d="M35.96 14.08c1.23 0 2.24 1 2.24 2.23V19H6.8v-2.7c0-1.23 1-2.23 2.25-2.23h26.9Zm0 .11H9.05c-1.18 0-2.14.95-2.14 2.12v2.6H38.1v-2.6c0-1.17-.96-2.12-2.13-2.12Z" fill="#000" fillRule="nonzero" />
-          <path d="M38.2 4.47C38.2 2.5 36.6.9 34.62.9h-8.08a3.57 3.57 0 0 0-3.58 3.56v8.7h13c.87 0 1.66.35 2.24.93V4.47Z" fill="#FFF" />
-          <path d="M34.62.91c1.97 0 3.58 1.6 3.58 3.56v9.63a3.16 3.16 0 0 0-2.24-.93h-13v-8.7c0-1.97 1.6-3.56 3.58-3.56h8.08Zm0 .24h-8.08a3.34 3.34 0 0 0-3.35 3.32v8.46h12.77c.68 0 1.34.2 1.89.58l.11.08V4.47c0-1.77-1.4-3.22-3.16-3.32h-.18Z" fill="#000" fillRule="nonzero" />
-          <g fill="#000" fillRule="nonzero">
-            <path d="M29.3 7.9h-.01a.15.15 0 0 1-.1-.06.16.16 0 0 1-.04-.11 6.6 6.6 0 0 1 1.43-3.47.15.15 0 0 1 .21-.02c.03.02.05.06.06.1 0 .04-.01.08-.04.11a6.33 6.33 0 0 0-1.36 3.31c0 .08-.07.14-.15.14ZM31 8.87h-.03a.16.16 0 0 1-.12-.19c.13-.72.42-1.4.85-2a.15.15 0 0 1 .21-.03c.07.05.08.15.03.22-.4.55-.67 1.2-.79 1.87a.16.16 0 0 1-.15.13Z" />
-          </g>
-          <path d="M6.8 14.1a3.16 3.16 0 0 1 2.25-.93h13v-8.7C22.04 2.5 20.43.9 18.45.9h-8.08A3.57 3.57 0 0 0 6.8 4.47v9.63Z" fill="#FFF" />
-          <path d="M18.46.91c1.98 0 3.58 1.6 3.58 3.56v8.7h-13c-.87 0-1.66.35-2.24.93V4.47C6.8 2.5 8.4.9 10.38.9h8.08Zm0 .24h-8.08a3.33 3.33 0 0 0-3.34 3.32v9.12l.11-.08a3.4 3.4 0 0 1 1.67-.57H21.8V4.46c0-1.77-1.4-3.22-3.17-3.32h-.18Z" fill="#000" fillRule="nonzero" />
-          <g fill="#000" fillRule="nonzero">
-            <path d="M13.32 8.37h-.02a.15.15 0 0 1-.1-.06.16.16 0 0 1-.03-.12 6.6 6.6 0 0 1 1.42-3.47.15.15 0 0 1 .21-.02c.04.03.05.07.06.1 0 .05-.01.09-.04.12a6.33 6.33 0 0 0-1.35 3.3c-.01.09-.08.15-.15.15ZM15.01 9.33H15a.16.16 0 0 1-.12-.18c.13-.72.42-1.4.84-2a.15.15 0 0 1 .21-.03c.07.05.09.15.04.21-.4.56-.67 1.2-.8 1.88a.16.16 0 0 1-.15.12Z" />
-          </g>
-        </g>
-      </svg>
-    ),
-  },
-  {
-    id: "move-in-out-cleaning",
-    title: "Move In Out Cleaning",
-    category: "specialty",
-    image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1226346559-1.jpg",
-    link: "/service-single",
-    desc: "100% deposit-pass bond clean covering inside empty cabinets, pantries, oven, and appliances.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 42 38">
-        <g fill="none" fillRule="evenodd">
-          <path d="M9.7 18.4c6.97-6.72 8.96-8.82 15.98-15.53.61.63 1.19 1.3 1.73 2C20.89 10.5 11.16 20.2 11.13 20.2c-.74-.8-.58-.96-1.43-1.8Z" fill="#FFF" fillRule="nonzero" />
-          <path d="M11.13 20.35h-.04a5.36 5.36 0 0 1-.7-.88 4.56 4.56 0 0 0-.78-.97.14.14 0 0 1-.04-.1c0-.04.01-.07.04-.1 3.06-2.95 5.13-4.98 7.15-6.96 2.52-2.48 4.9-4.81 8.84-8.57a.13.13 0 0 1 .1-.04c.03 0 .07.02.1.05.2.24.38.44.57.63.41.43.8.9 1.15 1.38.04.06.03.14-.02.18-5.3 4.58-12.85 11.99-15.33 14.42l-.7.68c-.24.23-.29.28-.34.28Zm-1.25-1.94c.28.27.52.57.72.9.15.25.33.5.52.71l.85-.83c2.47-2.42 9.94-9.75 15.24-14.33-.33-.44-.68-.86-1.06-1.25l-.49-.53c-3.87 3.7-6.23 6.01-8.73 8.46-1.97 1.94-4.02 3.96-7.05 6.87Z" fill="#000" fillRule="nonzero" />
-          <path d="M27.4 4.87c1.56-1.66 3.09-2 3.84-1.88 1.25.2 1.71 2.4-1.03 5.65a74.85 74.85 0 0 1-3.91 4.33c-2.52 2.53-5.46 4.62-7.56 7.54-1.54 2.17-3 4.56-3.38 7.24-.18 1.23.2 2.71.68 3.86.48 1.15 1.6 2.05 2.75 1.93.62-.06 1.28-.62 1.12-1.25a4.45 4.45 0 0 0-.8-1.52c-2-1.78-.33-5.72 1.15-7.7 2.57-3.47 6.15-5.98 8.9-9.3 1.18-1.43 4.25-4.9 4.98-6.62 1.16-2.76.53-5.13-1.38-6.54-2.04-1.5-5.5 1.23-7.09 2.28.72.72.95 1.33 1.74 1.98Z" fill="#FFF" fillRule="nonzero" />
-          <path d="M18.58 33.67c-1.2 0-2.23-.98-2.66-2.02-.28-.67-.91-2.39-.7-3.92.41-2.8 1.96-5.26 3.41-7.3 1.4-1.94 3.19-3.54 4.92-5.09.88-.8 1.8-1.61 2.65-2.47a70.85 70.85 0 0 0 3.9-4.32c1.87-2.2 2.2-3.9 1.89-4.75a.98.98 0 0 0-.77-.68c-.64-.1-2.13.17-3.72 1.84a.14.14 0 0 1-.18 0c-.4-.34-.75-.74-1.05-1.17-.21-.3-.44-.57-.69-.84a.14.14 0 0 1-.03-.1c0-.05.03-.08.06-.1l.58-.4c1.79-1.23 4.77-3.28 6.67-1.88 2.03 1.5 2.55 4 1.41 6.7-.62 1.48-2.93 4.22-4.3 5.84-.28.32-.5.6-.69.83a48.07 48.07 0 0 1-4.12 4.22 40.1 40.1 0 0 0-4.8 5.08c-1.58 2.14-2.99 5.88-1.15 7.51.32.28.75 1.24.84 1.6.07.27.01.56-.16.79a1.56 1.56 0 0 1-1.31.63ZM30.94 2.83a2 2 0 0 1 .32.02c.46.08.84.41.98.86.44 1.19-.27 3.06-1.92 5.02a73.86 73.86 0 0 1-3.92 4.34c-.86.86-1.78 1.68-2.66 2.48a31.99 31.99 0 0 0-4.88 5.05c-1.44 2-2.96 4.43-3.36 7.17-.21 1.46.4 3.12.68 3.77.42 1.01 1.46 1.97 2.61 1.84.36-.04.68-.23.89-.51a.7.7 0 0 0 .12-.57 4.35 4.35 0 0 0-.76-1.46c-2.08-1.84-.41-5.81 1.12-7.88a40.3 40.3 0 0 1 4.82-5.12 47.48 47.48 0 0 0 4.09-4.19l.69-.83c1.37-1.62 3.66-4.33 4.27-5.76 1.1-2.57.6-4.96-1.33-6.38-1.74-1.28-4.63.7-6.35 1.88l-.45.32c.23.26.41.5.59.74.26.38.57.73.91 1.04 1.34-1.36 2.67-1.83 3.54-1.83Z" fill="#000" fillRule="nonzero" />
-          <path d="M21.25 35.16c-.69-.02-1.42-.06-1.96-.51-1.05-.88-.7-2.64-.12-3.9 3.07-6.57 10.54-10.46 17.32-9.01 1.39.3 2.81.82 3.74 1.98.77.95 1.11 2.2 1.32 3.44.4 2.27.42 4.58.08 6.86-.02.35-.15.7-.36.98-.31.33-.8.36-1.24.36-2.38.03-14.77-.08-18.78-.2Z" fill="#FFF" fillRule="nonzero" />
-          <path d="M33.46 30.6c-2 .38-2.4 2.63-1.9 4.04.4 1.15 1.58 2.26 3.37 1.78 2.11-.57 2.13-2.78 1.9-3.76-.5-2.15-2.43-2.24-3.37-2.06Z" fill="#DC2626" />
-          <path d="M33.69 31.58c-1.34.25-1.6 1.75-1.27 2.7.27.76 1.05 1.5 2.25 1.18 1.4-.38 1.42-1.85 1.27-2.5-.34-1.44-1.63-1.5-2.25-1.38Z" fill="#DC2626" />
-          <path d="M4.04 15.68c.67-.75 1.84-.8 2.81-.4.8.26 1.5.73 2.06 1.35 1.3 1.31 2.5 2.71 3.6 4.19 1.38 1.87 2.22 3.49.71 5.51L4.04 15.68Z" fill="#DC2626" />
-        </g>
-      </svg>
-    ),
-  },
+  // {
+  //   id: "deep-cleaning",
+  //   title: "Deep Cleaning",
+  //   category: "specialty",
+  //   image: "/images/service/service-3.jpg",
+  //   link: "/service-single",
+  //   desc: "Hand-scrubbed baseboards, grout descaling, vent cleaning, and intensive high-touch disinfection.",
+  //   icon: (
+  //     <svg xmlns="http://www.w3.org/2000/svg" width="38" height="22" viewBox="0 0 45 26">
+  //       <g fill="none" fillRule="evenodd">
+  //         <path d="M5.88 4.53c-.29-.18-.64-.28-1-.28H1.92C.87 4.25 0 5.1 0 6.17v19.37c0 .26.2.46.46.46h44.08c.25 0 .46-.2.46-.46V6.17c0-1.06-.87-1.92-1.93-1.92h-2.94c-.37 0-.72.1-1.01.28v-.06A4.49 4.49 0 0 0 34.62 0h-8.08a4.5 4.5 0 0 0-4.04 2.5A4.5 4.5 0 0 0 18.46 0h-8.08c-2.48 0-4.5 2-4.5 4.47v.06Z" fill="#FFF" />
+  //         <path d="M18.46 0a4.5 4.5 0 0 1 4.04 2.5l.06-.12A4.5 4.5 0 0 1 26.54 0h8.08c2.48 0 4.5 2 4.5 4.47v.06c.29-.18.64-.28 1-.28h2.95c1.06 0 1.93.86 1.93 1.92v19.37c0 .26-.2.46-.46.46H.46a.46.46 0 0 1-.46-.46V6.17C0 5.1.87 4.25 1.93 4.25h2.94c.37 0 .72.1 1.01.28v-.12A4.49 4.49 0 0 1 10.39 0h8.08Zm0 .1h-8.08A4.38 4.38 0 0 0 6 4.48v.06l-.16.1a1.84 1.84 0 0 0-.96-.27H1.93c-1 0-1.82.8-1.82 1.8v19.38c0 .2.16.35.35.35h44.08c.2 0 .35-.15.35-.35V6.17c0-1-.82-1.81-1.82-1.81h-2.94c-.34 0-.67.09-.96.26l-.16-.09v-.06C39 2.07 37.04.1 34.6.1h-8.07a4.4 4.4 0 0 0-3.94 2.44h-.2A4.4 4.4 0 0 0 18.46.1Z" fill="#000" fillRule="nonzero" />
+  //         <path d="M5.88 6.17v18.92H.92V6.17c0-.56.45-1.01 1.01-1.01h2.94c.56 0 1.02.45 1.02 1Z" fill="#FFF" />
+  //         <path d="M4.87 5.16c.56 0 1.02.45 1.02 1V25.1H.91V6.17c0-.56.45-1.01 1.01-1.01h2.94Zm0 .23H1.93a.78.78 0 0 0-.78.78v18.68h4.5V6.17c0-.4-.3-.72-.67-.77h-.1Z" fill="#000" fillRule="nonzero" />
+  //         <path d="M39.12 6.17c0-.56.45-1.01 1-1.01h2.95c.56 0 1.01.45 1.01 1V25.1h-4.96V6.17Z" fill="#FFF" />
+  //         <path d="M43.07 5.16c.56 0 1.01.45 1.01 1V25.1h-4.96V6.17c0-.56.45-1.01 1-1.01h2.95Zm0 .23h-2.94a.78.78 0 0 0-.78.78v18.68h4.5V6.17c0-.4-.3-.72-.68-.77h-.1Z" fill="#000" fillRule="nonzero" />
+  //         <path d="M38.2 16.3c0-1.22-1-2.22-2.24-2.22H9.05c-1.24 0-2.25 1-2.25 2.23V19h26.72v.91H6.8v5.17h31.4v-5.17h-4.68v-.9h4.68V16.3Z" fill="#FFF" />
+  //         <path d="M38.2 19.92v5.17H6.8v-5.17h31.4Zm-.11.11H6.9v4.95H38.1v-4.95Zm-2.13-5.95c1.23 0 2.24 1 2.24 2.23V19H6.8v-2.7c0-1.23 1-2.23 2.25-2.23h26.9Zm0 .11H9.05c-1.18 0-2.14.95-2.14 2.12v2.6H38.1v-2.6c0-1.17-.96-2.12-2.13-2.12Z" fill="#000" fillRule="nonzero" />
+  //         <path d="M38.2 16.3c0-1.22-1-2.22-2.24-2.22H9.05c-1.24 0-2.25 1-2.25 2.23V19h26.72v.91H6.8h31.4-4.68v-.9h4.68V16.3Z" fill="#DC2626" />
+  //         <path d="M35.96 14.08c1.23 0 2.24 1 2.24 2.23V19H6.8v-2.7c0-1.23 1-2.23 2.25-2.23h26.9Zm0 .11H9.05c-1.18 0-2.14.95-2.14 2.12v2.6H38.1v-2.6c0-1.17-.96-2.12-2.13-2.12Z" fill="#000" fillRule="nonzero" />
+  //         <path d="M38.2 4.47C38.2 2.5 36.6.9 34.62.9h-8.08a3.57 3.57 0 0 0-3.58 3.56v8.7h13c.87 0 1.66.35 2.24.93V4.47Z" fill="#FFF" />
+  //         <path d="M34.62.91c1.97 0 3.58 1.6 3.58 3.56v9.63a3.16 3.16 0 0 0-2.24-.93h-13v-8.7c0-1.97 1.6-3.56 3.58-3.56h8.08Zm0 .24h-8.08a3.34 3.34 0 0 0-3.35 3.32v8.46h12.77c.68 0 1.34.2 1.89.58l.11.08V4.47c0-1.77-1.4-3.22-3.16-3.32h-.18Z" fill="#000" fillRule="nonzero" />
+  //         <g fill="#000" fillRule="nonzero">
+  //           <path d="M29.3 7.9h-.01a.15.15 0 0 1-.1-.06.16.16 0 0 1-.04-.11 6.6 6.6 0 0 1 1.43-3.47.15.15 0 0 1 .21-.02c.03.02.05.06.06.1 0 .04-.01.08-.04.11a6.33 6.33 0 0 0-1.36 3.31c0 .08-.07.14-.15.14ZM31 8.87h-.03a.16.16 0 0 1-.12-.19c.13-.72.42-1.4.85-2a.15.15 0 0 1 .21-.03c.07.05.08.15.03.22-.4.55-.67 1.2-.79 1.87a.16.16 0 0 1-.15.13Z" />
+  //         </g>
+  //         <path d="M6.8 14.1a3.16 3.16 0 0 1 2.25-.93h13v-8.7C22.04 2.5 20.43.9 18.45.9h-8.08A3.57 3.57 0 0 0 6.8 4.47v9.63Z" fill="#FFF" />
+  //         <path d="M18.46.91c1.98 0 3.58 1.6 3.58 3.56v8.7h-13c-.87 0-1.66.35-2.24.93V4.47C6.8 2.5 8.4.9 10.38.9h8.08Zm0 .24h-8.08a3.33 3.33 0 0 0-3.34 3.32v9.12l.11-.08a3.4 3.4 0 0 1 1.67-.57H21.8V4.46c0-1.77-1.4-3.22-3.17-3.32h-.18Z" fill="#000" fillRule="nonzero" />
+  //         <g fill="#000" fillRule="nonzero">
+  //           <path d="M13.32 8.37h-.02a.15.15 0 0 1-.1-.06.16.16 0 0 1-.03-.12 6.6 6.6 0 0 1 1.42-3.47.15.15 0 0 1 .21-.02c.04.03.05.07.06.1 0 .05-.01.09-.04.12a6.33 6.33 0 0 0-1.35 3.3c-.01.09-.08.15-.15.15ZM15.01 9.33H15a.16.16 0 0 1-.12-.18c.13-.72.42-1.4.84-2a.15.15 0 0 1 .21-.03c.07.05.09.15.04.21-.4.56-.67 1.2-.8 1.88a.16.16 0 0 1-.15.12Z" />
+  //         </g>
+  //       </g>
+  //     </svg>
+  //   ),
+  // },
+  // {
+  //   id: "move-in-out-cleaning",
+  //   title: "Move In Out Cleaning",
+  //   category: "specialty",
+  //   image: "/images/service/service-4.jpg",
+  //   link: "/service-single",
+  //   desc: "100% deposit-pass bond clean covering inside empty cabinets, pantries, oven, and appliances.",
+  //   icon: (
+  //     <svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 42 38">
+  //       <g fill="none" fillRule="evenodd">
+  //         <path d="M9.7 18.4c6.97-6.72 8.96-8.82 15.98-15.53.61.63 1.19 1.3 1.73 2C20.89 10.5 11.16 20.2 11.13 20.2c-.74-.8-.58-.96-1.43-1.8Z" fill="#FFF" fillRule="nonzero" />
+  //         <path d="M11.13 20.35h-.04a5.36 5.36 0 0 1-.7-.88 4.56 4.56 0 0 0-.78-.97.14.14 0 0 1-.04-.1c0-.04.01-.07.04-.1 3.06-2.95 5.13-4.98 7.15-6.96 2.52-2.48 4.9-4.81 8.84-8.57a.13.13 0 0 1 .1-.04c.03 0 .07.02.1.05.2.24.38.44.57.63.41.43.8.9 1.15 1.38.04.06.03.14-.02.18-5.3 4.58-12.85 11.99-15.33 14.42l-.7.68c-.24.23-.29.28-.34.28Zm-1.25-1.94c.28.27.52.57.72.9.15.25.33.5.52.71l.85-.83c2.47-2.42 9.94-9.75 15.24-14.33-.33-.44-.68-.86-1.06-1.25l-.49-.53c-3.87 3.7-6.23 6.01-8.73 8.46-1.97 1.94-4.02 3.96-7.05 6.87Z" fill="#000" fillRule="nonzero" />
+  //         <path d="M27.4 4.87c1.56-1.66 3.09-2 3.84-1.88 1.25.2 1.71 2.4-1.03 5.65a74.85 74.85 0 0 1-3.91 4.33c-2.52 2.53-5.46 4.62-7.56 7.54-1.54 2.17-3 4.56-3.38 7.24-.18 1.23.2 2.71.68 3.86.48 1.15 1.6 2.05 2.75 1.93.62-.06 1.28-.62 1.12-1.25a4.45 4.45 0 0 0-.8-1.52c-2-1.78-.33-5.72 1.15-7.7 2.57-3.47 6.15-5.98 8.9-9.3 1.18-1.43 4.25-4.9 4.98-6.62 1.16-2.76.53-5.13-1.38-6.54-2.04-1.5-5.5 1.23-7.09 2.28.72.72.95 1.33 1.74 1.98Z" fill="#FFF" fillRule="nonzero" />
+  //         <path d="M18.58 33.67c-1.2 0-2.23-.98-2.66-2.02-.28-.67-.91-2.39-.7-3.92.41-2.8 1.96-5.26 3.41-7.3 1.4-1.94 3.19-3.54 4.92-5.09.88-.8 1.8-1.61 2.65-2.47a70.85 70.85 0 0 0 3.9-4.32c1.87-2.2 2.2-3.9 1.89-4.75a.98.98 0 0 0-.77-.68c-.64-.1-2.13.17-3.72 1.84a.14.14 0 0 1-.18 0c-.4-.34-.75-.74-1.05-1.17-.21-.3-.44-.57-.69-.84a.14.14 0 0 1-.03-.1c0-.05.03-.08.06-.1l.58-.4c1.79-1.23 4.77-3.28 6.67-1.88 2.03 1.5 2.55 4 1.41 6.7-.62 1.48-2.93 4.22-4.3 5.84-.28.32-.5.6-.69.83a48.07 48.07 0 0 1-4.12 4.22 40.1 40.1 0 0 0-4.8 5.08c-1.58 2.14-2.99 5.88-1.15 7.51.32.28.75 1.24.84 1.6.07.27.01.56-.16.79a1.56 1.56 0 0 1-1.31.63ZM30.94 2.83a2 2 0 0 1 .32.02c.46.08.84.41.98.86.44 1.19-.27 3.06-1.92 5.02a73.86 73.86 0 0 1-3.92 4.34c-.86.86-1.78 1.68-2.66 2.48a31.99 31.99 0 0 0-4.88 5.05c-1.44 2-2.96 4.43-3.36 7.17-.21 1.46.4 3.12.68 3.77.42 1.01 1.46 1.97 2.61 1.84.36-.04.68-.23.89-.51a.7.7 0 0 0 .12-.57 4.35 4.35 0 0 0-.76-1.46c-2.08-1.84-.41-5.81 1.12-7.88a40.3 40.3 0 0 1 4.82-5.12 47.48 47.48 0 0 0 4.09-4.19l.69-.83c1.37-1.62 3.66-4.33 4.27-5.76 1.1-2.57.6-4.96-1.33-6.38-1.74-1.28-4.63.7-6.35 1.88l-.45.32c.23.26.41.5.59.74.26.38.57.73.91 1.04 1.34-1.36 2.67-1.83 3.54-1.83Z" fill="#000" fillRule="nonzero" />
+  //         <path d="M21.25 35.16c-.69-.02-1.42-.06-1.96-.51-1.05-.88-.7-2.64-.12-3.9 3.07-6.57 10.54-10.46 17.32-9.01 1.39.3 2.81.82 3.74 1.98.77.95 1.11 2.2 1.32 3.44.4 2.27.42 4.58.08 6.86-.02.35-.15.7-.36.98-.31.33-.8.36-1.24.36-2.38.03-14.77-.08-18.78-.2Z" fill="#FFF" fillRule="nonzero" />
+  //         <path d="M33.46 30.6c-2 .38-2.4 2.63-1.9 4.04.4 1.15 1.58 2.26 3.37 1.78 2.11-.57 2.13-2.78 1.9-3.76-.5-2.15-2.43-2.24-3.37-2.06Z" fill="#DC2626" />
+  //         <path d="M33.69 31.58c-1.34.25-1.6 1.75-1.27 2.7.27.76 1.05 1.5 2.25 1.18 1.4-.38 1.42-1.85 1.27-2.5-.34-1.44-1.63-1.5-2.25-1.38Z" fill="#DC2626" />
+  //         <path d="M4.04 15.68c.67-.75 1.84-.8 2.81-.4.8.26 1.5.73 2.06 1.35 1.3 1.31 2.5 2.71 3.6 4.19 1.38 1.87 2.22 3.49.71 5.51L4.04 15.68Z" fill="#DC2626" />
+  //       </g>
+  //     </svg>
+  //   ),
+  // },
   {
     id: "carpet-cleaning",
     title: "Carpet Cleaning",
@@ -145,21 +145,21 @@ export const servicesData: ServiceCardData[] = [
       </svg>
     ),
   },
-  {
-    id: "commercial-cleaning",
-    title: "Commercial Sanitization",
-    category: "commercial",
-    image: "/images/service/service-6.jpg",
-    link: "/service-single",
-    desc: "Hospital-grade facility sanitation, floor buffing, retail turnover, and construction cleanup.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="30" viewBox="0 0 36 30">
-        <rect x="3" y="6" width="30" height="20" rx="2" fill="#FFF" stroke="#000" strokeWidth="2" />
-        <path d="M8 12h5v10H8zM16 12h5v10h-5zM24 12h4v10h-4z" fill="#DC2626" />
-        <path d="M12 2h12v4H12z" fill="#FFF" stroke="#000" strokeWidth="2" />
-      </svg>
-    ),
-  },
+  // {
+  //   id: "commercial-cleaning",
+  //   title: "Commercial Sanitization",
+  //   category: "commercial",
+  //   image: "/images/service/service-6.jpg",
+  //   link: "/service-single",
+  //   desc: "Hospital-grade facility sanitation, floor buffing, retail turnover, and construction cleanup.",
+  //   icon: (
+  //     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="30" viewBox="0 0 36 30">
+  //       <rect x="3" y="6" width="30" height="20" rx="2" fill="#FFF" stroke="#000" strokeWidth="2" />
+  //       <path d="M8 12h5v10H8zM16 12h5v10h-5zM24 12h4v10h-4z" fill="#DC2626" />
+  //       <path d="M12 2h12v4H12z" fill="#FFF" stroke="#000" strokeWidth="2" />
+  //     </svg>
+  //   ),
+  // },
 ];
 
 export interface ServicesSectionProps {
@@ -185,10 +185,9 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
         {/* Top Subtitle & Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
           <div className="text-left">
-            <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
-              <span>OUR SERVICES</span>
-              <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
-            </div>
+            <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+              Our Services
+            </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
               Here’s What We Can<br />Do for You
             </h2>
@@ -208,7 +207,7 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
                   <button
                     key={tab.id}
                     onClick={() => setActiveCategory(tab.id as any)}
-                    className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                    className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
                       isActive
                         ? "bg-[#DC2626] text-white shadow-xs"
                         : "bg-slate-100 text-[#0E152B] hover:bg-slate-200"
@@ -242,7 +241,7 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
                 </div>
 
                 {/* Card Title */}
-                <h3 className="text-xl sm:text-2xl font-bold text-[#0E152B] font-serif px-1 mb-2 leading-snug group-hover:text-[#DC2626] transition-colors">
+                <h3 className="text-xl sm:text-2xl font-normal text-[#0E152B] font-serif px-1 mb-2 leading-snug group-hover:text-[#DC2626] transition-colors">
                   <Link href={item.link}>{item.title}</Link>
                 </h3>
 
@@ -259,7 +258,7 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
                 href={item.link}
                 className="w-full bg-white rounded-full py-3 sm:py-3.5 px-4 sm:px-5 flex items-center justify-between shadow-xs transition-all duration-300 group-hover:bg-[#DC2626] group-hover:text-white border border-red-50 mt-2"
               >
-                <span className="text-xs sm:text-sm font-bold text-[#0E152B] group-hover:text-white transition-colors">
+                <span className="text-xs sm:text-sm font-medium text-[#0E152B] group-hover:text-white transition-colors">
                   Learn more
                 </span>
                 <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#FEE2E2] text-[#DC2626] flex items-center justify-center group-hover:bg-white group-hover:text-[#DC2626] transition-all">

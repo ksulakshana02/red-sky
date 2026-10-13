@@ -5,7 +5,6 @@ import {
   Calculator,
   Home,
   Building,
-  Sparkles,
   Check,
   Plus,
   Minus,

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Building2, Home, Shield, Hotel, Sparkles, Award } from "lucide-react";
+import { Building2, Home, Shield, Hotel, Leaf, Award } from "lucide-react";
 
 export default function TrustTicker() {
   const partners = [
@@ -11,7 +11,7 @@ export default function TrustTicker() {
     { name: "Horizon Boutique Hotels", icon: Hotel, tag: "Hospitality" },
     { name: "TechCorp Global", icon: Building2, tag: "Office Provider" },
     { name: "Prime Properties", icon: Home, tag: "Real Estate" },
-    { name: "SparkleStandard", icon: Sparkles, tag: "Quality Certified" },
+    { name: "PureBio Standard", icon: Leaf, tag: "Quality Certified" },
     { name: "EcoGreen Cleaners", icon: Award, tag: "Eco Partner" },
   ];
 

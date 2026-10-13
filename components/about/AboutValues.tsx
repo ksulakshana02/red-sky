@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, HeartHandshake, Eye, Sparkles } from "lucide-react";
+import { ShieldCheck, HeartHandshake, Eye, Leaf } from "lucide-react";
 
 export default function AboutValues() {
   const values = [
@@ -9,7 +9,7 @@ export default function AboutValues() {
       title: "Safe, non-toxic products",
       subtitle: "Gentle on your home & family",
       desc: "We exclusively clean with biodegradable botanical formulas. No heavy bleaches, no volatile chemical fumes, and no residues left on floors where children or pets play.",
-      icon: Sparkles,
+      icon: Leaf,
     },
     {
       title: "Honest, upfront pricing",
@@ -37,10 +37,9 @@ export default function AboutValues() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-slate-500 mb-2">
-            <span>Our principles</span>
-            <span className="text-[#DC2626] font-normal">//</span>
-          </div>
+          <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+            Our Principles
+          </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-[#0E152B] leading-[1.25] font-serif tracking-tight">
             The principles behind how we work
           </h2>

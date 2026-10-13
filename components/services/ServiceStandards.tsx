@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, Sparkles, Award, HeartHandshake } from "lucide-react";
+import { ShieldCheck, Leaf, Award, HeartHandshake } from "lucide-react";
 
 export default function ServiceStandards() {
   const standards = [
@@ -13,7 +13,7 @@ export default function ServiceStandards() {
     {
       title: "Hospital-Grade Botanical Sanitizers",
       desc: "Our non-toxic EPA-registered formulas kill 99.9% of bacteria without dangerous bleaches, synthetic fragrances, or harsh fumes. Safe for babies and pets.",
-      icon: Sparkles,
+      icon: Leaf,
     },
     {
       title: "4-Stage HEPA Air Filtration",
@@ -33,10 +33,9 @@ export default function ServiceStandards() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-600 mb-2 sm:mb-3">
-            <span>Our Quality Standards</span>
-            <span className="text-[#DC2626] font-sans font-normal text-sm">//</span>
-          </div>
+          <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+            Our Quality Standards
+          </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
             The RedSky Standard in Every Clean
           </h2>

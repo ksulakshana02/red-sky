@@ -19,10 +19,9 @@ export default function EmergencyCta() {
             {/* Left Box: Emergency Call */}
             <div className="wpo-cta-box bg-[#F9FAFB] p-5 sm:p-8 lg:p-10 rounded-[24px] sm:rounded-[32px] relative overflow-hidden flex flex-col justify-between border border-slate-100 shadow-xs">
               <div className="text-left mb-4 sm:mb-6">
-                <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-600 mb-2.5 sm:mb-3.5">
-                  <span>24/7 Emergency Dispatch</span>
-                  <span className="text-[#DC2626] font-sans font-normal text-sm">//</span>
-                </div>
+                <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+                  24/7 Emergency Dispatch
+                </span>
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-normal text-[#0E152B] leading-[1.2] font-serif tracking-tight">
                   Need Help Fast? We’re Just One Call Away
                 </h2>
@@ -53,10 +52,9 @@ export default function EmergencyCta() {
             {/* Right Box: Features / Workforce Stats */}
             <div className="wpo-cta-box bg-[#F9FAFB] p-5 sm:p-8 lg:p-10 rounded-[24px] sm:rounded-[32px] relative overflow-hidden flex flex-col justify-between border border-slate-100 shadow-xs">
               <div className="text-left mb-4 sm:mb-6">
-                <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-600 mb-2.5 sm:mb-3.5">
-                  <span>Key Advantages</span>
-                  <span className="text-[#DC2626] font-sans font-normal text-sm">//</span>
-                </div>
+                <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+                  Key Advantages
+                </span>
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-normal text-[#0E152B] leading-[1.2] font-serif tracking-tight">
                   Your Space Deserves the Best Here’s Why We’re It
                 </h2>

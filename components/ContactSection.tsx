@@ -51,10 +51,9 @@ export default function ContactSection() {
             <div className="wpo-contact-form-area relative rounded-[24px] sm:rounded-[32px] p-5 sm:p-8 lg:p-12 overflow-hidden border border-red-100 bg-gradient-to-br from-[#FFF5F5] via-[#FFF8F8] to-[#FFF0F0] shadow-sm">
               {/* Title */}
               <div className="wpo-section-title text-left mb-6 sm:mb-8">
-                <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
-                  <span>GET IN TOUCH</span>
-                  <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
-                </div>
+                <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2.5 sm:mb-3.5">
+                  Get In Touch
+                </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
                   Reach Out for a Sparkling Space Today
                 </h2>

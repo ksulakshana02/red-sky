@@ -88,44 +88,51 @@ export default function FaqExplorer() {
               return (
                 <div
                   key={faq.id}
-                  className={`rounded-[22px] overflow-hidden transition-all duration-200 ${
+                  className={`rounded-[20px] sm:rounded-[28px] overflow-hidden transition-all duration-300 ${
                     isOpen
-                      ? "bg-[#FFF8F8] border border-red-200 shadow-2xs"
-                      : "bg-[#FBFBFB] border border-slate-200/70 hover:border-slate-300"
+                      ? "bg-[#FEF2F2]/60 border border-red-200/80 shadow-xs"
+                      : "bg-[#F6F7F5] hover:bg-[#F0F2EE] border border-transparent"
                   }`}
                 >
                   <button
                     type="button"
                     onClick={() => toggleItem(faq.id)}
-                    className="w-full flex items-center justify-between p-4 sm:p-5 lg:p-6 text-left text-sm sm:text-base font-normal font-serif text-[#0E152B] hover:text-[#DC2626] transition-colors cursor-pointer select-none"
+                    className="w-full flex items-center justify-between p-4 sm:p-5 lg:p-6 text-left font-normal text-[#0E152B] text-[15px] sm:text-base lg:text-[17px] hover:text-[#DC2626] transition-colors cursor-pointer select-none"
                   >
                     <div className="pr-4">
                       <span className="text-[11px] uppercase tracking-wider text-slate-500 font-sans block mb-1">
                         {faq.category}
                       </span>
-                      <span className="leading-snug">{faq.question}</span>
+                      <span className="font-medium leading-snug">{faq.question}</span>
                     </div>
 
                     <span
-                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all ${
+                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
                         isOpen
                           ? "bg-[#DC2626] text-white rotate-180"
-                          : "bg-white text-slate-600 border border-slate-200/70 shadow-2xs rotate-0"
+                          : "bg-white text-slate-800 shadow-2xs rotate-0"
                       }`}
                     >
                       {isOpen ? (
-                        <Minus className="w-3.5 h-3.5" />
+                        <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       ) : (
-                        <Plus className="w-3.5 h-3.5" />
+                        <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       )}
                     </span>
                   </button>
 
-                  {isOpen && (
-                    <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-1 text-xs sm:text-[14px] text-[#0E152B]/75 leading-relaxed font-normal border-t border-red-100/70 animate-in fade-in duration-200">
-                      {faq.answer}
+                  {/* Smooth Animated Collapsible Content */}
+                  <div
+                    className={`grid transition-all duration-300 ease-in-out ${
+                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-4 sm:px-5 lg:px-6 pb-5 sm:pb-6 pt-1 text-[13.5px] sm:text-[14.5px] text-[#0E152B]/75 leading-relaxed border-t border-red-100/60 font-normal">
+                        {faq.answer}
+                      </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}

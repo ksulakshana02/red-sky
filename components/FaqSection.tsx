@@ -46,10 +46,9 @@ export default function FaqSection() {
           {/* Left Column: Heading & Contact Card (Pinned to top with self-start so it never moves) */}
           <div className="lg:col-span-5 flex flex-col items-start self-start">
             {/* Subtitle */}
-            <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
-              <span>FAQS</span>
-              <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
-            </div>
+            <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+              Frequently Asked Questions
+            </span>
 
             {/* Main Heading (2 Lines) */}
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight mb-6 sm:mb-8">
@@ -59,19 +58,19 @@ export default function FaqSection() {
             {/* Pastel Contact Card */}
             <div className="w-full max-w-md rounded-[24px] sm:rounded-[32px] p-5 sm:p-7 lg:p-8 bg-[#FEF2F2] border border-red-100/80 shadow-xs">
               <h3 className="text-lg sm:text-xl font-normal text-[#0E152B] font-serif leading-[1.3] mb-4 sm:mb-6">
-                Looking for the cleaning service in New York? Contact us now!
+                Looking for cleaning services? Contact our local dispatch team!
               </h3>
 
               {/* Call Pill Button */}
               <a
-                href="tel:+11805678990"
+                href="tel:+17189044450"
                 className="inline-flex items-center gap-2.5 sm:gap-3 bg-white rounded-full p-1.5 sm:p-2 pr-5 sm:pr-6 shadow-xs hover:shadow-md transition-all duration-200 group border border-red-50"
               >
                 <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#DC2626] text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
                   <Phone className="w-4 h-4 fill-white" />
                 </span>
-                <span className="text-xs sm:text-sm font-bold text-[#0E152B] tracking-tight">
-                  + 1 (180) 567-8990
+                <span className="text-xs sm:text-sm font-medium text-[#0E152B] tracking-tight">
+                  +1 718-904-4450
                 </span>
               </a>
             </div>

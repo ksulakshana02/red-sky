@@ -2,14 +2,14 @@
 
 import React from "react";
 import Image from "next/image";
-import { Check, Sparkles, Users, ShieldAlert, Heart } from "lucide-react";
+import { Check, Leaf, Users, ShieldAlert, Heart } from "lucide-react";
 
 export default function AboutStory() {
   const pillars = [
     {
       title: "Clinical Hygiene, Zero Toxins",
       desc: "We eliminated chlorine bleach and synthetic fragrances entirely. Our EPA-registered botanical sanitizers destroy 99.9% of pathogens while maintaining pristine indoor air quality safe for infants and pets.",
-      icon: Sparkles,
+      icon: Leaf,
     },
     {
       title: "Empowered, Career Professionals",
@@ -32,10 +32,9 @@ export default function AboutStory() {
           
           {/* Left Text Narrative (6 cols) */}
           <div className="lg:col-span-6 text-left max-w-xl">
-            <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-500 mb-2 sm:mb-3">
-              <span>Our Origin &amp; Purpose</span>
-              <span className="text-[#DC2626] font-sans font-normal">//</span>
-            </div>
+            <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+              Our Origin &amp; Purpose
+            </span>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight mb-4">
               Why We Built a Better Kind of Cleaning Company

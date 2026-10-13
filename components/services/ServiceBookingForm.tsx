@@ -56,10 +56,9 @@ export default function ServiceBookingForm() {
               <div>
                 
                 {/* Header */}
-                <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-600 mb-2 sm:mb-3">
-                  <span>Online Reservation</span>
-                  <span className="text-[#DC2626] font-sans font-normal text-sm">//</span>
-                </div>
+                <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+                  Online Reservation
+                </span>
 
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight mb-2">
                   Book Your Cleaning Appointment
@@ -260,7 +259,7 @@ export default function ServiceBookingForm() {
             {/* Top Photo */}
             <div className="relative w-full aspect-[16/10.5] rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-lg border border-slate-100 bg-slate-100 flex-1 min-h-[220px]">
               <Image
-                src="https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-931846460.jpg"
+                src="/images/service-single/img-1.jpg"
                 alt="RedSky Cleaning Team Specialists"
                 fill
                 className="object-cover rounded-[28px] sm:rounded-[36px]"

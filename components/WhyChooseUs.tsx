@@ -35,10 +35,10 @@ export default function WhyChooseUs() {
                 {/* Floating 50+ Team Member Box */}
                 <div className="wpo-choose-left-box absolute left-0 bottom-0 p-1.5 sm:p-2.5 bg-white rounded-tr-[16px] sm:rounded-tr-[20px]">
                   <div className="wrap w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] lg:w-[179px] lg:h-[174px] bg-[#DC2626] text-white rounded-[12px] sm:rounded-[16px] flex flex-col items-center justify-center p-2.5 sm:p-5 text-center shadow-lg shadow-red-500/20">
-                    <h3 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white leading-none font-sans">
+                    <h3 className="text-2xl sm:text-4xl md:text-5xl font-medium text-white leading-none font-sans">
                       50+
                     </h3>
-                    <p className="text-[10px] sm:text-xs lg:text-sm font-bold text-white/95 mt-1 sm:mt-2 leading-tight">
+                    <p className="text-[10px] sm:text-xs lg:text-sm font-medium text-white/95 mt-1 sm:mt-2 leading-tight">
                       Team Members
                     </p>
                   </div>
@@ -51,10 +51,9 @@ export default function WhyChooseUs() {
               <div className="wpo-choose-right-side">
                 {/* Topic & Title */}
                 <div className="text-left mb-6 sm:mb-8">
-                  <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
-                    <span>WHY CHOOSE US</span>
-                    <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
-                  </div>
+                  <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+                    Why Choose Us
+                  </span>
                   <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight mb-3 sm:mb-4">
                     Your Space Deserves the Best, Here’s Why We’re It
                   </h2>

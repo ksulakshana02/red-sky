@@ -30,7 +30,7 @@ export const blogPosts: BlogPost[] = [
     category: "Organizing",
     date: "Feb 10, 2025",
     readTime: "5 min read",
-    image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1417038143-1024x631.jpg",
+    image: "/images/image-gallery/1.jpg",
     excerpt: "Practical tips and systematic room-by-room strategies to declutter, deep clean, and keep your living spaces organized all year round.",
     author: {
       name: "Elena Vance",
@@ -83,7 +83,7 @@ export const blogPosts: BlogPost[] = [
     category: "Eco Cleaning",
     date: "Feb 03, 2025",
     readTime: "4 min read",
-    image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1357162123-1024x631.jpg",
+    image: "/images/image-gallery/2.jpg",
     excerpt: "Discover how plant-derived formulations remove grime and sanitize effectively without harsh bleaches, synthetic perfumes, or volatile fumes.",
     author: {
       name: "Dr. Sophia Lin",
@@ -123,7 +123,7 @@ export const blogPosts: BlogPost[] = [
     category: "Moving Tips",
     date: "Jan 28, 2025",
     readTime: "4 min read",
-    image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1714910979-1024x631.jpg",
+    image: "/images/image-gallery/3.jpg",
     excerpt: "Why sanitizing an empty house or apartment before furniture arrives is the most important step of any smooth relocation.",
     author: {
       name: "Marcus Sterling",
@@ -233,7 +233,7 @@ export const blogPosts: BlogPost[] = [
     category: "Commercial Care",
     date: "Dec 22, 2024",
     readTime: "5 min read",
-    image: "https://clanyeco.vamtam.com/wp-content/uploads/2025/01/GettyImages-1350786822-1.jpg",
+    image: "/images/image-gallery/4.jpg",
     excerpt: "Key touchpoints in open-plan offices, conference rooms, and kitchenettes that require daily sanitization to prevent workplace illness.",
     author: {
       name: "Marcus Sterling",

@@ -41,10 +41,9 @@ export default function ContactFormSection() {
           <div className="lg:col-span-7">
             <div className="rounded-[28px] sm:rounded-[36px] p-6 sm:p-9 lg:p-10 bg-white border border-slate-200/80 shadow-2xs">
               <div className="mb-6">
-                <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-slate-500 mb-2">
-                  <span>Send a message</span>
-                  <span className="text-[#DC2626] font-normal">//</span>
-                </div>
+                <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+                  Send A Message
+                </span>
                 <h2 className="text-2xl sm:text-3xl font-normal font-serif text-[#0E152B] leading-snug mb-2">
                   Tell us about your home or project
                 </h2>

@@ -28,10 +28,9 @@ export default function AboutSection() {
           {/* Left Column: Text & Smooth Animated Accordion (lg:col-span-6) */}
           <div className="lg:col-span-6 flex flex-col items-start max-w-xl">
             {/* Subtitle */}
-            <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0E152B] mb-2.5 sm:mb-3.5">
-              <span>WHO WE ARE</span>
-              <span className="text-[#DC2626] font-sans font-semibold tracking-tighter text-sm">//</span>
-            </div>
+            <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+              Who We Are
+            </span>
 
             {/* Main Title */}
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight mb-3.5 sm:mb-5">
@@ -57,7 +56,7 @@ export default function AboutSection() {
                     <button
                       type="button"
                       onClick={() => setOpenIndex(isOpen ? null : idx)}
-                      className="w-full flex items-center justify-between p-4 sm:p-5 lg:p-6 text-left font-bold text-[#0E152B] text-[15px] sm:text-base lg:text-[17px] hover:text-[#DC2626] transition-colors cursor-pointer select-none"
+                      className="w-full flex items-center justify-between p-4 sm:p-5 lg:p-6 text-left font-medium text-[#0E152B] text-[15px] sm:text-base lg:text-[17px] hover:text-[#DC2626] transition-colors cursor-pointer select-none"
                     >
                       <span>{item.title}</span>
                       <span
@@ -99,7 +98,7 @@ export default function AboutSection() {
             <div>
               <Link
                 href="#booking"
-                className="inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 rounded-full bg-[#DC2626] text-white font-bold text-sm tracking-wide shadow-md hover:bg-[#B91C1C] transition-colors"
+                className="inline-flex items-center justify-center px-7 py-3 sm:px-8 sm:py-3.5 rounded-full bg-[#DC2626] text-white font-medium text-sm tracking-wide shadow-md hover:bg-[#B91C1C] transition-colors"
               >
                 Learn More
               </Link>
@@ -110,7 +109,7 @@ export default function AboutSection() {
           <div className="lg:col-span-6 w-full">
             <div className="relative w-full aspect-[4/3.2] sm:aspect-[4/3] rounded-[24px] sm:rounded-[32px] overflow-hidden shadow-xl border border-slate-100 bg-slate-100">
               <Image
-                src="https://clanyeco.vamtam.com/wp-content/uploads/2025/01/gettyimages-931846502-2048x2048-2-1024x814.jpg"
+                src="/images/about/about-img-2.jpg"
                 alt="Transform Your Space Into a Sanctuary"
                 fill
                 className="object-cover rounded-[24px] sm:rounded-[32px] hover:scale-105 transition-transform duration-700"

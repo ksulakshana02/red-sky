@@ -11,10 +11,9 @@ export default function ContactMap() {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-slate-500 mb-2">
-              <span>Our location</span>
-              <span className="text-[#DC2626] font-normal">//</span>
-            </div>
+            <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2">
+              Our Location
+            </span>
             <h2 className="text-2xl sm:text-3xl font-normal font-serif text-[#0E152B] leading-snug">
               Boston Dispatch Center
             </h2>
