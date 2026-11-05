@@ -1,9 +1,18 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, Mail, Menu, X, ShieldCheck, Star, ArrowRight } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  Menu,
+  X,
+  ShieldCheck,
+  Star,
+  ArrowRight,
+} from "lucide-react";
 import { site, mainNav, reviews } from "@/lib/site";
 import Logo from "@/components/Logo";
 
@@ -35,11 +44,17 @@ export function TopBar() {
           )}
         </div>
         <div className="flex items-center gap-5">
-          <a href={site.phone.href} className="inline-flex items-center gap-1.5 hover:text-accent-200 transition-colors">
+          <a
+            href={site.phone.href}
+            className="inline-flex items-center gap-1.5 hover:text-accent-200 transition-colors"
+          >
             <Phone className="w-3.5 h-3.5" aria-hidden />
             {site.phone.display}
           </a>
-          <a href={`mailto:${site.email}`} className="inline-flex items-center gap-1.5 hover:text-accent-200 transition-colors">
+          <a
+            href={`mailto:${site.email}`}
+            className="inline-flex items-center gap-1.5 hover:text-accent-200 transition-colors"
+          >
             <Mail className="w-3.5 h-3.5" aria-hidden />
             {site.email}
           </a>
@@ -57,7 +72,8 @@ export function Navbar() {
   const navRef = useRef<HTMLElement>(null);
 
   const toggleMenu = () => {
-    if (!open && navRef.current) setMenuTop(navRef.current.getBoundingClientRect().bottom);
+    if (!open && navRef.current)
+      setMenuTop(navRef.current.getBoundingClientRect().bottom);
     setOpen((v) => !v);
   };
 
@@ -101,7 +117,11 @@ export function Navbar() {
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 h-[68px] sm:h-[76px] flex items-center justify-between gap-6">
         {/* Logo */}
-        <Link href="/" aria-label={`${site.name} — home`} className="flex items-center shrink-0">
+        <Link
+          href="/"
+          aria-label={`${site.name} — home`}
+          className="flex items-center shrink-0"
+        >
           <Logo />
         </Link>
 
@@ -115,7 +135,9 @@ export function Navbar() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={`relative px-4 py-2 rounded-full text-[15px] font-medium transition-colors ${
-                    active ? "text-brand-700 bg-brand-50" : "text-ink/80 hover:text-brand-700 hover:bg-surface"
+                    active
+                      ? "text-brand-700 bg-brand-50"
+                      : "text-ink/80 hover:text-brand-700 hover:bg-surface"
                   }`}
                 >
                   {item.label}
@@ -135,8 +157,12 @@ export function Navbar() {
               <Phone className="w-4 h-4" aria-hidden />
             </span>
             <span className="leading-tight">
-              <span className="block text-[11px] uppercase tracking-wider text-muted">Call us</span>
-              <span className="block text-sm font-semibold">{site.phone.display}</span>
+              <span className="block text-[11px] uppercase tracking-wider text-muted">
+                Call us
+              </span>
+              <span className="block text-sm font-semibold">
+                {site.phone.display}
+              </span>
             </span>
           </a>
 
@@ -158,50 +184,69 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <div id="mobile-menu" className="lg:hidden fixed inset-x-0 bottom-0 z-50" style={{ top: menuTop }}>
-          <button
-            type="button"
-            aria-label="Close menu"
-            className="absolute inset-0 bg-ink/30 backdrop-blur-[2px]"
-            onClick={() => setOpen(false)}
-          />
-          <div className="relative bg-white border-t border-line shadow-xl rounded-b-3xl px-4 sm:px-6 pt-4 pb-6 max-h-full overflow-y-auto">
-            <ul className="flex flex-col gap-1">
-              {mainNav.map((item) => {
-                const active = isActive(pathname, item.href);
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      aria-current={active ? "page" : undefined}
-                      onClick={() => setOpen(false)}
-                      className={`flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-medium transition-colors ${
-                        active ? "bg-brand-50 text-brand-700" : "text-ink hover:bg-surface"
-                      }`}
-                    >
-                      {item.label}
-                      {active && <span className="w-2 h-2 rounded-full bg-brand-500" aria-hidden />}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+      {/* Mobile menu — portalled to <body>. When scrolled, the nav uses backdrop-filter,
+          which makes it the containing block for position:fixed children; rendered inside
+          the nav, this panel collapsed to zero height and never appeared. */}
+      {open &&
+        createPortal(
+          <div
+            id="mobile-menu"
+            className="lg:hidden fixed inset-x-0 bottom-0 z-50"
+            style={{ top: menuTop }}
+          >
+            <button
+              type="button"
+              aria-label="Close menu"
+              className="absolute inset-0 bg-ink/30 backdrop-blur-[2px]"
+              onClick={() => setOpen(false)}
+            />
+            <div className="relative bg-white border-t border-line shadow-xl rounded-b-3xl px-4 sm:px-6 pt-4 pb-6 max-h-full overflow-y-auto">
+              <ul className="flex flex-col gap-1">
+                {mainNav.map((item) => {
+                  const active = isActive(pathname, item.href);
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        aria-current={active ? "page" : undefined}
+                        onClick={() => setOpen(false)}
+                        className={`flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-medium transition-colors ${
+                          active
+                            ? "bg-brand-50 text-brand-700"
+                            : "text-ink hover:bg-surface"
+                        }`}
+                      >
+                        {item.label}
+                        {active && (
+                          <span
+                            className="w-2 h-2 rounded-full bg-brand-500"
+                            aria-hidden
+                          />
+                        )}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
 
-            <div className="mt-4 pt-4 border-t border-line grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <Link href="/quote" onClick={() => setOpen(false)} className="btn btn-primary w-full">
-                Get a Free Quote
-                <ArrowRight className="w-4 h-4" aria-hidden />
-              </Link>
-              <a href={site.phone.href} className="btn btn-secondary w-full">
-                <Phone className="w-4 h-4" aria-hidden />
-                Call {site.phone.display}
-              </a>
+              <div className="mt-4 pt-4 border-t border-line grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <Link
+                  href="/quote"
+                  onClick={() => setOpen(false)}
+                  className="btn btn-primary w-full"
+                >
+                  Get a Free Quote
+                  <ArrowRight className="w-4 h-4" aria-hidden />
+                </Link>
+                <a href={site.phone.href} className="btn btn-secondary w-full">
+                  <Phone className="w-4 h-4" aria-hidden />
+                  Call {site.phone.display}
+                </a>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </nav>
   );
 }
