@@ -49,8 +49,8 @@ export default function BlogGrid() {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] font-medium transition-all cursor-pointer ${
                   isActive
-                    ? "bg-[#DC2626] text-white shadow-xs"
-                    : "bg-[#F8FAFC] text-[#0E152B]/80 hover:bg-slate-100 border border-slate-200/80"
+                    ? "bg-brand-600 text-white shadow-xs"
+                    : "bg-surface text-ink/80 hover:bg-slate-100 border border-slate-200/80"
                 }`}
               >
                 {cat === "All" ? "All Articles" : cat}
@@ -68,7 +68,7 @@ export default function BlogGrid() {
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
             className="mb-10 sm:mb-14"
           >
-            <div className="group rounded-[28px] sm:rounded-[36px] bg-[#FFF8F8] border border-red-100/90 overflow-hidden shadow-2xs hover:shadow-md transition-all duration-300">
+            <div className="group rounded-[28px] sm:rounded-[36px] bg-brand-50 border border-brand-100/90 overflow-hidden shadow-2xs hover:shadow-md transition-all duration-300">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center p-5 sm:p-8 lg:p-10">
                 
                 {/* Photo (7 cols on lg) */}
@@ -93,7 +93,7 @@ export default function BlogGrid() {
                   <div>
                     {/* Meta */}
                     <div className="flex items-center gap-2.5 text-xs text-slate-500 mb-3">
-                      <span className="px-3 py-1 rounded-full bg-white border border-red-100 text-[#DC2626] font-medium text-[11px]">
+                      <span className="px-3 py-1 rounded-full bg-white border border-brand-100 text-brand-600 font-medium text-[11px]">
                         {featuredPost.category}
                       </span>
                       <span>•</span>
@@ -109,20 +109,20 @@ export default function BlogGrid() {
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-xl sm:text-2xl lg:text-[28px] font-normal font-serif text-[#0E152B] leading-[1.25] mb-3 group-hover:text-[#DC2626] transition-colors">
+                    <h2 className="text-xl sm:text-2xl lg:text-[28px] font-normal font-serif text-ink leading-[1.25] mb-3 group-hover:text-brand-600 transition-colors">
                       <Link href={`/blog/${featuredPost.slug}`}>
                         {featuredPost.title}
                       </Link>
                     </h2>
 
                     {/* Excerpt */}
-                    <p className="text-xs sm:text-sm text-[#0E152B]/75 leading-relaxed font-normal mb-6">
+                    <p className="text-xs sm:text-sm text-ink/75 leading-relaxed font-normal mb-6">
                       {featuredPost.excerpt}
                     </p>
                   </div>
 
                   {/* Author Byline & Read Link */}
-                  <div className="pt-4 border-t border-red-100/70 flex items-center justify-between">
+                  <div className="pt-4 border-t border-brand-100/70 flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
                       <div className="relative w-8 h-8 rounded-full overflow-hidden bg-slate-100 border border-slate-200">
                         <Image
@@ -133,7 +133,7 @@ export default function BlogGrid() {
                         />
                       </div>
                       <div className="text-xs">
-                        <span className="font-medium text-[#0E152B] block leading-tight">
+                        <span className="font-medium text-ink block leading-tight">
                           {featuredPost.author.name}
                         </span>
                         <span className="text-slate-500 text-[11px]">
@@ -144,7 +144,7 @@ export default function BlogGrid() {
 
                     <Link
                       href={`/blog/${featuredPost.slug}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-medium text-[#DC2626] hover:text-[#B91C1C] transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:text-brand-700 transition-colors"
                     >
                       <span>Read guide</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -168,7 +168,7 @@ export default function BlogGrid() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5, delay: (idx % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="group flex flex-col justify-between bg-white rounded-[26px] p-4 sm:p-5 border border-slate-200/80 hover:border-red-200 hover:shadow-md transition-all duration-300"
+                className="group flex flex-col justify-between bg-white rounded-[26px] p-4 sm:p-5 border border-slate-200/80 hover:border-brand-200 hover:shadow-md transition-all duration-300"
               >
                 <div>
                   {/* Photo */}
@@ -187,7 +187,7 @@ export default function BlogGrid() {
 
                   {/* Meta */}
                   <div className="flex items-center gap-2 text-xs text-slate-500 mb-2.5">
-                    <span className="font-medium text-[#DC2626] text-[11px] uppercase tracking-wider">
+                    <span className="font-medium text-brand-600 text-[11px] uppercase tracking-wider">
                       {post.category}
                     </span>
                     <span>•</span>
@@ -201,14 +201,14 @@ export default function BlogGrid() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base sm:text-lg font-normal font-serif text-[#0E152B] leading-snug mb-2 group-hover:text-[#DC2626] transition-colors">
+                  <h3 className="text-base sm:text-lg font-normal font-serif text-ink leading-snug mb-2 group-hover:text-brand-600 transition-colors">
                     <Link href={`/blog/${post.slug}`}>
                       {post.title}
                     </Link>
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-xs sm:text-[13px] text-[#0E152B]/70 leading-relaxed font-normal mb-4 line-clamp-2">
+                  <p className="text-xs sm:text-[13px] text-ink/70 leading-relaxed font-normal mb-4 line-clamp-2">
                     {post.excerpt}
                   </p>
                 </div>
@@ -224,14 +224,14 @@ export default function BlogGrid() {
                         className="object-cover"
                       />
                     </div>
-                    <span className="text-xs text-[#0E152B]/80 font-normal">
+                    <span className="text-xs text-ink/80 font-normal">
                       {post.author.name}
                     </span>
                   </div>
 
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-flex items-center gap-1 text-xs font-medium text-[#DC2626] hover:text-[#B91C1C] transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-medium text-brand-600 hover:text-brand-700 transition-colors"
                   >
                     <span>Read</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -254,20 +254,20 @@ export default function BlogGrid() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 sm:mt-16 rounded-[24px] sm:rounded-[32px] p-6 sm:p-9 bg-[#FFF8F8] border border-red-100 flex flex-col sm:flex-row items-center justify-between gap-6"
+          className="mt-12 sm:mt-16 rounded-[24px] sm:rounded-[32px] p-6 sm:p-9 bg-brand-50 border border-brand-100 flex flex-col sm:flex-row items-center justify-between gap-6"
         >
           <div className="text-left max-w-xl">
-            <h3 className="text-lg sm:text-xl font-normal font-serif text-[#0E152B] mb-1">
+            <h3 className="text-lg sm:text-xl font-normal font-serif text-ink mb-1">
               Prefer professional hands to handle the cleaning?
             </h3>
-            <p className="text-xs sm:text-sm text-[#0E152B]/70 font-normal leading-relaxed">
+            <p className="text-xs sm:text-sm text-ink/70 font-normal leading-relaxed">
               Book our vetted, non-toxic cleaning specialists for your home or office in under 60 seconds.
             </p>
           </div>
 
           <Link
-            href="/services#service-booking"
-            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium text-xs sm:text-sm transition-colors shadow-xs"
+            href="/quote"
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-medium text-xs sm:text-sm transition-colors shadow-xs"
           >
             <span>Book a cleaning</span>
             <ArrowRight className="w-4 h-4" />

@@ -36,7 +36,7 @@ export const servicesData: ServiceCardData[] = [
           <path d="M13.44 17.07v5h-6v-5h6Zm-.18.18H7.62v4.64h5.64v-4.64Z" fill="#000" fillRule="nonzero" />
           <path fill="#FFF" d="M18.44 17.07h6v5h-6z" />
           <path d="M24.44 17.07v5h-6v-5h6Zm-.18.18h-5.64v4.64h5.64v-4.64ZM17.03 35c-.02 0-.03-.08-.03-.16l.03-4.69.01-.1c0-.04.02-.05.03-.05.02 0 .03.08.03.16l-.03 4.68-.01.11c0 .03-.02.05-.03.05ZM15.04 36l-.03-.05a.56.56 0 0 1-.01-.13l.01-2.65c0-.04 0-.09.02-.12 0-.03.02-.05.03-.05l.03.05.01.13-.01 2.65c0 .1-.02.17-.05.17Z" fill="#000" fillRule="nonzero" />
-          <path fill="#DC2626" d="m16 0 16 15H0z" />
+          <path fill="var(--color-brand-600)" d="m16 0 16 15H0z" />
           <path d="m16 0 16 15H0L16 0Zm0 .5L.91 14.63H31.1L16 .49Z" fill="#000" fillRule="nonzero" />
         </g>
       </svg>
@@ -70,7 +70,7 @@ export const servicesData: ServiceCardData[] = [
           <path d="M6.1 5v24h-3V5h3Zm-.24.23H3.32v23.54h2.54V5.23Z" fill="#000" fillRule="nonzero" />
           <path fill="#FFF" d="M39.1 5h3v24h-3z" />
           <path d="M42.1 5v24h-3V5h3Zm-.24.23h-2.54v23.54h2.54V5.23Z" fill="#000" fillRule="nonzero" />
-          <path fill="#DC2626" d="M.1 0h45l-1 7h-43z" />
+          <path fill="var(--color-brand-600)" d="M.1 0h45l-1 7h-43z" />
           <path d="m45.1 0-1 7h-43l-1-7h45Zm-.27.23H.36l.93 6.54h42.6l.94-6.54Z" fill="#000" fillRule="nonzero" />
         </g>
       </svg>
@@ -94,7 +94,7 @@ export const servicesData: ServiceCardData[] = [
   //         <path d="M43.07 5.16c.56 0 1.01.45 1.01 1V25.1h-4.96V6.17c0-.56.45-1.01 1-1.01h2.95Zm0 .23h-2.94a.78.78 0 0 0-.78.78v18.68h4.5V6.17c0-.4-.3-.72-.68-.77h-.1Z" fill="#000" fillRule="nonzero" />
   //         <path d="M38.2 16.3c0-1.22-1-2.22-2.24-2.22H9.05c-1.24 0-2.25 1-2.25 2.23V19h26.72v.91H6.8v5.17h31.4v-5.17h-4.68v-.9h4.68V16.3Z" fill="#FFF" />
   //         <path d="M38.2 19.92v5.17H6.8v-5.17h31.4Zm-.11.11H6.9v4.95H38.1v-4.95Zm-2.13-5.95c1.23 0 2.24 1 2.24 2.23V19H6.8v-2.7c0-1.23 1-2.23 2.25-2.23h26.9Zm0 .11H9.05c-1.18 0-2.14.95-2.14 2.12v2.6H38.1v-2.6c0-1.17-.96-2.12-2.13-2.12Z" fill="#000" fillRule="nonzero" />
-  //         <path d="M38.2 16.3c0-1.22-1-2.22-2.24-2.22H9.05c-1.24 0-2.25 1-2.25 2.23V19h26.72v.91H6.8h31.4-4.68v-.9h4.68V16.3Z" fill="#DC2626" />
+  //         <path d="M38.2 16.3c0-1.22-1-2.22-2.24-2.22H9.05c-1.24 0-2.25 1-2.25 2.23V19h26.72v.91H6.8h31.4-4.68v-.9h4.68V16.3Z" fill="var(--color-brand-600)" />
   //         <path d="M35.96 14.08c1.23 0 2.24 1 2.24 2.23V19H6.8v-2.7c0-1.23 1-2.23 2.25-2.23h26.9Zm0 .11H9.05c-1.18 0-2.14.95-2.14 2.12v2.6H38.1v-2.6c0-1.17-.96-2.12-2.13-2.12Z" fill="#000" fillRule="nonzero" />
   //         <path d="M38.2 4.47C38.2 2.5 36.6.9 34.62.9h-8.08a3.57 3.57 0 0 0-3.58 3.56v8.7h13c.87 0 1.66.35 2.24.93V4.47Z" fill="#FFF" />
   //         <path d="M34.62.91c1.97 0 3.58 1.6 3.58 3.56v9.63a3.16 3.16 0 0 0-2.24-.93h-13v-8.7c0-1.97 1.6-3.56 3.58-3.56h8.08Zm0 .24h-8.08a3.34 3.34 0 0 0-3.35 3.32v8.46h12.77c.68 0 1.34.2 1.89.58l.11.08V4.47c0-1.77-1.4-3.22-3.16-3.32h-.18Z" fill="#000" fillRule="nonzero" />
@@ -125,9 +125,9 @@ export const servicesData: ServiceCardData[] = [
   //         <path d="M27.4 4.87c1.56-1.66 3.09-2 3.84-1.88 1.25.2 1.71 2.4-1.03 5.65a74.85 74.85 0 0 1-3.91 4.33c-2.52 2.53-5.46 4.62-7.56 7.54-1.54 2.17-3 4.56-3.38 7.24-.18 1.23.2 2.71.68 3.86.48 1.15 1.6 2.05 2.75 1.93.62-.06 1.28-.62 1.12-1.25a4.45 4.45 0 0 0-.8-1.52c-2-1.78-.33-5.72 1.15-7.7 2.57-3.47 6.15-5.98 8.9-9.3 1.18-1.43 4.25-4.9 4.98-6.62 1.16-2.76.53-5.13-1.38-6.54-2.04-1.5-5.5 1.23-7.09 2.28.72.72.95 1.33 1.74 1.98Z" fill="#FFF" fillRule="nonzero" />
   //         <path d="M18.58 33.67c-1.2 0-2.23-.98-2.66-2.02-.28-.67-.91-2.39-.7-3.92.41-2.8 1.96-5.26 3.41-7.3 1.4-1.94 3.19-3.54 4.92-5.09.88-.8 1.8-1.61 2.65-2.47a70.85 70.85 0 0 0 3.9-4.32c1.87-2.2 2.2-3.9 1.89-4.75a.98.98 0 0 0-.77-.68c-.64-.1-2.13.17-3.72 1.84a.14.14 0 0 1-.18 0c-.4-.34-.75-.74-1.05-1.17-.21-.3-.44-.57-.69-.84a.14.14 0 0 1-.03-.1c0-.05.03-.08.06-.1l.58-.4c1.79-1.23 4.77-3.28 6.67-1.88 2.03 1.5 2.55 4 1.41 6.7-.62 1.48-2.93 4.22-4.3 5.84-.28.32-.5.6-.69.83a48.07 48.07 0 0 1-4.12 4.22 40.1 40.1 0 0 0-4.8 5.08c-1.58 2.14-2.99 5.88-1.15 7.51.32.28.75 1.24.84 1.6.07.27.01.56-.16.79a1.56 1.56 0 0 1-1.31.63ZM30.94 2.83a2 2 0 0 1 .32.02c.46.08.84.41.98.86.44 1.19-.27 3.06-1.92 5.02a73.86 73.86 0 0 1-3.92 4.34c-.86.86-1.78 1.68-2.66 2.48a31.99 31.99 0 0 0-4.88 5.05c-1.44 2-2.96 4.43-3.36 7.17-.21 1.46.4 3.12.68 3.77.42 1.01 1.46 1.97 2.61 1.84.36-.04.68-.23.89-.51a.7.7 0 0 0 .12-.57 4.35 4.35 0 0 0-.76-1.46c-2.08-1.84-.41-5.81 1.12-7.88a40.3 40.3 0 0 1 4.82-5.12 47.48 47.48 0 0 0 4.09-4.19l.69-.83c1.37-1.62 3.66-4.33 4.27-5.76 1.1-2.57.6-4.96-1.33-6.38-1.74-1.28-4.63.7-6.35 1.88l-.45.32c.23.26.41.5.59.74.26.38.57.73.91 1.04 1.34-1.36 2.67-1.83 3.54-1.83Z" fill="#000" fillRule="nonzero" />
   //         <path d="M21.25 35.16c-.69-.02-1.42-.06-1.96-.51-1.05-.88-.7-2.64-.12-3.9 3.07-6.57 10.54-10.46 17.32-9.01 1.39.3 2.81.82 3.74 1.98.77.95 1.11 2.2 1.32 3.44.4 2.27.42 4.58.08 6.86-.02.35-.15.7-.36.98-.31.33-.8.36-1.24.36-2.38.03-14.77-.08-18.78-.2Z" fill="#FFF" fillRule="nonzero" />
-  //         <path d="M33.46 30.6c-2 .38-2.4 2.63-1.9 4.04.4 1.15 1.58 2.26 3.37 1.78 2.11-.57 2.13-2.78 1.9-3.76-.5-2.15-2.43-2.24-3.37-2.06Z" fill="#DC2626" />
-  //         <path d="M33.69 31.58c-1.34.25-1.6 1.75-1.27 2.7.27.76 1.05 1.5 2.25 1.18 1.4-.38 1.42-1.85 1.27-2.5-.34-1.44-1.63-1.5-2.25-1.38Z" fill="#DC2626" />
-  //         <path d="M4.04 15.68c.67-.75 1.84-.8 2.81-.4.8.26 1.5.73 2.06 1.35 1.3 1.31 2.5 2.71 3.6 4.19 1.38 1.87 2.22 3.49.71 5.51L4.04 15.68Z" fill="#DC2626" />
+  //         <path d="M33.46 30.6c-2 .38-2.4 2.63-1.9 4.04.4 1.15 1.58 2.26 3.37 1.78 2.11-.57 2.13-2.78 1.9-3.76-.5-2.15-2.43-2.24-3.37-2.06Z" fill="var(--color-brand-600)" />
+  //         <path d="M33.69 31.58c-1.34.25-1.6 1.75-1.27 2.7.27.76 1.05 1.5 2.25 1.18 1.4-.38 1.42-1.85 1.27-2.5-.34-1.44-1.63-1.5-2.25-1.38Z" fill="var(--color-brand-600)" />
+  //         <path d="M4.04 15.68c.67-.75 1.84-.8 2.81-.4.8.26 1.5.73 2.06 1.35 1.3 1.31 2.5 2.71 3.6 4.19 1.38 1.87 2.22 3.49.71 5.51L4.04 15.68Z" fill="var(--color-brand-600)" />
   //       </g>
   //     </svg>
   //   ),
@@ -142,7 +142,7 @@ export const servicesData: ServiceCardData[] = [
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 34 30">
         <rect x="2" y="4" width="30" height="22" rx="3" fill="#FFF" stroke="#000" strokeWidth="2" />
-        <path d="M6 10h22M6 15h22M6 20h22" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" strokeDasharray="2 3" />
+        <path d="M6 10h22M6 15h22M6 20h22" stroke="var(--color-brand-600)" strokeWidth="2" strokeLinecap="round" strokeDasharray="2 3" />
       </svg>
     ),
   },
@@ -156,7 +156,7 @@ export const servicesData: ServiceCardData[] = [
   //   icon: (
   //     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="30" viewBox="0 0 36 30">
   //       <rect x="3" y="6" width="30" height="20" rx="2" fill="#FFF" stroke="#000" strokeWidth="2" />
-  //       <path d="M8 12h5v10H8zM16 12h5v10h-5zM24 12h4v10h-4z" fill="#DC2626" />
+  //       <path d="M8 12h5v10H8zM16 12h5v10h-5zM24 12h4v10h-4z" fill="var(--color-brand-600)" />
   //       <path d="M12 2h12v4H12z" fill="#FFF" stroke="#000" strokeWidth="2" />
   //     </svg>
   //   ),
@@ -192,10 +192,10 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
           className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10"
         >
           <div className="text-left">
-            <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+            <span className="eyebrow mb-2 sm:mb-3">
               Our Services
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-ink leading-[1.18] font-serif tracking-tight">
               Here’s What We Can<br />Do for You
             </h2>
           </div>
@@ -216,8 +216,8 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
                     onClick={() => setActiveCategory(tab.id as any)}
                     className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
                       isActive
-                        ? "bg-[#DC2626] text-white shadow-xs"
-                        : "bg-slate-100 text-[#0E152B] hover:bg-slate-200"
+                        ? "bg-brand-600 text-white shadow-xs"
+                        : "bg-slate-100 text-ink hover:bg-slate-200"
                     }`}
                   >
                     {tab.label}
@@ -238,7 +238,7 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.45, delay: idx * 0.08, ease: "easeOut" }}
               whileHover={{ y: -6 }}
-              className="group relative rounded-[24px] sm:rounded-[32px] p-4 sm:p-5 pb-5 sm:pb-6 flex flex-col justify-between overflow-hidden transition-shadow duration-300 hover:shadow-xl bg-gradient-to-b from-[#FFD6D6] via-[#FFEAEB]/85 to-[#FFF5F5] border-t-4 border-[#DC2626] border-x border-b border-red-100/60 shadow-sm"
+              className="group relative rounded-[24px] sm:rounded-[32px] p-4 sm:p-5 pb-5 sm:pb-6 flex flex-col justify-between overflow-hidden transition-shadow duration-300 hover:shadow-xl bg-gradient-to-b from-brand-200 via-brand-100/85 to-brand-50 border-t-4 border-brand-600 border-x border-b border-brand-100/60 shadow-sm"
             >
               <div>
                 {/* Top Image Box */}
@@ -253,13 +253,13 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
                 </div>
 
                 {/* Card Title */}
-                <h3 className="text-xl sm:text-2xl font-normal text-[#0E152B] font-serif px-1 mb-2 leading-snug group-hover:text-[#DC2626] transition-colors">
+                <h3 className="text-xl sm:text-2xl font-normal text-ink font-serif px-1 mb-2 leading-snug group-hover:text-brand-600 transition-colors">
                   <Link href={item.link}>{item.title}</Link>
                 </h3>
 
                 {/* Description */}
                 {item.desc && (
-                  <p className="text-xs sm:text-sm text-[#0E152B]/75 leading-relaxed px-1 mb-5">
+                  <p className="text-xs sm:text-sm text-ink/75 leading-relaxed px-1 mb-5">
                     {item.desc}
                   </p>
                 )}
@@ -268,12 +268,12 @@ export default function ServicesSection({ showAll = false }: ServicesSectionProp
               {/* Bottom "Learn more" Button */}
               <Link
                 href={item.link}
-                className="w-full bg-white rounded-full py-3 sm:py-3.5 px-4 sm:px-5 flex items-center justify-between shadow-xs transition-all duration-300 group-hover:bg-[#DC2626] group-hover:text-white border border-red-50 mt-2"
+                className="w-full bg-white rounded-full py-3 sm:py-3.5 px-4 sm:px-5 flex items-center justify-between shadow-xs transition-all duration-300 group-hover:bg-brand-600 group-hover:text-white border border-brand-50 mt-2"
               >
-                <span className="text-xs sm:text-sm font-medium text-[#0E152B] group-hover:text-white transition-colors">
+                <span className="text-xs sm:text-sm font-medium text-ink group-hover:text-white transition-colors">
                   Learn more
                 </span>
-                <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#FEE2E2] text-[#DC2626] flex items-center justify-center group-hover:bg-white group-hover:text-[#DC2626] transition-all">
+                <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center group-hover:bg-white group-hover:text-brand-600 transition-all">
                   <svg
                     width="14"
                     height="14"

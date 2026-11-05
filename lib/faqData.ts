@@ -83,6 +83,18 @@ export const faqData: FaqItem[] = [
     question: "Is tipping expected or required?",
     answer: "Tipping is completely optional and never expected. If your cleaning team went above and beyond, tips can be given in cash or added to your electronic payment, and 100% goes directly to your technicians.",
   },
+  {
+    id: "pr-5",
+    category: "Pricing & Payments",
+    question: "Is the estimated price guaranteed, or could it change on arrival?",
+    answer: "The estimate is accurate based on the details you entered (rooms, size, and cleaning tier). As long as the property matches, your rate is locked in. If a property needs unusual heavy restoration, our cleaner will discuss options with you before starting work.",
+  },
+  {
+    id: "pr-6",
+    category: "Pricing & Payments",
+    question: "How do the recurring frequency discounts work?",
+    answer: "Choose weekly (20% off), fortnightly (15% off), or monthly (10% off) and the discount applies automatically to every scheduled visit. There are no lock-in contracts — pause or adjust your schedule any time.",
+  },
 
   // Home Access & Keys
   {

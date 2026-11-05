@@ -18,16 +18,16 @@ export default function ContactMap() {
           className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8"
         >
           <div>
-            <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2">
+            <span className="eyebrow mb-2">
               Our Location
             </span>
-            <h2 className="text-2xl sm:text-3xl font-normal font-serif text-[#0E152B] leading-snug">
+            <h2 className="text-2xl sm:text-3xl font-normal font-serif text-ink leading-snug">
               Boston Dispatch Center
             </h2>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-[#0E152B]/75 font-normal">
-            <MapPin className="w-4 h-4 text-[#DC2626]" />
+          <div className="flex items-center gap-2 text-xs text-ink/75 font-normal">
+            <MapPin className="w-4 h-4 text-brand-600" />
             <span>72 Kneeland St, Suite 305, Boston, MA 02111</span>
           </div>
         </motion.div>
@@ -53,14 +53,14 @@ export default function ContactMap() {
             <span className="text-[11px] uppercase tracking-wider text-slate-500 font-medium block mb-1">
               Main Office
             </span>
-            <p className="text-xs font-normal text-[#0E152B] leading-relaxed">
+            <p className="text-xs font-normal text-ink leading-relaxed">
               72 Kneeland St, Suite 305<br />Boston, MA 02111
             </p>
             <a
               href="https://maps.google.com/?q=72+Kneeland+St+Boston+MA+02111"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-[#DC2626] font-medium hover:underline mt-2"
+              className="inline-flex items-center gap-1.5 text-xs text-brand-600 font-medium hover:underline mt-2"
             >
               <Navigation className="w-3 h-3" />
               <span>Get directions</span>

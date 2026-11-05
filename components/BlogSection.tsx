@@ -54,10 +54,10 @@ export default function BlogSection() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-center max-w-2xl mx-auto mb-8 sm:mb-12"
         >
-          <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+          <span className="eyebrow mb-2 sm:mb-3">
             From Our Blog
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-ink leading-[1.18] font-serif tracking-tight">
             Cleaning Tips From Pros
           </h2>
         </motion.div>
@@ -90,7 +90,7 @@ export default function BlogSection() {
 
               {/* Meta: Category & Date */}
               <div className="flex items-center gap-2.5 sm:gap-3 px-1 mb-2.5 sm:mb-3 text-xs sm:text-sm">
-                <span className="font-medium uppercase tracking-wider text-[#DC2626]">
+                <span className="font-medium uppercase tracking-wider text-brand-600">
                   {post.category}
                 </span>
                 <span className="text-slate-300">•</span>
@@ -101,19 +101,19 @@ export default function BlogSection() {
               </div>
 
               {/* Post Title */}
-              <h3 className="text-lg sm:text-xl md:text-[22px] font-normal text-[#0E152B] font-serif leading-snug px-1 mb-2 sm:mb-3 group-hover:text-[#DC2626] transition-colors">
+              <h3 className="text-lg sm:text-xl md:text-[22px] font-normal text-ink font-serif leading-snug px-1 mb-2 sm:mb-3 group-hover:text-brand-600 transition-colors">
                 <Link href={post.link}>{post.title}</Link>
               </h3>
 
               {/* Post Excerpt */}
-              <p className="text-[13.5px] sm:text-[14.5px] text-[#0E152B]/70 leading-relaxed px-1 mb-4 sm:mb-5 line-clamp-2 font-normal">
+              <p className="text-[13.5px] sm:text-[14.5px] text-ink/70 leading-relaxed px-1 mb-4 sm:mb-5 line-clamp-2 font-normal">
                 {post.excerpt}
               </p>
 
               {/* Read More Link */}
               <Link
                 href={post.link}
-                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[#0E152B] group-hover:text-[#DC2626] transition-colors px-1 mt-auto"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-ink group-hover:text-brand-600 transition-colors px-1 mt-auto"
               >
                 <span>Read More</span>
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
@@ -132,7 +132,7 @@ export default function BlogSection() {
         >
           <Link
             href="/blog"
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium text-xs sm:text-sm tracking-wide shadow-md transition-all duration-200"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-medium text-xs sm:text-sm tracking-wide shadow-md transition-all duration-200"
           >
             More Tips
           </Link>

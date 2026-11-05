@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import ContactHero from "@/components/contact/ContactHero";
-import ContactMethods from "@/components/contact/ContactMethods";
 import ContactFormSection from "@/components/contact/ContactFormSection";
 import ContactMap from "@/components/contact/ContactMap";
-import ContactFaq from "@/components/contact/ContactFaq";
+import FaqPreview from "@/components/FaqPreview";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -15,28 +14,18 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="page-wrapper bg-white text-[#0E152B] font-sans antialiased min-h-screen flex flex-col selection:bg-red-500 selection:text-white">
-      {/* Global Header */}
+    <div className="page-wrapper bg-white text-ink font-sans antialiased min-h-screen flex flex-col">
       <Header />
-
-      {/* Dedicated Contact Hero */}
+      {/* Hero already carries phone, email and hours — no separate "methods" grid */}
       <ContactHero />
-
-      {/* 4 Direct Contact Methods */}
-      <ContactMethods />
-
-      {/* Interactive Form & Coverage Area Info */}
       <ContactFormSection />
-
-      {/* Boston Headquarters Location & Map */}
       <ContactMap />
-
-      {/* Common Pre-Contact Questions */}
-      <ContactFaq />
-
-      {/* Global Footer */}
+      <FaqPreview
+        ids={["g-2", "g-3", "g-7", "g-6"]}
+        eyebrow="Before you get in touch"
+        title="You might be asking"
+      />
       <Footer />
     </div>
   );
 }
-

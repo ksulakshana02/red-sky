@@ -1,53 +1,56 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Phone, Calendar, ArrowUp } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { Phone, ArrowUp, ArrowRight } from "lucide-react";
+import { site } from "@/lib/site";
 
+/**
+ * Mobile: sticky bottom action bar (call + quote) — the two things
+ * visitors most want, always one tap away.
+ * Desktop: a quiet back-to-top button once the user has scrolled.
+ */
 export default function FloatingCta() {
-  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 500);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
-      {/* Scroll to Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          className="w-11 h-11 rounded-full bg-slate-900 text-white shadow-xl flex items-center justify-center hover:bg-[#DC2626] transition-all hover:scale-105 border border-slate-700"
-          aria-label="Scroll to top"
-        >
-          <ArrowUp className="w-5 h-5" />
-        </button>
-      )}
+    <>
+      {/* Desktop back-to-top */}
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Back to top"
+        className={`hidden md:flex fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-white border border-line text-brand-700 shadow-[var(--shadow-lift)] items-center justify-center hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-all duration-300 ${
+          scrolled ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+        }`}
+      >
+        <ArrowUp className="w-5 h-5" />
+      </button>
 
-      {/* Floating Action Pill */}
-      <div className="hidden sm:flex items-center gap-2 bg-slate-900/95 backdrop-blur-md text-white p-1.5 rounded-full shadow-2xl border border-slate-700">
-        <a
-          href="tel:+887869587496"
-          className="flex items-center gap-2 px-3.5 py-2 rounded-full hover:bg-slate-800 text-xs font-bold transition-colors"
-        >
-          <Phone className="w-3.5 h-3.5 text-red-400" />
-          <span>Call Us</span>
-        </a>
-        <a
-          href="#booking"
-          className="flex items-center gap-2 bg-[#DC2626] hover:bg-[#B91C1C] text-white px-4 py-2 rounded-full text-xs font-bold transition-all shadow-md"
-        >
-          <Calendar className="w-3.5 h-3.5" />
-          <span>Book Online</span>
-        </a>
+      {/* Mobile action bar */}
+      <div
+        className={`md:hidden fixed inset-x-0 bottom-0 z-40 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 bg-white/95 backdrop-blur-md border-t border-line shadow-[0_-8px_24px_-12px_rgb(11_27_51/0.2)] transition-transform duration-300 ${
+          scrolled ? "translate-y-0" : "translate-y-full"
+        }`}
+      >
+        <div className="grid grid-cols-2 gap-2.5">
+          <a href={site.phone.href} className="btn btn-secondary w-full">
+            <Phone className="w-4 h-4 text-brand-600" aria-hidden />
+            Call now
+          </a>
+          <Link href="/quote" className="btn btn-primary w-full">
+            Free quote
+            <ArrowRight className="w-4 h-4" aria-hidden />
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

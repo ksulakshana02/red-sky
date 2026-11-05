@@ -42,7 +42,7 @@ export default function ServiceSinglePage() {
   ];
 
   return (
-    <div className="page-wrapper bg-white text-[#032532] font-sans antialiased min-h-screen flex flex-col">
+    <div className="page-wrapper bg-white text-body font-sans antialiased min-h-screen flex flex-col">
       {/* Start header */}
       <Header />
 
@@ -68,7 +68,7 @@ export default function ServiceSinglePage() {
                 </div>
 
                 {/* Main Heading & Intro */}
-                <h2 className="text-2xl sm:text-3xl lg:text-[28px] font-serif font-medium text-[#0E152B] mb-5">
+                <h2 className="text-2xl sm:text-3xl lg:text-[28px] font-serif font-medium text-ink mb-5">
                   Residential Cleaning
                 </h2>
                 <p className="text-base text-[#6B7280] leading-[1.9] mb-10 max-w-[800px]">
@@ -76,7 +76,7 @@ export default function ServiceSinglePage() {
                 </p>
 
                 {/* Subtitle & Paragraph */}
-                <h3 className="text-xl sm:text-2xl font-serif font-medium text-[#0E152B] mb-5 leading-snug">
+                <h3 className="text-xl sm:text-2xl font-serif font-medium text-ink mb-5 leading-snug">
                   Sed ut perspiciatis unde omnis iste natus et
                 </h3>
                 <p className="text-base text-[#6B7280] leading-[1.9] mb-10 max-w-[800px]">
@@ -84,7 +84,7 @@ export default function ServiceSinglePage() {
                 </p>
 
                 {/* Video Wrap */}
-                <div className="video-wrap flex flex-col md:flex-row items-center gap-8 mb-10 bg-[#F3F5EC] p-6 sm:p-8 rounded-[20px]">
+                <div className="video-wrap flex flex-col md:flex-row items-center gap-8 mb-10 bg-surface p-6 sm:p-8 rounded-[20px]">
                   {/* Video Thumbnail */}
                   <div className="video-img relative max-w-[380px] w-full aspect-[4/3] rounded-[14px] overflow-hidden shrink-0 shadow-sm">
                     <Image
@@ -96,7 +96,7 @@ export default function ServiceSinglePage() {
                     <div className="video-holder absolute inset-0 flex items-center justify-center">
                       <button
                         onClick={() => setVideoModal(true)}
-                        className="video-btn w-20 h-20 bg-white rounded-full flex items-center justify-center text-[#DC2626] hover:scale-110 transition-transform shadow-lg cursor-pointer"
+                        className="video-btn w-20 h-20 bg-white rounded-full flex items-center justify-center text-brand-600 hover:scale-110 transition-transform shadow-lg cursor-pointer"
                         aria-label="Play video"
                       >
                         <Play className="w-8 h-8 fill-current ml-1" />
@@ -106,7 +106,7 @@ export default function ServiceSinglePage() {
 
                   {/* Video Content */}
                   <div className="video-content flex-1">
-                    <h2 className="text-xl sm:text-2xl font-serif font-medium text-[#0E152B] mb-3">
+                    <h2 className="text-xl sm:text-2xl font-serif font-medium text-ink mb-3">
                       Why RedSky Quality Matters ?
                     </h2>
                     <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed mb-4">
@@ -119,7 +119,7 @@ export default function ServiceSinglePage() {
                         "Flexible scheduling with 100% satisfaction guarantee",
                       ].map((item, i) => (
                         <li key={i} className="flex items-center gap-3 text-sm sm:text-base text-[#5E5F63] font-medium">
-                          <span className="w-5 h-5 rounded-full bg-red-100 text-[#DC2626] flex items-center justify-center text-xs font-bold shadow-xs shrink-0">
+                          <span className="w-5 h-5 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center text-xs font-bold shadow-xs shrink-0">
                             ✓
                           </span>
                           <span>{item}</span>
@@ -134,13 +134,13 @@ export default function ServiceSinglePage() {
                 </p>
 
                 {/* Quote Box */}
-                <h3 className="quate bg-white shadow-md p-6 sm:p-8 border-l-4 border-[#DC2626] text-base sm:text-lg font-serif font-medium text-[#0E152B] leading-relaxed mb-12 rounded-r-[10px]">
+                <h3 className="quate bg-white shadow-md p-6 sm:p-8 border-l-4 border-brand-600 text-base sm:text-lg font-serif font-medium text-ink leading-relaxed mb-12 rounded-r-[10px]">
                   “A sparkling, deeply sanitized space isn't just about appearances—it boosts wellbeing, productivity, and brings lasting peace of mind.”
                 </h3>
 
                 {/* Eligibility Checklist / Image Gallery */}
                 <div className="image-gallery mb-12">
-                  <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#0E152B] mb-6">
+                  <h2 className="text-xl sm:text-2xl font-serif font-bold text-ink mb-6">
                     Service Standards Checklist :
                   </h2>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -169,17 +169,17 @@ export default function ServiceSinglePage() {
                         key={idx}
                         className={`accordion-item border rounded-[14px] overflow-hidden bg-white transition-all ${
                           isOpen
-                            ? "border-red-200 shadow-lg"
+                            ? "border-brand-200 shadow-lg"
                             : "border-slate-200 shadow-xs"
                         }`}
                       >
                         <button
                           type="button"
                           onClick={() => setActiveAccordion(isOpen ? null : idx)}
-                          className="accordion-header w-full p-5 sm:p-6 text-left flex items-center justify-between font-serif font-medium text-base sm:text-lg text-[#0E152B] hover:text-[#DC2626] transition-colors"
+                          className="accordion-header w-full p-5 sm:p-6 text-left flex items-center justify-between font-serif font-medium text-base sm:text-lg text-ink hover:text-brand-600 transition-colors"
                         >
                           <span>{item.q}</span>
-                          <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ml-4 transition-colors ${isOpen ? "bg-[#DC2626] text-white" : "bg-slate-100 text-[#0E152B]"}`}>
+                          <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ml-4 transition-colors ${isOpen ? "bg-brand-600 text-white" : "bg-slate-100 text-ink"}`}>
                             {isOpen ? (
                               <ChevronUp className="w-4 h-4" />
                             ) : (
@@ -212,8 +212,8 @@ export default function ServiceSinglePage() {
                           onClick={() => setActiveCategory(cat)}
                           className={`w-full text-left px-6 py-4 rounded-[10px] font-serif font-medium text-base sm:text-lg flex items-center justify-between transition-all duration-200 cursor-pointer ${
                             activeCategory === cat
-                              ? "bg-[#DC2626] text-white font-bold shadow-md shadow-red-500/25"
-                              : "bg-slate-50 text-[#0E152B] hover:bg-red-50 hover:text-[#DC2626]"
+                              ? "bg-brand-600 text-white font-bold shadow-md shadow-brand-500/25"
+                              : "bg-slate-50 text-ink hover:bg-brand-50 hover:text-brand-600"
                           }`}
                         >
                           <span>{cat}</span>
@@ -225,29 +225,29 @@ export default function ServiceSinglePage() {
                 </div>
 
                 {/* Service Info Call Box */}
-                <div className="service-info relative rounded-[14px] p-8 text-center overflow-hidden shadow-md border border-red-100">
+                <div className="service-info relative rounded-[14px] p-8 text-center overflow-hidden shadow-md border border-brand-100">
                   {/* Gradient Background */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#FFE4DC]/70 to-[#E2E8F0]/70 opacity-60 -z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-100/70 to-[#E2E8F0]/70 opacity-60 -z-10" />
 
                   {/* Icon */}
-                  <div className="icon w-20 h-20 rounded-2xl bg-white text-[#DC2626] mx-auto flex items-center justify-center mb-6 shadow-sm">
+                  <div className="icon w-20 h-20 rounded-2xl bg-white text-brand-600 mx-auto flex items-center justify-center mb-6 shadow-sm">
                     <Phone className="w-8 h-8 fill-current" />
                   </div>
 
                   {/* Headline */}
-                  <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#0E152B] leading-snug mb-3">
+                  <h2 className="text-xl sm:text-2xl font-serif font-bold text-ink leading-snug mb-3">
                     Looking for a Cleaning Service Provider?
                   </h2>
 
                   {/* Subtext */}
-                  <span className="font-serif text-xs font-semibold text-[#0E152B]/80 tracking-[0.15em] uppercase block mb-4">
+                  <span className="font-serif text-xs font-semibold text-ink/80 tracking-[0.15em] uppercase block mb-4">
                     Call anytime 24/7
                   </span>
 
                   {/* Phone Button */}
                   <a
                     href="tel:+17189044450"
-                    className="num inline-block bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-base sm:text-lg py-3.5 px-8 rounded-full shadow-lg shadow-red-500/25 transition-all hover:scale-105"
+                    className="num inline-block bg-brand-600 hover:bg-brand-700 text-white font-bold text-base sm:text-lg py-3.5 px-8 rounded-full shadow-lg shadow-brand-500/25 transition-all hover:scale-105"
                   >
                     <span>+1 718-904-4450</span>
                   </a>

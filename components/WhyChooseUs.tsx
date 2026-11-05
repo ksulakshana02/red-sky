@@ -47,7 +47,7 @@ export default function WhyChooseUs() {
                   transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
                   className="wpo-choose-left-box absolute left-0 bottom-0 p-1.5 sm:p-2.5 bg-white rounded-tr-[16px] sm:rounded-tr-[20px]"
                 >
-                  <div className="wrap w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] lg:w-[179px] lg:h-[174px] bg-[#DC2626] text-white rounded-[12px] sm:rounded-[16px] flex flex-col items-center justify-center p-2.5 sm:p-5 text-center shadow-lg shadow-red-500/20">
+                  <div className="wrap w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] lg:w-[179px] lg:h-[174px] bg-brand-600 text-white rounded-[12px] sm:rounded-[16px] flex flex-col items-center justify-center p-2.5 sm:p-5 text-center shadow-lg shadow-brand-500/20">
                     <h3 className="text-2xl sm:text-4xl md:text-5xl font-medium text-white leading-none font-sans">
                       50+
                     </h3>
@@ -70,13 +70,13 @@ export default function WhyChooseUs() {
               <div className="wpo-choose-right-side">
                 {/* Topic & Title */}
                 <div className="text-left mb-6 sm:mb-8">
-                  <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+                  <span className="eyebrow mb-2 sm:mb-3">
                     Why Choose Us
                   </span>
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight mb-3 sm:mb-4">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-ink leading-[1.18] font-serif tracking-tight mb-3 sm:mb-4">
                     Your Space Deserves the Best, Here’s Why We’re It
                   </h2>
-                  <p className="text-[14px] sm:text-[15px] lg:text-base text-[#0E152B]/75 leading-relaxed font-normal">
+                  <p className="text-[14px] sm:text-[15px] lg:text-base text-ink/75 leading-relaxed font-normal">
                     Our team of trained professionals takes pride in every detail, going above and beyond to exceed your expectations. Whether it’s routine housekeeping or deep disinfection.
                   </p>
                 </div>
@@ -96,15 +96,15 @@ export default function WhyChooseUs() {
                       <span
                         className={`inline-flex items-center gap-2.5 sm:gap-3 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-serif font-medium text-xs sm:text-sm md:text-base transition-all duration-200 shadow-xs border ${
                           activeItem === idx
-                            ? "bg-[#DC2626] text-white border-[#DC2626]"
-                            : "bg-white text-[#0E152B] border-slate-100 hover:border-[#DC2626]/40"
+                            ? "bg-brand-600 text-white border-brand-600"
+                            : "bg-white text-ink border-slate-100 hover:border-brand-600/40"
                         }`}
                       >
                         <span
                           className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs shrink-0 ${
                             activeItem === idx
-                              ? "bg-white text-[#DC2626]"
-                              : "bg-slate-100 text-[#DC2626]"
+                              ? "bg-white text-brand-600"
+                              : "bg-slate-100 text-brand-600"
                           }`}
                         >
                           ✓

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import FaqHero from "@/components/faq/FaqHero";
 import FaqExplorer from "@/components/faq/FaqExplorer";
-import FaqSupportCta from "@/components/faq/FaqSupportCta";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -13,22 +12,11 @@ export const metadata: Metadata = {
 
 export default function FaqPage() {
   return (
-    <div className="page-wrapper bg-white text-[#0E152B] font-sans antialiased min-h-screen flex flex-col selection:bg-red-500 selection:text-white">
-      {/* Global Header */}
+    <div className="page-wrapper bg-white text-ink font-sans antialiased min-h-screen flex flex-col">
       <Header />
-
-      {/* Dedicated FAQ Hero */}
       <FaqHero />
-
-      {/* Categorized Interactive FAQ Accordion */}
       <FaqExplorer />
-
-      {/* Still Have Questions CTA */}
-      <FaqSupportCta />
-
-      {/* Global Footer */}
       <Footer />
     </div>
   );
 }
-

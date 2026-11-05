@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function BlogIndexPage() {
   return (
-    <div className="page-wrapper bg-white text-[#0E152B] font-sans antialiased min-h-screen flex flex-col selection:bg-red-500 selection:text-white">
+    <div className="page-wrapper bg-white text-ink font-sans antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
       {/* Global Header */}
       <Header />
 

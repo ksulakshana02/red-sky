@@ -48,7 +48,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     .slice(0, 3);
 
   return (
-    <div className="page-wrapper bg-white text-[#0E152B] font-sans antialiased min-h-screen flex flex-col selection:bg-red-500 selection:text-white font-[family-name:var(--font-parkinsans)]">
+    <div className="page-wrapper bg-white text-ink font-sans antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white font-[family-name:var(--font-parkinsans)]">
       {/* Global Header */}
       <Header />
 
@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="max-w-4xl mx-auto mb-6 sm:mb-8">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-slate-500 hover:text-[#DC2626] font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-slate-500 hover:text-brand-600 font-medium transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to all guides</span>
@@ -70,13 +70,13 @@ export default async function BlogPostPage({ params }: PageProps) {
           <header className="max-w-4xl mx-auto text-center mb-8 sm:mb-10">
             {/* Category Tag */}
             <div className="inline-flex items-center gap-2 mb-3">
-              <span className="px-3.5 py-1 rounded-full bg-[#FFF5F5] border border-red-200 text-[#DC2626] text-xs font-medium">
+              <span className="px-3.5 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-600 text-xs font-medium">
                 {post.category}
               </span>
             </div>
 
             {/* Main Title - Elegant, Not Bold */}
-            <h1 className="text-2xl sm:text-4xl lg:text-[44px] font-normal font-serif text-[#0E152B] leading-[1.2] tracking-tight mb-4 sm:mb-6">
+            <h1 className="text-2xl sm:text-4xl lg:text-[44px] font-normal font-serif text-ink leading-[1.2] tracking-tight mb-4 sm:mb-6">
               {post.title}
             </h1>
 
@@ -91,7 +91,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     className="object-cover"
                   />
                 </div>
-                <span className="text-[#0E152B] font-medium">{post.author.name}</span>
+                <span className="text-ink font-medium">{post.author.name}</span>
                 <span className="text-slate-400">({post.author.role})</span>
               </div>
 
@@ -126,23 +126,23 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
 
           {/* Article Content */}
-          <div className="max-w-3xl mx-auto text-[#0E152B]/80 font-normal leading-relaxed text-sm sm:text-base space-y-6">
+          <div className="max-w-3xl mx-auto text-ink/80 font-normal leading-relaxed text-sm sm:text-base space-y-6">
             
             {/* Intro Lead */}
-            <p className="text-base sm:text-lg text-[#0E152B]/85 font-normal leading-relaxed pb-2 border-b border-slate-100">
+            <p className="text-base sm:text-lg text-ink/85 font-normal leading-relaxed pb-2 border-b border-slate-100">
               {post.content.intro}
             </p>
 
             {/* Content Sections */}
             {post.content.sections.map((section, idx) => (
               <section key={idx} className="pt-2">
-                <h2 className="text-xl sm:text-2xl font-normal font-serif text-[#0E152B] leading-snug mb-3">
+                <h2 className="text-xl sm:text-2xl font-normal font-serif text-ink leading-snug mb-3">
                   {section.heading}
                 </h2>
 
                 <div className="space-y-3 mb-4">
                   {section.paragraphs.map((p, pIdx) => (
-                    <p key={pIdx} className="text-sm sm:text-base text-[#0E152B]/75 leading-relaxed font-normal">
+                    <p key={pIdx} className="text-sm sm:text-base text-ink/75 leading-relaxed font-normal">
                       {p}
                     </p>
                   ))}
@@ -150,14 +150,14 @@ export default async function BlogPostPage({ params }: PageProps) {
 
                 {/* Optional Checklist */}
                 {section.checklist && section.checklist.length > 0 && (
-                  <div className="bg-[#F8FAFC] rounded-[20px] p-5 sm:p-6 border border-slate-200/80 my-4 space-y-2.5">
+                  <div className="bg-surface rounded-[20px] p-5 sm:p-6 border border-slate-200/80 my-4 space-y-2.5">
                     <span className="text-xs uppercase tracking-wider font-medium text-slate-500 block mb-2">
                       Key Steps to Follow
                     </span>
                     <ul className="space-y-2">
                       {section.checklist.map((item, cIdx) => (
-                        <li key={cIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#0E152B]/80">
-                          <span className="w-4 h-4 rounded-full bg-red-100 text-[#DC2626] flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">
+                        <li key={cIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink/80">
+                          <span className="w-4 h-4 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold">
                             ✓
                           </span>
                           <span>{item}</span>
@@ -170,27 +170,27 @@ export default async function BlogPostPage({ params }: PageProps) {
             ))}
 
             {/* Pro Tip Callout Box */}
-            <div className="rounded-[22px] p-5 sm:p-7 bg-[#FFF8F8] border-l-3 border-[#DC2626] border-y border-r border-red-100 my-8">
-              <span className="text-xs uppercase tracking-wider font-medium text-[#DC2626] block mb-1.5">
+            <div className="rounded-[22px] p-5 sm:p-7 bg-brand-50 border-l-3 border-brand-600 border-y border-r border-brand-100 my-8">
+              <span className="text-xs uppercase tracking-wider font-medium text-brand-600 block mb-1.5">
                 Pro Tip from Our Technicians
               </span>
-              <p className="text-xs sm:text-[14.5px] text-[#0E152B]/85 font-normal leading-relaxed">
+              <p className="text-xs sm:text-[14.5px] text-ink/85 font-normal leading-relaxed">
                 {post.content.proTip}
               </p>
             </div>
 
             {/* Conclusion */}
             <div className="pt-2">
-              <h3 className="text-lg sm:text-xl font-normal font-serif text-[#0E152B] mb-2">
+              <h3 className="text-lg sm:text-xl font-normal font-serif text-ink mb-2">
                 Wrapping Up
               </h3>
-              <p className="text-sm sm:text-base text-[#0E152B]/75 font-normal leading-relaxed">
+              <p className="text-sm sm:text-base text-ink/75 font-normal leading-relaxed">
                 {post.content.conclusion}
               </p>
             </div>
 
             {/* Author Bio Card */}
-            <div className="rounded-[24px] p-6 sm:p-7 bg-[#FBFBFB] border border-slate-200/80 my-10 flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
+            <div className="rounded-[24px] p-6 sm:p-7 bg-surface border border-slate-200/80 my-10 flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
               <div className="relative w-16 h-16 rounded-full overflow-hidden bg-slate-100 shrink-0 border border-slate-200">
                 <Image
                   src={post.author.avatar}
@@ -203,13 +203,13 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <span className="text-[11px] uppercase tracking-wider text-slate-500 font-medium block mb-0.5">
                   Written by
                 </span>
-                <h4 className="text-base sm:text-lg font-normal font-serif text-[#0E152B] mb-1">
+                <h4 className="text-base sm:text-lg font-normal font-serif text-ink mb-1">
                   {post.author.name}
                 </h4>
-                <p className="text-xs text-[#DC2626] font-medium mb-2">
+                <p className="text-xs text-brand-600 font-medium mb-2">
                   {post.author.role}
                 </p>
-                <p className="text-xs sm:text-[13px] text-[#0E152B]/70 font-normal leading-relaxed">
+                <p className="text-xs sm:text-[13px] text-ink/70 font-normal leading-relaxed">
                   Sharing practical, eco-friendly cleaning advice developed through years of residential and commercial sanitation experience.
                 </p>
               </div>
@@ -224,13 +224,13 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <span className="text-xs uppercase tracking-wider text-slate-500 block mb-1">
                   More from our journal
                 </span>
-                <h3 className="text-xl sm:text-2xl font-normal font-serif text-[#0E152B]">
+                <h3 className="text-xl sm:text-2xl font-normal font-serif text-ink">
                   Related Articles
                 </h3>
               </div>
               <Link
                 href="/blog"
-                className="text-xs sm:text-sm font-medium text-[#DC2626] hover:text-[#B91C1C] transition-colors"
+                className="text-xs sm:text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors"
               >
                 View all articles →
               </Link>
@@ -240,7 +240,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               {relatedPosts.map((rPost) => (
                 <article
                   key={rPost.slug}
-                  className="group bg-white rounded-[22px] p-4 border border-slate-200/70 hover:border-red-200 hover:shadow-xs transition-all flex flex-col justify-between"
+                  className="group bg-white rounded-[22px] p-4 border border-slate-200/70 hover:border-brand-200 hover:shadow-xs transition-all flex flex-col justify-between"
                 >
                   <div>
                     <Link
@@ -256,18 +256,18 @@ export default async function BlogPostPage({ params }: PageProps) {
                       />
                     </Link>
 
-                    <span className="text-[11px] font-medium text-[#DC2626] block mb-1">
+                    <span className="text-[11px] font-medium text-brand-600 block mb-1">
                       {rPost.category}
                     </span>
 
-                    <h4 className="text-sm font-normal font-serif text-[#0E152B] leading-snug mb-2 group-hover:text-[#DC2626] transition-colors line-clamp-2">
+                    <h4 className="text-sm font-normal font-serif text-ink leading-snug mb-2 group-hover:text-brand-600 transition-colors line-clamp-2">
                       <Link href={`/blog/${rPost.slug}`}>{rPost.title}</Link>
                     </h4>
                   </div>
 
                   <div className="pt-2 text-xs text-slate-400 flex items-center justify-between">
                     <span>{rPost.date}</span>
-                    <span className="text-[#DC2626] font-medium group-hover:translate-x-0.5 transition-transform">
+                    <span className="text-brand-600 font-medium group-hover:translate-x-0.5 transition-transform">
                       Read →
                     </span>
                   </div>
@@ -277,19 +277,19 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
 
           {/* Bottom Helpful Service Box */}
-          <div className="max-w-4xl mx-auto mt-12 sm:mt-16 rounded-[24px] sm:rounded-[32px] p-6 sm:p-9 bg-[#FFF8F8] border border-red-100 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="max-w-4xl mx-auto mt-12 sm:mt-16 rounded-[24px] sm:rounded-[32px] p-6 sm:p-9 bg-brand-50 border border-brand-100 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="text-left max-w-xl">
-              <h3 className="text-lg sm:text-xl font-normal font-serif text-[#0E152B] mb-1">
+              <h3 className="text-lg sm:text-xl font-normal font-serif text-ink mb-1">
                 Need help putting these cleaning tips to work?
               </h3>
-              <p className="text-xs sm:text-sm text-[#0E152B]/70 font-normal leading-relaxed">
+              <p className="text-xs sm:text-sm text-ink/70 font-normal leading-relaxed">
                 Book our certified technicians to deep clean your home or office using non-toxic botanical supplies.
               </p>
             </div>
 
             <Link
-              href="/services#service-booking"
-              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium text-xs sm:text-sm transition-colors shadow-xs"
+              href="/quote"
+              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-medium text-xs sm:text-sm transition-colors shadow-xs"
             >
               <span>Schedule a cleaning</span>
               <ArrowRight className="w-4 h-4" />

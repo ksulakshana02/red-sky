@@ -17,14 +17,14 @@ export default function FaqHero() {
         initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full max-w-[1691px] mx-auto rounded-[20px] xs:rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#FAF8F5] border border-[#EBE3DC] px-5 xs:px-7 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-14 text-center"
+        className="relative w-full max-w-[1691px] mx-auto rounded-[20px] xs:rounded-[24px] sm:rounded-[32px] overflow-hidden bg-gradient-to-br from-brand-50 via-white to-accent-50 border border-brand-100 px-5 xs:px-7 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-14 text-center"
       >
         <div className="max-w-2xl mx-auto">
-          <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
+          <span className="eyebrow mb-2 sm:mb-3">
             Help &amp; Support
           </span>
 
-          <h1 className="text-[28px] xs:text-[34px] sm:text-4xl lg:text-[46px] font-normal text-[#0E152B] leading-[1.16] tracking-tight font-serif mb-3 sm:mb-4">
+          <h1 className="text-[28px] xs:text-[34px] sm:text-4xl lg:text-[46px] font-normal text-ink leading-[1.16] tracking-tight font-serif mb-3 sm:mb-4">
             Frequently Asked Questions
           </h1>
 
@@ -37,7 +37,7 @@ export default function FaqHero() {
             {quickCategories.map((cat, i) => (
               <span
                 key={i}
-                className="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-slate-700 border border-[#DDD3C9]"
+                className="px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-slate-700 border border-line-strong"
               >
                 {cat}
               </span>

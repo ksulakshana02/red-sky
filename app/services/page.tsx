@@ -3,60 +3,34 @@ import Header from "@/components/Header";
 import ServicesHero from "@/components/services/ServicesHero";
 import ServicesExplorer from "@/components/services/ServicesExplorer";
 import ServiceComparison from "@/components/services/ServiceComparison";
-import ServiceAddons from "@/components/services/ServiceAddons";
 import ServiceStandards from "@/components/services/ServiceStandards";
-import ServiceBookingForm from "@/components/services/ServiceBookingForm";
-import ServicesFaq from "@/components/services/ServicesFaq";
-import EmergencyCta from "@/components/EmergencyCta";
+import FaqPreview from "@/components/FaqPreview";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Professional Cleaning Services | RedSky Cleaning Service",
   description:
-    "Explore our complete range of certified cleaning services: Residential Housekeeping, Commercial Office Cleaning, Deep Sanitization, Move-In/Out turnovers, and Carpet Steam Extraction. 100% bonded & insured.",
+    "House, office, deep, end of lease, carpet and after-builders cleaning with upfront prices, all supplies included and a free re-clean guarantee.",
 };
 
 export default function ServicesPage() {
   return (
-    <div className="page-wrapper bg-white text-[#0E152B] font-sans antialiased min-h-screen flex flex-col selection:bg-red-500 selection:text-white">
-      {/* Global Navigation Header */}
+    <div className="page-wrapper bg-white text-ink font-sans antialiased min-h-screen flex flex-col">
       <Header />
-
-      {/* Dedicated Services Hero Section */}
       <ServicesHero />
-
-      {/* Filterable Service Catalog & Room-by-Room Checklists */}
+      {/* 1. Pick a service */}
       <ServicesExplorer />
-
-      {/* Residential Package Comparison Matrix (Hidden on mobile to eliminate wide table scroll fatigue) */}
-      <div className="hidden md:block">
-        <ServiceComparison />
-      </div>
-
-      {/* Fixed-Price Specialized Add-Ons (Hidden on mobile; add-ons are directly integrated into the booking form below) */}
-      <div className="hidden md:block">
-        <ServiceAddons />
-      </div>
-
-      {/* Operational Hygiene & Equipment Standards (Hidden on mobile to reduce vertical scroll length) */}
-      <div className="hidden md:block">
-        <ServiceStandards />
-      </div>
-
-      {/* Direct Service Reservation Form */}
-      <ServiceBookingForm />
-
-      {/* Cleaning Specific Frequently Asked Questions */}
-      <ServicesFaq />
-
-      {/* 24/7 Emergency Dispatch Banner (Hidden on mobile to avoid CTA repetition after FAQ) */}
-      <div className="hidden md:block">
-        <EmergencyCta />
-      </div>
-
-      {/* Global Footer */}
+      {/* 2. Reassurance in one glance */}
+      <ServiceStandards />
+      {/* 3. Compare home packages (cards — works on mobile too) */}
+      <ServiceComparison />
+      {/* 4. Last objections, then the footer CTA takes them to /quote */}
+      <FaqPreview
+        ids={["p-1", "g-1", "g-3", "p-2"]}
+        eyebrow="Service FAQ"
+        title="Before you book"
+      />
       <Footer />
     </div>
   );
 }
-

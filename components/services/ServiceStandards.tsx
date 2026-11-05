@@ -1,92 +1,81 @@
-"use client";
+import Link from "next/link";
+import { ArrowRight, PackageCheck, Leaf, Wind, BadgeCheck } from "lucide-react";
 
-import React from "react";
-import { ShieldCheck, Leaf, Award, HeartHandshake } from "lucide-react";
-import { motion } from "framer-motion";
+// Written as customer benefits ("what do I get?"), not internal processes.
+const benefits = [
+  {
+    icon: PackageCheck,
+    title: "Nothing to prepare",
+    desc: "We bring every product and all the equipment.",
+  },
+  {
+    icon: Leaf,
+    title: "Safe for kids & pets",
+    desc: "Plant-based products — no bleach, no harsh fumes.",
+  },
+  {
+    icon: Wind,
+    title: "Fresher, cleaner air",
+    desc: "HEPA vacuums trap fine dust and allergens.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Happiness guaranteed",
+    desc: "Missed a spot? Tell us within 24 hours and we re-clean free.",
+  },
+];
 
 export default function ServiceStandards() {
-  const standards = [
-    {
-      title: "Color-Coded Microfiber Protocol",
-      desc: "We enforce strict color coding: red cloths for toilets, yellow for kitchen prep surfaces, blue for living areas. Zero cross-contamination between rooms.",
-      icon: Award,
-    },
-    {
-      title: "Hospital-Grade Botanical Sanitizers",
-      desc: "Our non-toxic EPA-registered formulas kill 99.9% of bacteria without dangerous bleaches, synthetic fragrances, or harsh fumes. Safe for babies and pets.",
-      icon: Leaf,
-    },
-    {
-      title: "4-Stage HEPA Air Filtration",
-      desc: "Commercial dual-motor vacuums trap 99.97% of airborne allergens, pet dander, and fine dust down to 0.3 microns, leaving indoor air fresh and purified.",
-      icon: ShieldCheck,
-    },
-    {
-      title: "24-Hour Happiness Re-Clean Guarantee",
-      desc: "If any corner doesn't meet our strict 50-point inspection, notify us within 24 hours. A supervisor will return to re-clean the area free of charge.",
-      icon: HeartHandshake,
-    },
-  ];
-
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-[#FFF5F5] via-[#FFF9F9] to-white relative z-10 border-t border-red-100/70 font-[family-name:var(--font-parkinsans)]">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
-        >
-          <span className="inline-block text-xs uppercase tracking-wider font-medium text-[#DC2626] mb-2 sm:mb-3">
-            Our Quality Standards
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-normal text-[#0E152B] leading-[1.18] font-serif tracking-tight">
-            The RedSky Standard in Every Clean
-          </h2>
-          <p className="text-sm sm:text-base text-[#0E152B]/75 mt-2.5 leading-relaxed">
-            Every technician is trained on hospital-grade sanitization protocols so you can relax with complete confidence.
-          </p>
-        </motion.div>
+    <section aria-labelledby="included-heading" className="px-4 sm:px-6 lg:px-10 pb-16 sm:pb-20 bg-white">
+      <div className="relative overflow-hidden max-w-[1280px] mx-auto rounded-[28px] sm:rounded-[36px] bg-gradient-to-br from-brand-600 via-brand-700 to-brand-900 px-6 py-10 sm:p-12 lg:p-14">
+        {/* soft decorative light */}
+        <div aria-hidden className="pointer-events-none absolute -top-24 -right-20 w-80 h-80 rounded-full bg-white/10" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-32 left-1/3 w-72 h-72 rounded-full bg-accent-400/15 blur-2xl" />
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
-          {standards.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -5 }}
-                className="bg-white rounded-[28px] p-6 sm:p-7 border border-red-100/80 shadow-xs hover:shadow-md transition-shadow duration-300 flex flex-col justify-between"
+        <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Heading + action */}
+          <div className="lg:col-span-4">
+            <p className="text-accent-200 text-xs font-semibold uppercase tracking-[0.08em] mb-3">
+              Every service, every visit
+            </p>
+            <h2 id="included-heading" className="text-white text-[28px] sm:text-4xl font-medium tracking-tight leading-tight mb-4">
+              Included with every clean
+            </h2>
+            <p className="text-white/75 text-base leading-relaxed lg:mb-7 max-w-sm">
+              No add-on fees for the basics. Whatever service you choose, you always get this.
+            </p>
+            {/* Desktop: action sits beside the benefits */}
+            <Link href="/quote" className="hidden lg:inline-flex btn btn-light h-12 px-6">
+              Get a free quote
+              <ArrowRight className="w-4 h-4" aria-hidden />
+            </Link>
+          </div>
+
+          {/* Benefits */}
+          <ul className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {benefits.map(({ icon: Icon, title, desc }) => (
+              <li
+                key={title}
+                className="flex items-start gap-4 rounded-2xl bg-white/[0.08] border border-white/15 p-4 sm:p-6 backdrop-blur-sm"
               >
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#FEF2F2] text-[#DC2626] flex items-center justify-center mb-5 shadow-2xs">
-                    <Icon className="w-6 h-6 stroke-[2]" />
-                  </div>
+                <span className="w-12 h-12 shrink-0 rounded-xl bg-white text-brand-600 flex items-center justify-center shadow-sm">
+                  <Icon className="w-6 h-6" aria-hidden />
+                </span>
+                <span>
+                  <span className="block text-white text-[17px] font-medium mb-1">{title}</span>
+                  <span className="block text-white/75 text-[15px] leading-relaxed">{desc}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
 
-                  <h3 className="text-lg sm:text-xl font-normal font-serif text-[#0E152B] mb-2.5 leading-snug">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-[13.5px] text-[#0E152B]/75 leading-relaxed font-normal">
-                    {item.desc}
-                  </p>
-                </div>
-
-                <div className="pt-4 mt-5 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-medium text-[#DC2626]">
-                  <span>✓ Standard on all cleans</span>
-                </div>
-              </motion.div>
-            );
-          })}
+          {/* Mobile: read the benefits first, then act */}
+          <Link href="/quote" className="lg:hidden btn btn-light h-12 px-6 w-full sm:w-auto sm:justify-self-start">
+            Get a free quote
+            <ArrowRight className="w-4 h-4" aria-hidden />
+          </Link>
         </div>
-
       </div>
     </section>
   );

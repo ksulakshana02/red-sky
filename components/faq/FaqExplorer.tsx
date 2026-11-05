@@ -54,7 +54,7 @@ export default function FaqExplorer() {
                 placeholder="Search questions (e.g. pets, pricing, keys, supplies)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[#FBFBFB] border border-slate-200/80 rounded-full h-[48px] pl-11 pr-5 text-sm text-[#0E152B] placeholder:text-slate-400 focus:outline-none focus:border-[#DC2626] focus:bg-white transition-all shadow-2xs font-normal"
+                className="w-full bg-surface border border-slate-200/80 rounded-full h-[48px] pl-11 pr-5 text-sm text-ink placeholder:text-slate-400 focus:outline-none focus:border-brand-600 focus:bg-white transition-all shadow-2xs font-normal"
               />
               {searchQuery && (
                 <button
@@ -79,8 +79,8 @@ export default function FaqExplorer() {
                   onClick={() => setActiveCategory(cat)}
                   className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] font-medium transition-all cursor-pointer ${
                     isActive
-                      ? "bg-[#DC2626] text-white shadow-xs"
-                      : "bg-[#F8FAFC] text-[#0E152B]/80 hover:bg-slate-100 border border-slate-200/80"
+                      ? "bg-brand-600 text-white shadow-xs"
+                      : "bg-surface text-ink/80 hover:bg-slate-100 border border-slate-200/80"
                   }`}
                 >
                   {cat}
@@ -106,14 +106,14 @@ export default function FaqExplorer() {
                   key={faq.id}
                   className={`rounded-[20px] sm:rounded-[28px] overflow-hidden transition-all duration-300 ${
                     isOpen
-                      ? "bg-[#FEF2F2]/60 border border-red-200/80 shadow-xs"
-                      : "bg-[#F6F7F5] hover:bg-[#F0F2EE] border border-transparent"
+                      ? "bg-brand-50/60 border border-brand-200/80 shadow-xs"
+                      : "bg-surface hover:bg-surface border border-transparent"
                   }`}
                 >
                   <button
                     type="button"
                     onClick={() => toggleItem(faq.id)}
-                    className="w-full flex items-center justify-between p-4 sm:p-5 lg:p-6 text-left font-normal text-[#0E152B] text-[15px] sm:text-base lg:text-[17px] hover:text-[#DC2626] transition-colors cursor-pointer select-none"
+                    className="w-full flex items-center justify-between p-4 sm:p-5 lg:p-6 text-left font-normal text-ink text-[15px] sm:text-base lg:text-[17px] hover:text-brand-600 transition-colors cursor-pointer select-none"
                   >
                     <div className="pr-4">
                       <span className="text-[11px] uppercase tracking-wider text-slate-500 font-sans block mb-1">
@@ -125,7 +125,7 @@ export default function FaqExplorer() {
                     <span
                       className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
                         isOpen
-                          ? "bg-[#DC2626] text-white rotate-180"
+                          ? "bg-brand-600 text-white rotate-180"
                           : "bg-white text-slate-800 shadow-2xs rotate-0"
                       }`}
                     >
@@ -147,7 +147,7 @@ export default function FaqExplorer() {
                         transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-1 text-[13.5px] sm:text-[14.5px] text-[#0E152B]/75 leading-relaxed border-t border-red-100/60 font-normal">
+                        <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-1 text-[13.5px] sm:text-[14.5px] text-ink/75 leading-relaxed border-t border-brand-100/60 font-normal">
                           {faq.answer}
                         </div>
                       </motion.div>
@@ -169,7 +169,7 @@ export default function FaqExplorer() {
                 setSearchQuery("");
                 setActiveCategory("All Questions");
               }}
-              className="text-xs font-medium text-[#DC2626] hover:underline"
+              className="text-xs font-medium text-brand-600 hover:underline"
             >
               Reset search &amp; filters
             </button>
