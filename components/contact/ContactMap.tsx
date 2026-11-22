@@ -1,75 +1,68 @@
-"use client";
-
-import React from "react";
 import { MapPin, Navigation } from "lucide-react";
-import { motion } from "framer-motion";
+import { site, fullAddress } from "@/lib/site";
 
+/**
+ * Only embeds a map when a real embed URL has been set in lib/site.ts.
+ * Publishing an interactive map pinned to a placeholder address would send
+ * people to the wrong building, so the fallback is an address panel.
+ */
 export default function ContactMap() {
+  const directions = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
+
   return (
-    <section id="contact-map" className="py-8 sm:py-12 lg:py-16 bg-white relative z-10 font-[family-name:var(--font-parkinsans)]">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8"
-        >
+    <section id="contact-map" className="py-12 sm:py-16 lg:py-20 bg-surface">
+      <div className="shell">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-7">
           <div>
-            <span className="eyebrow mb-2">
-              Our Location
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-normal font-serif text-ink leading-snug">
-              Boston Dispatch Center
+            <span className="eyebrow eyebrow-accent mb-3">Where we are</span>
+            <h2 className="text-[24px] sm:text-[32px] font-medium text-ink tracking-tight">
+              {site.address.suburb} office
             </h2>
           </div>
+          {/* The address element is flow content, so a paragraph cannot
+              contain it — it is the flex container itself here. */}
+          <address className="not-italic flex items-start gap-2 text-sm text-body/80">
+            <MapPin className="w-4 h-4 text-brand-600 shrink-0 mt-0.5" aria-hidden />
+            {fullAddress}
+          </address>
+        </div>
 
-          <div className="flex items-center gap-2 text-xs text-ink/75 font-normal">
-            <MapPin className="w-4 h-4 text-brand-600" />
-            <span>72 Kneeland St, Suite 305, Boston, MA 02111</span>
+        {site.mapEmbedUrl ? (
+          <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-line bg-surface-2">
+            <iframe
+              title={`Map showing the ${site.shortName} office`}
+              src={site.mapEmbedUrl}
+              className="w-full h-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
-        </motion.div>
-
-        {/* Responsive Map Container */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98, y: 20 }}
-          whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-slate-200/80 shadow-2xs bg-slate-100"
-        >
-          <iframe
-            title="RedSky Cleaning Office Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2948.7774783307613!2d-71.06346292348559!3d42.34990997119426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e37a78377755b9%3A0xb355153ca265d66d!2s72%20Kneeland%20St%20%23305%2C%20Boston%2C%20MA%2002111!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-            className="w-full h-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-
-          {/* Floating Address Card */}
-          <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-xs p-4 rounded-[18px] border border-slate-200 shadow-md hidden sm:block max-w-xs">
-            <span className="text-[11px] uppercase tracking-wider text-slate-500 font-medium block mb-1">
-              Main Office
+        ) : (
+          <div className="rounded-[24px] sm:rounded-[32px] border border-line bg-white p-8 sm:p-12 text-center">
+            <span className="w-14 h-14 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mx-auto mb-5">
+              <MapPin className="w-6 h-6" aria-hidden />
             </span>
-            <p className="text-xs font-normal text-ink leading-relaxed">
-              72 Kneeland St, Suite 305<br />Boston, MA 02111
+            <h3 className="text-xl font-medium text-ink mb-2">Visits by appointment</h3>
+            <p className="text-body/75 max-w-md mx-auto mb-6">
+              We come to you — site walkthroughs happen at your building, not ours. If you
+              do need to visit the office, call ahead and we&apos;ll make sure someone is in.
             </p>
             <a
-              href="https://maps.google.com/?q=72+Kneeland+St+Boston+MA+02111"
+              href={directions}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-brand-600 font-medium hover:underline mt-2"
+              className="btn btn-secondary"
             >
-              <Navigation className="w-3 h-3" />
-              <span>Get directions</span>
+              <Navigation className="w-4 h-4 text-brand-600" aria-hidden />
+              Get directions
             </a>
           </div>
-        </motion.div>
+        )}
 
+        <p className="mt-5 text-sm text-muted">
+          Servicing {site.serviceAreas.join(" · ")}. Multi-state portfolios welcome.
+        </p>
       </div>
     </section>
   );
 }
-

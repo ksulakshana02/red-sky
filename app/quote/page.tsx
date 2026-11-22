@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
-import QuoteHero from "@/components/quote/QuoteHero";
-import InteractiveQuoteEstimator from "@/components/quote/InteractiveQuoteEstimator";
+import PageHeader from "@/components/PageHeader";
+import QuoteRequestForm from "@/components/quote/QuoteRequestForm";
+import HowItWorks from "@/components/HowItWorks";
 import FaqPreview from "@/components/FaqPreview";
 import Footer from "@/components/Footer";
 import { getService } from "@/lib/services";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Get an Instant Free Quote | RedSky Cleaning Service",
+  title: "Request a Quote",
   description:
-    "Calculate your transparent, flat-rate cleaning price in 30 seconds. All eco-friendly supplies and insurance included with no upfront prepayment.",
+    "Tell us about your site and we'll arrange a walkthrough, then come back with a written scope of works and a fixed monthly price. No obligation.",
 };
 
-export default async function FreeQuotePage({
+export default async function QuotePage({
   searchParams,
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -21,17 +23,27 @@ export default async function FreeQuotePage({
   const selected = getService(typeof service === "string" ? service : undefined);
 
   return (
-    <div className="page-wrapper bg-white text-ink font-sans antialiased min-h-screen flex flex-col">
+    <div className="bg-white text-body flex flex-col min-h-screen font-sans">
       <Header />
-      <QuoteHero />
-      <InteractiveQuoteEstimator preset={selected?.quote} presetLabel={selected?.title} />
-      <FaqPreview
-        ids={["pr-5", "pr-3", "pr-6", "g-6"]}
-        eyebrow="Pricing FAQ"
-        title="About your estimate"
-        description="Clear, flat-rate pricing with no surprises."
-        tinted
-      />
+      <main id="main" className="flex-1">
+        <PageHeader
+          eyebrow="No-obligation quote"
+          title={selected ? `Quote for ${selected.title}` : "Request a quote"}
+          description={
+            selected
+              ? `Three short steps. We'll walk the site, write the scope and come back with a fixed monthly price. ${site.responsePromise}`
+              : `Three short steps. We'll walk the site, write the scope and come back with a fixed monthly price — not an hourly guess. ${site.responsePromise}`
+          }
+        />
+        <QuoteRequestForm presetService={selected?.id} />
+        <HowItWorks />
+        <FaqPreview
+          ids={["p-1", "p-2", "g-3"]}
+          eyebrow="Before you send"
+          title="How pricing and mobilisation work"
+          description="The questions that come up most once someone is ready to talk numbers."
+        />
+      </main>
       <Footer />
     </div>
   );

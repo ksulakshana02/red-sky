@@ -1,173 +1,113 @@
 "use client";
 
 import React, { useState } from "react";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { testimonials } from "@/lib/testimonials";
+import Reveal from "@/components/Reveal";
 
-interface Testimonial {
-  name: string;
-  role: string;
-  quote: string;
-  rating: number;
-}
-
-const testimonials: Testimonial[] = [
-  {
-    name: "Eleanor Vance",
-    role: "Homeowner, Boston MA",
-    quote: "Redsky Cleaning transformed our home. The team arrived on time, was exceptionally polite, and left every surface in our kitchen and bathrooms spotless!",
-    rating: 5,
-  },
-  {
-    name: "Marcus Sterling",
-    role: "Facilities Director, TechSpace",
-    quote: "We've contracted them for 3 commercial buildings. Their consistency, green products, and responsiveness to emergencies have been second to none.",
-    rating: 5,
-  },
-  {
-    name: "Sophia Chen",
-    role: "Interior Designer",
-    quote: "Before our architectural staging shoots, we only trust Redsky. Their attention to detail on glass, wood floors, and tile grout is absolute perfection.",
-    rating: 5,
-  },
-];
-
-export default function TestimonialsSection() {
+/**
+ * Renders nothing when there are no testimonials, so an empty list is a
+ * valid state rather than a broken section.
+ */
+export default function TestimonialsSection({ limit = 3 }: { limit?: number }) {
+  const items = testimonials.slice(0, limit);
   const [current, setCurrent] = useState(0);
 
-  const prev = () => {
-    setCurrent((prevIdx) => (prevIdx === 0 ? testimonials.length - 1 : prevIdx - 1));
-  };
+  if (items.length === 0) return null;
 
-  const next = () => {
-    setCurrent((prevIdx) => (prevIdx === testimonials.length - 1 ? 0 : prevIdx + 1));
-  };
+  const prev = () => setCurrent((i) => (i === 0 ? items.length - 1 : i - 1));
+  const next = () => setCurrent((i) => (i === items.length - 1 ? 0 : i + 1));
 
   return (
-    <section className="wpo-testimonials-section py-10 sm:py-14 lg:py-16 relative z-10 bg-white overflow-hidden font-[family-name:var(--font-parkinsans)]">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Soft wrap card */}
-        <div className="bg-surface border border-slate-100 rounded-[24px] sm:rounded-[36px] p-5 sm:p-8 lg:p-10 relative overflow-hidden">
-          {/* Section Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center max-w-2xl mx-auto mb-8 sm:mb-12"
+    <section
+      aria-labelledby="testimonials-heading"
+      className="py-20 sm:py-24 bg-surface"
+    >
+      <div className="shell">
+        <Reveal className="max-w-xl mb-12">
+          <span className="eyebrow eyebrow-accent mb-4">Client feedback</span>
+          <h2
+            id="testimonials-heading"
+            className="text-[30px] sm:text-4xl lg:text-[44px] font-medium tracking-tight text-ink leading-[1.15]"
           >
-            <span className="eyebrow mb-2 sm:mb-3">
-              Testimonials
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-normal text-ink leading-[1.18] font-serif tracking-tight">
-              What Our Happy Clients Say About Our Work
-            </h2>
-          </motion.div>
+            What they say after the first quarter
+          </h2>
+        </Reveal>
 
-          {/* Desktop Grid / Mobile Active Card Carousel */}
-          <div className="relative z-10 max-w-[1350px] mx-auto">
-            {/* Desktop 3-Card Grid */}
-            <div className="hidden md:grid md:grid-cols-3 gap-6">
-              {testimonials.map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.55, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ y: -6 }}
-                  className="wpo-testimonial-item bg-white border border-slate-100 hover:border-brand-200 rounded-[20px] p-5 sm:p-7 flex flex-col justify-between shadow-xs hover:shadow-xl transition-shadow duration-300 relative group"
-                >
-                  <div>
-                    {/* Top Quote Icon & Stars */}
-                    <div className="flex items-center justify-between mb-3.5 sm:mb-4">
-                      <Quote className="w-7 h-7 sm:w-8 sm:h-8 text-brand-600/30 rotate-180" />
-                      <div className="flex items-center gap-1 text-star">
-                        {[...Array(item.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-current" />
-                        ))}
-                      </div>
-                    </div>
+        {/* Desktop: all visible */}
+        <ul className="hidden md:grid md:grid-cols-3 gap-5">
+          {items.map((t, i) => (
+            <Reveal
+              as="li"
+              key={t.quote}
+              delay={i * 0.08}
+              className="card p-7 flex flex-col h-full"
+            >
+              <Quote className="w-8 h-8 text-brand-200 rotate-180 mb-5" aria-hidden />
+              <blockquote className="text-[15px] text-body/85 leading-relaxed flex-1">
+                {t.quote}
+              </blockquote>
+              <footer className="pt-6 mt-6 border-t border-line">
+                <p className="text-[15px] font-medium text-ink">{t.role}</p>
+                <p className="text-[13px] text-muted">{t.context}</p>
+              </footer>
+            </Reveal>
+          ))}
+        </ul>
 
-                    {/* Quote Body */}
-                    <p className="text-[13.5px] sm:text-[15px] text-body/85 italic leading-relaxed">
-                      “{item.quote}”
-                    </p>
-                  </div>
-
-                  {/* Author Info */}
-                  <div className="pt-5 mt-5 sm:pt-6 sm:mt-6 border-t border-slate-100">
-                    <h4 className="text-base sm:text-lg font-medium text-ink">
-                      {item.name}
-                    </h4>
-                    <span className="text-xs sm:text-sm font-normal text-brand-600">
-                      {item.role}
-                    </span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Mobile Single Card Slider */}
-            <div className="block md:hidden">
-              <div className="wpo-testimonial-item bg-white border border-slate-100 rounded-[20px] p-5 flex flex-col justify-between shadow-sm min-h-[260px]">
-                <div>
-                  <div className="flex items-center justify-between mb-3.5">
-                    <Quote className="w-6 h-6 text-brand-600/30 rotate-180" />
-                    <div className="flex items-center gap-1 text-star">
-                      {[...Array(testimonials[current].rating)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                      ))}
-                    </div>
-                  </div>
-
-                  <p className="text-[13.5px] text-body/85 italic leading-relaxed">
-                    “{testimonials[current].quote}”
-                  </p>
-                </div>
-
-                <div className="pt-4 mt-4 border-t border-slate-100">
-                  <h4 className="text-[15px] font-medium text-ink">
-                    {testimonials[current].name}
-                  </h4>
-                  <span className="text-xs font-normal text-brand-600">
-                    {testimonials[current].role}
-                  </span>
-                </div>
-              </div>
-
-              {/* Mobile Dots */}
-              <div className="flex justify-center items-center gap-2 mt-4">
-                {testimonials.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrent(idx)}
-                    className={`h-2 rounded-full transition-all ${
-                      current === idx ? "w-6 bg-brand-600" : "w-2 bg-slate-300"
-                    }`}
-                    aria-label={`Go to slide ${idx + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
+        {/* Mobile: one at a time */}
+        <div className="md:hidden">
+          <div className="card p-6 flex flex-col min-h-[260px]">
+            <Quote className="w-7 h-7 text-brand-200 rotate-180 mb-4" aria-hidden />
+            <blockquote
+              className="text-[15px] text-body/85 leading-relaxed flex-1"
+              aria-live="polite"
+            >
+              {items[current].quote}
+            </blockquote>
+            <footer className="pt-5 mt-5 border-t border-line">
+              <p className="text-[15px] font-medium text-ink">{items[current].role}</p>
+              <p className="text-[13px] text-muted">{items[current].context}</p>
+            </footer>
           </div>
 
-          {/* Carousel Arrows */}
-          <div className="flex justify-center items-center gap-4 mt-6 sm:mt-10">
-            <button
-              onClick={prev}
-              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-ink border border-slate-200 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors shadow-xs cursor-pointer"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={next}
-              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-ink border border-slate-200 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors shadow-xs cursor-pointer"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+          <div className="flex items-center justify-between mt-5">
+            <div className="flex items-center gap-2">
+              {items.map((t, i) => (
+                <button
+                  key={t.quote}
+                  type="button"
+                  onClick={() => setCurrent(i)}
+                  aria-label={`Show testimonial ${i + 1} of ${items.length}`}
+                  aria-current={current === i}
+                  className="py-2 cursor-pointer"
+                >
+                  <span
+                    className={`block h-2 rounded-full transition-all ${
+                      current === i ? "w-6 bg-brand-600" : "w-2 bg-line-strong"
+                    }`}
+                  />
+                </button>
+              ))}
+            </div>
+            <div className="flex items-center gap-2.5">
+              <button
+                type="button"
+                onClick={prev}
+                aria-label="Previous testimonial"
+                className="w-11 h-11 rounded-full bg-white border border-line text-ink flex items-center justify-center hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-colors cursor-pointer"
+              >
+                <ChevronLeft className="w-5 h-5" aria-hidden />
+              </button>
+              <button
+                type="button"
+                onClick={next}
+                aria-label="Next testimonial"
+                className="w-11 h-11 rounded-full bg-white border border-line text-ink flex items-center justify-center hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-colors cursor-pointer"
+              >
+                <ChevronRight className="w-5 h-5" aria-hidden />
+              </button>
+            </div>
           </div>
         </div>
       </div>

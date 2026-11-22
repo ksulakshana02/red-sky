@@ -1,283 +1,360 @@
 "use client";
 
-import React, { useState } from "react";
-import { CheckCircle2, Phone, ShieldCheck, ArrowRight, MapPin } from "lucide-react";
-import { motion } from "framer-motion";
+import React, { useMemo, useRef, useState } from "react";
+import {
+  AlertTriangle,
+  CheckCircle2,
+  Loader2,
+  Mail,
+  Phone,
+  Send,
+} from "lucide-react";
+import { site } from "@/lib/site";
 
+const subjects = [
+  "Request a quote or walkthrough",
+  "Question about a service",
+  "Existing contract or site issue",
+  "Tender or procurement enquiry",
+  "Careers",
+  "Something else",
+];
+
+const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+/**
+ * General contact form. Deliberately short — the long, qualifying version
+ * lives at /quote. Posts to the same endpoint so every enquiry lands in
+ * one place, and falls back to a prefilled email if delivery isn't
+ * configured yet, so nothing is ever silently dropped.
+ */
 export default function ContactFormSection() {
-  const [formData, setFormData] = useState({
+  const [v, setV] = useState({
     name: "",
+    company: "",
     email: "",
     phone: "",
-    service: "Residential House Cleaning",
-    contactPref: "Email",
-    city: "",
+    subject: subjects[0],
     message: "",
+    company_website: "",
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "sent" | "unconfigured" | "error"
+  >("idle");
+  const alertRef = useRef<HTMLDivElement>(null);
 
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const set = (k: keyof typeof v, value: string) => {
+    setV((prev) => ({ ...prev, [k]: value }));
+    setErrors((e) => {
+      if (!e[k]) return e;
+      const next = { ...e };
+      delete next[k];
+      return next;
+    });
   };
 
-  const coverageAreas = [
-    "Boston Proper",
-    "Cambridge",
-    "Somerville",
-    "Brookline",
-    "Newton",
-    "Quincy",
-    "Watertown",
-    "Medford",
-  ];
+  const mailtoHref = useMemo(() => {
+    const body = [
+      `Name: ${v.name}`,
+      v.company && `Organisation: ${v.company}`,
+      `Email: ${v.email}`,
+      v.phone && `Phone: ${v.phone}`,
+      `Subject: ${v.subject}`,
+      "",
+      v.message,
+    ]
+      .filter(Boolean)
+      .join("\n");
+    return `mailto:${site.email}?subject=${encodeURIComponent(v.subject)}&body=${encodeURIComponent(body)}`;
+  }, [v]);
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const err: Record<string, string> = {};
+    if (!v.name.trim()) err.name = "Please tell us your name.";
+    if (!v.email.trim()) err.email = "Please enter an email address.";
+    else if (!isEmail(v.email)) err.email = "That email address doesn't look right.";
+    if (!v.phone.trim()) err.phone = "Please enter a contact number.";
+    if (!v.message.trim()) err.message = "Let us know what you need.";
+    setErrors(err);
+    if (Object.keys(err).length > 0) {
+      alertRef.current?.focus();
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...v,
+          company: v.company || "Not supplied",
+          services: [],
+          specialist: [],
+          message: `[${v.subject}]\n\n${v.message}`,
+        }),
+      });
+      if (res.ok) setStatus("sent");
+      else if (res.status === 501) setStatus("unconfigured");
+      else setStatus("error");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "sent") {
+    return (
+      <section className="py-16 sm:py-20 bg-surface">
+        <div className="shell max-w-2xl">
+          <div className="card p-8 sm:p-12 text-center">
+            <span className="w-16 h-16 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center mx-auto mb-6">
+              <CheckCircle2 className="w-8 h-8" aria-hidden />
+            </span>
+            <h2 className="text-[26px] sm:text-[32px] font-medium text-ink tracking-tight mb-3">
+              Message received
+            </h2>
+            <p className="text-body/80" role="status">
+              {site.responsePromise} If it&apos;s urgent, call {site.phone.display} and
+              you&apos;ll get a person rather than a queue.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const errorList = Object.entries(errors);
 
   return (
-    <section className="py-8 sm:py-14 lg:py-16 bg-surface relative z-10 border-t border-slate-200/70 font-[family-name:var(--font-parkinsans)]">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          
-          {/* Left Column: Form (7 cols) */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-7"
-          >
-            <div className="rounded-[28px] sm:rounded-[36px] p-6 sm:p-9 lg:p-10 bg-white border border-slate-200/80 shadow-2xs">
-              <div className="mb-6">
-                <span className="eyebrow mb-2 sm:mb-3">
-                  Send A Message
+    <section id="contact-form" className="py-16 sm:py-20 lg:py-24 bg-surface scroll-mt-24">
+      <div className="shell grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div className="lg:col-span-5">
+          <span className="eyebrow eyebrow-accent mb-4">Send a message</span>
+          <h2 className="text-[28px] sm:text-4xl font-medium tracking-tight text-ink leading-tight mb-4">
+            Tell us what you need and we&apos;ll route it to the right person
+          </h2>
+          <p className="text-body/80 mb-6">
+            For a quote, the{" "}
+            <a href="/quote" className="text-brand-700 font-medium underline underline-offset-2">
+              three-step quote request
+            </a>{" "}
+            gathers what we need to scope your site properly. For anything else, this form
+            is the quickest way through.
+          </p>
+          <ul className="space-y-3 text-[15px]">
+            <li className="flex items-center gap-3 text-body">
+              <Phone className="w-4 h-4 text-brand-600 shrink-0" aria-hidden />
+              <a href={site.phone.href} className="rounded hover:text-brand-700">
+                {site.phone.display}
+              </a>
+            </li>
+            <li className="flex items-center gap-3 text-body">
+              <Mail className="w-4 h-4 text-brand-600 shrink-0" aria-hidden />
+              <a href={`mailto:${site.email}`} className="rounded hover:text-brand-700 break-all">
+                {site.email}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <form onSubmit={onSubmit} noValidate className="lg:col-span-7 card p-5 sm:p-8">
+          {errorList.length > 0 && (
+            <div
+              ref={alertRef}
+              tabIndex={-1}
+              role="alert"
+              className="mb-6 rounded-2xl border border-brand-200 bg-brand-50 p-4 outline-none"
+            >
+              <p className="flex items-center gap-2 text-sm font-semibold text-brand-800 mb-1.5">
+                <AlertTriangle className="w-4 h-4" aria-hidden />
+                Please check {errorList.length === 1 ? "this field" : "these fields"}
+              </p>
+              <ul className="list-disc pl-5 space-y-0.5 text-sm text-brand-800">
+                {errorList.map(([k, m]) => (
+                  <li key={k}>{m}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label htmlFor="c-name" className="field-label">
+                Name <span className="text-brand-600">*</span>
+              </label>
+              <input
+                id="c-name"
+                type="text"
+                autoComplete="name"
+                className="field"
+                value={v.name}
+                onChange={(e) => set("name", e.target.value)}
+                aria-invalid={Boolean(errors.name)}
+                aria-describedby={errors.name ? "c-name-err" : undefined}
+              />
+              {errors.name && (
+                <span id="c-name-err" className="field-error">
+                  {errors.name}
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-normal font-serif text-ink leading-snug mb-2">
-                  Tell us about your home or project
-                </h2>
-                <p className="text-xs sm:text-sm text-ink/70 font-normal leading-relaxed">
-                  Fill in your details below and our team will get back to you with an honest estimate or answers to your questions.
-                </p>
-              </div>
-
-              {submitted ? (
-                <div className="p-6 sm:p-8 rounded-[22px] bg-brand-50 border border-brand-100 text-center space-y-3 animate-in fade-in duration-300">
-                  <div className="w-12 h-12 rounded-full bg-white text-brand-600 border border-brand-100 flex items-center justify-center mx-auto shadow-2xs">
-                    <CheckCircle2 className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-normal font-serif text-ink">
-                    Message received, {formData.name || "friend"}!
-                  </h3>
-                  <p className="text-xs sm:text-sm text-ink/75 leading-relaxed max-w-md mx-auto">
-                    Thank you for reaching out. A coordinator will review your request and get back to you at{" "}
-                    <strong className="text-ink font-medium">{formData.email || formData.phone}</strong> shortly.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setSubmitted(false)}
-                    className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-ink hover:bg-brand-600 text-white text-xs font-medium transition-colors cursor-pointer mt-2"
-                  >
-                    Send another message
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  {/* Row 1: Name & Phone */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-medium text-ink mb-1.5">
-                        Your Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="John Doe"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-surface border border-slate-200 rounded-[14px] h-[46px] px-4 text-sm text-ink placeholder:text-slate-400 focus:outline-none focus:border-brand-600 focus:bg-white transition-all shadow-2xs font-normal"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-medium text-ink mb-1.5">
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        placeholder="+1 (718) 904-4450"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-surface border border-slate-200 rounded-[14px] h-[46px] px-4 text-sm text-ink placeholder:text-slate-400 focus:outline-none focus:border-brand-600 focus:bg-white transition-all shadow-2xs font-normal"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Row 2: Email & Town/City */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-medium text-ink mb-1.5">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        placeholder="john@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-surface border border-slate-200 rounded-[14px] h-[46px] px-4 text-sm text-ink placeholder:text-slate-400 focus:outline-none focus:border-brand-600 focus:bg-white transition-all shadow-2xs font-normal"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-medium text-ink mb-1.5">
-                        Neighborhood / City
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. Back Bay, Cambridge..."
-                        value={formData.city}
-                        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        className="w-full bg-surface border border-slate-200 rounded-[14px] h-[46px] px-4 text-sm text-ink placeholder:text-slate-400 focus:outline-none focus:border-brand-600 focus:bg-white transition-all shadow-2xs font-normal"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Row 3: Service Interest */}
-                  <div>
-                    <label className="block text-xs font-medium text-ink mb-1.5">
-                      Service You&apos;re Interested In
-                    </label>
-                    <select
-                      value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full bg-surface border border-slate-200 rounded-[14px] h-[46px] px-4 text-sm text-ink focus:outline-none focus:border-brand-600 focus:bg-white transition-all shadow-2xs cursor-pointer font-normal"
-                    >
-                      <option value="Residential House Cleaning">Residential House Cleaning (Routine)</option>
-                      <option value="Deep Cleaning & Disinfection">Deep Cleaning &amp; Disinfection</option>
-                      <option value="Move-In / Move-Out Cleaning">Move-In / Move-Out Cleaning</option>
-                      <option value="Office & Commercial Cleaning">Office &amp; Commercial Cleaning</option>
-                      <option value="Carpet & Upholstery Steam Clean">Carpet &amp; Upholstery Steam Clean</option>
-                      <option value="Other / General Question">Other / General Question</option>
-                    </select>
-                  </div>
-
-                  {/* Row 4: Message */}
-                  <div>
-                    <label className="block text-xs font-medium text-ink mb-1.5">
-                      How Can We Help? (Optional)
-                    </label>
-                    <textarea
-                      rows={4}
-                      placeholder="Tell us about your home (bedrooms, bathrooms, any special requests or pet notes)..."
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-surface border border-slate-200 rounded-[14px] p-4 text-sm text-ink placeholder:text-slate-400 focus:outline-none focus:border-brand-600 focus:bg-white transition-all shadow-2xs font-normal resize-none"
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <div className="pt-2">
-                    <button
-                      type="submit"
-                      className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-medium text-xs sm:text-sm transition-colors shadow-xs cursor-pointer"
-                    >
-                      <span>Send inquiry</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </form>
               )}
             </div>
-          </motion.div>
 
-          {/* Right Column: Support Details & Coverage (5 cols) */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 space-y-6"
-          >
-            
-            {/* Service Coverage Card */}
-            <div className="rounded-[28px] p-6 sm:p-7 bg-white border border-slate-200/80 shadow-2xs">
-              <div className="flex items-center gap-2 mb-3">
-                <MapPin className="w-4 h-4 text-brand-600" />
-                <h3 className="text-base sm:text-lg font-normal font-serif text-ink">
-                  Service Area Coverage
-                </h3>
-              </div>
-              <p className="text-xs sm:text-[13px] text-ink/70 leading-relaxed font-normal mb-4">
-                Our technicians travel across Greater Boston and nearby municipalities with full mobile cleaning equipment.
-              </p>
-              
-              <div className="flex flex-wrap gap-2">
-                {coverageAreas.map((area, idx) => (
-                  <span
-                    key={idx}
-                    className="text-xs font-normal text-slate-700 bg-slate-50 border border-slate-200/70 px-3 py-1 rounded-full"
-                  >
-                    {area}
-                  </span>
-                ))}
-              </div>
-              <p className="text-[11px] text-slate-400 mt-3 font-normal">
-                Don&apos;t see your town? Message us—we often serve neighboring communities.
-              </p>
+            <div>
+              <label htmlFor="c-company" className="field-label">
+                Organisation <span className="text-muted font-normal">(optional)</span>
+              </label>
+              <input
+                id="c-company"
+                type="text"
+                autoComplete="organization"
+                className="field"
+                value={v.company}
+                onChange={(e) => set("company", e.target.value)}
+              />
             </div>
 
-            {/* What to Expect Next Card */}
-            <div className="rounded-[28px] p-6 sm:p-7 bg-brand-50 border border-brand-100 shadow-2xs">
-              <h3 className="text-base sm:text-lg font-normal font-serif text-ink mb-3">
-                What happens after you reach out?
-              </h3>
-              
-              <ol className="space-y-3 text-xs sm:text-[13px] text-ink/75 font-normal">
-                <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-white border border-brand-200 text-brand-600 flex items-center justify-center shrink-0 text-xs font-medium">
-                    1
-                  </span>
-                  <span>We review your property size and requested scope.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-white border border-brand-200 text-brand-600 flex items-center justify-center shrink-0 text-xs font-medium">
-                    2
-                  </span>
-                  <span>You receive a clear, flat-rate estimate with no hidden surcharges.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-white border border-brand-200 text-brand-600 flex items-center justify-center shrink-0 text-xs font-medium">
-                    3
-                  </span>
-                  <span>We confirm your arrival slot. Zero payment taken until you are satisfied.</span>
-                </li>
-              </ol>
+            <div>
+              <label htmlFor="c-email" className="field-label">
+                Email <span className="text-brand-600">*</span>
+              </label>
+              <input
+                id="c-email"
+                type="email"
+                inputMode="email"
+                autoComplete="email"
+                className="field"
+                value={v.email}
+                onChange={(e) => set("email", e.target.value)}
+                aria-invalid={Boolean(errors.email)}
+                aria-describedby={errors.email ? "c-email-err" : undefined}
+              />
+              {errors.email && (
+                <span id="c-email-err" className="field-error">
+                  {errors.email}
+                </span>
+              )}
             </div>
 
-            {/* Immediate Help Card */}
-            <div className="rounded-[28px] p-6 bg-white border border-slate-200/80 shadow-2xs flex items-center justify-between">
-              <div>
-                <span className="text-xs text-slate-500 font-normal block mb-0.5">
-                  Prefer speaking with someone now?
+            <div>
+              <label htmlFor="c-phone" className="field-label">
+                Phone <span className="text-brand-600">*</span>
+              </label>
+              <input
+                id="c-phone"
+                type="tel"
+                inputMode="tel"
+                autoComplete="tel"
+                className="field"
+                value={v.phone}
+                onChange={(e) => set("phone", e.target.value)}
+                aria-invalid={Boolean(errors.phone)}
+                aria-describedby={errors.phone ? "c-phone-err" : undefined}
+              />
+              {errors.phone && (
+                <span id="c-phone-err" className="field-error">
+                  {errors.phone}
                 </span>
-                <span className="text-base font-normal font-serif text-ink">
-                  Direct Dispatch Hotline
-                </span>
-              </div>
-              <a
-                href="tel:+17189044450"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-brand-600 hover:bg-brand-700 text-white text-xs font-medium transition-colors shadow-2xs"
+              )}
+            </div>
+
+            <div className="sm:col-span-2">
+              <label htmlFor="c-subject" className="field-label">
+                What&apos;s it about?
+              </label>
+              <select
+                id="c-subject"
+                className="field"
+                value={v.subject}
+                onChange={(e) => set("subject", e.target.value)}
               >
-                <Phone className="w-3.5 h-3.5" />
-                <span>Call Us</span>
-              </a>
+                {subjects.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
             </div>
 
-          </motion.div>
+            <div className="sm:col-span-2">
+              <label htmlFor="c-message" className="field-label">
+                Message <span className="text-brand-600">*</span>
+              </label>
+              <textarea
+                id="c-message"
+                className="field"
+                placeholder="Site type, location, what you need and by when."
+                value={v.message}
+                onChange={(e) => set("message", e.target.value)}
+                aria-invalid={Boolean(errors.message)}
+                aria-describedby={errors.message ? "c-message-err" : undefined}
+              />
+              {errors.message && (
+                <span id="c-message-err" className="field-error">
+                  {errors.message}
+                </span>
+              )}
+            </div>
+          </div>
 
-        </div>
+          {/* Honeypot */}
+          <div aria-hidden className="absolute -left-[9999px] w-px h-px overflow-hidden">
+            <label htmlFor="c-website">Leave this field empty</label>
+            <input
+              id="c-website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={v.company_website}
+              onChange={(e) => set("company_website", e.target.value)}
+            />
+          </div>
+
+          {(status === "unconfigured" || status === "error") && (
+            <div role="alert" className="mt-6 rounded-2xl border border-brand-200 bg-brand-50 p-5">
+              <p className="flex items-center gap-2 text-sm font-semibold text-brand-800 mb-2">
+                <AlertTriangle className="w-4 h-4" aria-hidden />
+                {status === "unconfigured"
+                  ? "Online submission isn't switched on yet"
+                  : "That didn't go through"}
+              </p>
+              <p className="text-sm text-brand-900/85 mb-4">
+                Nothing was lost — the email below is already filled in with what you wrote.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a href={mailtoHref} className="btn btn-primary">
+                  <Mail className="w-4 h-4" aria-hidden />
+                  Email it to us
+                </a>
+                <a href={site.phone.href} className="btn btn-secondary">
+                  <Phone className="w-4 h-4" aria-hidden />
+                  {site.phone.display}
+                </a>
+              </div>
+            </div>
+          )}
+
+          <div className="mt-7 flex flex-col sm:flex-row sm:items-center gap-4">
+            <button type="submit" disabled={status === "sending"} className="btn btn-primary">
+              {status === "sending" ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" aria-hidden />
+                  Sending…
+                </>
+              ) : (
+                <>
+                  Send message
+                  <Send className="w-4 h-4" aria-hidden />
+                </>
+              )}
+            </button>
+            <p className="text-[13px] text-muted">
+              We use your details only to reply. No marketing list.
+            </p>
+          </div>
+        </form>
       </div>
     </section>
   );
 }
-

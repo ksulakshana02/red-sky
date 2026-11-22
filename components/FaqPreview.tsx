@@ -7,25 +7,25 @@ import { faqData } from "@/lib/faqData";
 import { site } from "@/lib/site";
 
 interface FaqPreviewProps {
-  /** Question ids from lib/faqData.ts — keep it to 3–5 so the section stays short. */
+  /** Question ids from lib/faqData.ts — keep to 3–5 so the section stays short. */
   ids: string[];
   eyebrow?: string;
   title?: string;
   description?: string;
-  /** Use a soft tinted background (alternate with neighbouring sections). */
+  /** Soft tinted background, to alternate with neighbouring sections. */
   tinted?: boolean;
 }
 
 /**
- * Compact, page-specific FAQ. Every page shows only the few questions that
- * matter at that step and links to /faq for the rest. All answers live in
- * lib/faqData.ts, so there is one place to edit them.
+ * Page-specific FAQ. Each page shows only the handful of questions that
+ * matter at that step and links to /faq for the rest. Answers live in
+ * lib/faqData.ts so there is exactly one place to edit them.
  */
 export default function FaqPreview({
   ids,
   eyebrow = "FAQ",
-  title = "Quick answers",
-  description = "The questions we hear most. Can't find yours? We're happy to help.",
+  title = "Questions we get asked",
+  description = "The things facilities teams want settled before they talk to us. Anything missing — just ask.",
   tinted = false,
 }: FaqPreviewProps) {
   const items = ids
@@ -34,13 +34,17 @@ export default function FaqPreview({
   const [open, setOpen] = useState<number | null>(0);
   const baseId = useId();
 
+  if (items.length === 0) return null;
+
   return (
-    <section className={`py-16 sm:py-20 ${tinted ? "bg-surface" : "bg-white"}`}>
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+    <section className={`py-16 sm:py-20 lg:py-24 ${tinted ? "bg-surface" : "bg-white"}`}>
+      <div className="shell grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
         {/* Intro + escape hatches */}
         <div className="lg:col-span-4">
-          <span className="eyebrow mb-4">{eyebrow}</span>
-          <h2 className="text-[28px] sm:text-4xl font-medium tracking-tight text-ink leading-tight mb-3">{title}</h2>
+          <span className={`eyebrow mb-4 ${tinted ? "eyebrow-accent" : ""}`}>{eyebrow}</span>
+          <h2 className="text-[28px] sm:text-4xl font-medium tracking-tight text-ink leading-tight mb-3">
+            {title}
+          </h2>
           <p className="text-body/80 mb-6">{description}</p>
           <div className="flex flex-wrap gap-3">
             <Link href="/faq" className="btn btn-secondary">
@@ -49,7 +53,7 @@ export default function FaqPreview({
             </Link>
             <a href={site.phone.href} className="btn text-brand-700 hover:bg-brand-50 px-4">
               <Phone className="w-4 h-4" aria-hidden />
-              Ask us
+              Ask us directly
             </a>
           </div>
         </div>
@@ -64,7 +68,9 @@ export default function FaqPreview({
               <li
                 key={item.id}
                 className={`rounded-2xl border bg-white transition-colors ${
-                  isOpen ? "border-brand-200 shadow-[var(--shadow-soft)]" : "border-line hover:border-brand-200"
+                  isOpen
+                    ? "border-brand-200 shadow-[var(--shadow-soft)]"
+                    : "border-line hover:border-brand-200"
                 }`}
               >
                 <h3 className="m-0">
@@ -87,7 +93,7 @@ export default function FaqPreview({
                     </span>
                   </button>
                 </h3>
-                {/* grid-rows trick gives a smooth height animation without JS measuring */}
+                {/* grid-rows trick animates height without measuring in JS */}
                 <div
                   id={panelId}
                   role="region"
@@ -97,7 +103,9 @@ export default function FaqPreview({
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-5 sm:px-6 pb-5 text-[15px] text-body/80 leading-relaxed">{item.answer}</p>
+                    <p className="px-5 sm:px-6 pb-5 text-[15px] text-body/80 leading-relaxed">
+                      {item.answer}
+                    </p>
                   </div>
                 </div>
               </li>

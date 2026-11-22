@@ -1,7 +1,26 @@
+/**
+ * Insights articles — written for facilities, operations and strata managers.
+ *
+ * Author avatars are deliberately omitted: initials are rendered instead, so
+ * no stock headshot is ever passed off as a member of staff.
+ * TODO(client): replace author names and roles with real people.
+ */
+
+export const blogCategories = [
+  "All",
+  "Facility Management",
+  "Compliance",
+  "Cleaning Standards",
+  "Sustainability",
+  "Industry Insights",
+] as const;
+
+export type BlogCategory = (typeof blogCategories)[number];
+
 export interface BlogPost {
   slug: string;
   title: string;
-  category: "All" | "Organizing" | "Eco Cleaning" | "Moving Tips" | "Bathroom Care" | "Air Quality" | "Commercial Care";
+  category: Exclude<BlogCategory, "All">;
   date: string;
   readTime: string;
   image: string;
@@ -9,7 +28,6 @@ export interface BlogPost {
   author: {
     name: string;
     role: string;
-    avatar: string;
   };
   content: {
     intro: string;
@@ -25,240 +43,347 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "the-deep-cleaning-and-organizing",
-    title: "A Room-by-Room Guide to Deep Cleaning and Decluttering",
-    category: "Organizing",
-    date: "Feb 10, 2025",
+    slug: "writing-a-cleaning-scope-of-works",
+    title: "How to Write a Cleaning Scope of Works That Actually Holds Up",
+    category: "Facility Management",
+    date: "Oct 14, 2026",
+    readTime: "7 min read",
+    image: "/images/service/service-2.jpg",
+    excerpt:
+      "Most cleaning disputes are scope disputes. A specification that names the area, the task and the frequency removes the argument before it starts.",
+    author: { name: "Operations Team", role: "RedSky Facility Services" },
+    content: {
+      intro:
+        "Almost every dispute between a site and its cleaning contractor comes down to the same thing: two parties remembering the agreement differently. A well-written scope of works ends that. It is not a legal document so much as an operational one — a list specific enough that a cleaner, a supervisor and a facilities manager would all mark the same site the same way.",
+      sections: [
+        {
+          heading: "1. Describe areas, not buildings",
+          paragraphs: [
+            "A scope that says 'Level 3' is unenforceable. A scope that lists reception, open-plan workstations, four meeting rooms, two kitchens, two washrooms, the lift lobby and the fire stair is something you can inspect against.",
+            "Break the site into the areas people actually talk about when they complain. If a space generates its own complaints, it deserves its own line.",
+          ],
+          checklist: [
+            "List every area by the name your staff use for it",
+            "Record approximate floor area and surface type per area",
+            "Note access constraints — swipe cards, alarm codes, restricted hours",
+            "Flag any area explicitly excluded from the scope",
+          ],
+        },
+        {
+          heading: "2. Separate daily, periodic and on-request work",
+          paragraphs: [
+            "Daily tasks are what keeps the site functioning. Periodic tasks — carpet extraction, high-level dusting, hard-floor restoration — are what stops it degrading over a two-year contract. Confusing the two is how sites end up paying for a daily service and quietly losing their floors.",
+            "Give every periodic task a frequency and a nominated month. 'Twice yearly' invites drift; 'March and September' does not.",
+          ],
+        },
+        {
+          heading: "3. Define the standard, not just the activity",
+          paragraphs: [
+            "'Clean washrooms' means nothing. 'Washrooms cleaned and sanitised, mirrors and chrome polished, consumables restocked, no visible soiling at the start of business' is a standard someone can fail.",
+            "Where an outcome is hard to word, photograph the acceptable condition at handover and attach it to the specification as the reference state.",
+          ],
+          checklist: [
+            "State the condition expected, with a time it must be met by",
+            "Attach reference photographs for ambiguous areas",
+            "Name the rectification window for a failed inspection",
+            "Say who signs off that rectification is complete",
+          ],
+        },
+        {
+          heading: "4. Write the reporting into the scope",
+          paragraphs: [
+            "If inspection frequency, report format and escalation path are not in the specification, they are optional — and the first busy month is when they stop happening.",
+            "Specify how often supervisors inspect, what evidence accompanies an inspection, when the monthly report lands, and who it goes to.",
+          ],
+        },
+      ],
+      proTip:
+        "Before you issue a specification to tender, hand it to someone who has never seen the site and ask them to mark it. Every question they ask you is a gap a contractor could later price around.",
+      conclusion:
+        "A good scope protects both sides. It gives the contractor a fixed, priceable commitment and gives the site a document it can inspect against. If you are retendering, rewriting the specification is worth more than changing suppliers.",
+    },
+  },
+  {
+    slug: "contractor-compliance-documents-checklist",
+    title: "The Compliance Documents to Demand Before a Contractor Starts",
+    category: "Compliance",
+    date: "Sep 29, 2026",
+    readTime: "6 min read",
+    image: "/images/service/service-6.jpg",
+    excerpt:
+      "Insurance certificates, SWMS, SDS, police checks and inductions. What to ask for, what each one actually proves, and how often to re-check it.",
+    author: { name: "HSEQ Team", role: "RedSky Facility Services" },
+    content: {
+      intro:
+        "Engaging a contractor transfers work, not liability. If someone is injured on your site or a chemical is misused, the question asked afterwards is what you verified before they started. These are the documents worth holding, and what each one is actually evidence of.",
+      sections: [
+        {
+          heading: "Certificates of currency",
+          paragraphs: [
+            "Public liability and workers compensation certificates are the baseline. The detail that matters is the expiry date and the named insured — a certificate in the name of a related entity is not cover for the company on your site.",
+            "Set a calendar reminder for thirty days before expiry rather than filing it and forgetting. An expired certificate discovered after an incident is worth nothing.",
+          ],
+          checklist: [
+            "Public liability — check the insured entity name and the sum insured",
+            "Workers compensation — current for the state the work is performed in",
+            "Motor vehicle cover where vehicles come on site",
+            "Diary the earliest expiry date across all certificates",
+          ],
+        },
+        {
+          heading: "Safe Work Method Statements",
+          paragraphs: [
+            "A SWMS should be written for your site, not downloaded. If it does not mention your access arrangements, your plant, or the specific heights and chemicals involved, it is a template and it will not help anyone.",
+            "Read the control measures. Generic entries like 'take care' indicate the risk assessment was never really done.",
+          ],
+        },
+        {
+          heading: "Safety Data Sheets and the chemical register",
+          paragraphs: [
+            "Every chemical brought onto your site needs a current SDS, and the register needs to match what is actually in the cleaner's trolley. Ask to see the trolley at an inspection; mismatches are common and revealing.",
+            "Check decanted bottles are labelled. Unlabelled decanted chemicals are one of the most frequent findings in a WHS audit.",
+          ],
+        },
+        {
+          heading: "Personnel screening and inductions",
+          paragraphs: [
+            "National Police Checks for all staff; Working with Children Checks for anyone on an education or childcare site; sector-specific screening and immunisation records for clinical and aged care settings.",
+            "Screening is only useful if it is current. Ask how the contractor tracks expiry across a workforce, and what stops an expired check from being rostered.",
+          ],
+          checklist: [
+            "Police checks held centrally and produceable on request",
+            "WWCC current for every person on an education site",
+            "Site induction completed before the first shift, not after",
+            "A named process for removing someone whose clearance lapses",
+          ],
+        },
+      ],
+      proTip:
+        "Ask for the documents at tender stage, not at mobilisation. A contractor who cannot produce them inside a week during a competitive tender will not produce them faster once they have the contract.",
+      conclusion:
+        "None of this is onerous for a contractor who runs properly — it is a morning's work from a system they already maintain. How quickly and completely a bidder responds is itself the most useful piece of due diligence you will do.",
+    },
+  },
+  {
+    slug: "true-cost-of-switching-cleaning-contractors",
+    title: "The Real Cost of Switching Cleaning Contractors (and When It's Worth It)",
+    category: "Industry Insights",
+    date: "Sep 8, 2026",
+    readTime: "6 min read",
+    image: "/images/choose/choose.jpg",
+    excerpt:
+      "Switching is less disruptive than most managers fear and more expensive than the headline rate suggests. Here is how to work out whether to move.",
+    author: { name: "Account Management", role: "RedSky Facility Services" },
+    content: {
+      intro:
+        "Facilities managers tend to tolerate a declining cleaning contract far longer than they would tolerate the same decline from any other supplier, because switching feels risky. It is worth separating the real costs of a transition from the imagined ones.",
+      sections: [
+        {
+          heading: "What switching actually costs",
+          paragraphs: [
+            "The genuine costs are mobilisation time, a short period of inconsistency while a new crew learns the site, and your own time spent on the tender and handover. For a single site that is typically two to four weeks and a handful of hours of your attention.",
+            "The costs people fear — a gap in service, a site left dirty, lost keys and access cards — are handover failures, and they are avoidable with an overlap period written into the transition plan.",
+          ],
+        },
+        {
+          heading: "What a declining contract costs",
+          paragraphs: [
+            "Periodic works quietly skipped are the expensive part. Carpets that should have been extracted twice a year and were not will need replacing years early. Hard floors that lost their seal cost several times a restoration to bring back.",
+            "Add the complaints your team fields, the time you spend chasing, and the slow erosion of how the building presents to visitors.",
+          ],
+          checklist: [
+            "Check whether every periodic task in the last 12 months was actually done",
+            "Price the asset replacement you are bringing forward",
+            "Count the hours per month you spend managing the incumbent",
+            "Ask whether the last three complaints were ever closed out",
+          ],
+        },
+        {
+          heading: "Fix first, switch second",
+          paragraphs: [
+            "Before going to market, put the specification and the inspection regime in writing and give the incumbent a defined period to meet it. Some suppliers are under-performing because nobody ever told them precisely what good looked like.",
+            "If performance does not move inside a quarter with a clear written standard and a named escalation, it is not going to.",
+          ],
+        },
+        {
+          heading: "Running a transition that does not hurt",
+          paragraphs: [
+            "Overlap the last week of the outgoing contract with the first week of the new one where your notice period allows. Take a full photographic condition record on day one so pre-existing damage is not attributed to the incoming supplier.",
+            "Agree what catch-up work is included in mobilisation, in writing, before the start date.",
+          ],
+        },
+      ],
+      proTip:
+        "Ask any prospective supplier to describe their last transition in detail — who did what, in what order, and what went wrong. Vague answers mean they have not run many.",
+      conclusion:
+        "Switching is a manageable, bounded project. Staying with a contract that is quietly deferring periodic work is an open-ended one. Price both before you decide.",
+    },
+  },
+  {
+    slug: "high-touch-surface-disinfection-that-works",
+    title: "High-Touch Surface Disinfection: What Actually Reduces Transmission",
+    category: "Cleaning Standards",
+    date: "Aug 19, 2026",
     readTime: "5 min read",
-    image: "/images/image-gallery/1.jpg",
-    excerpt: "Practical tips and systematic room-by-room strategies to declutter, deep clean, and keep your living spaces organized all year round.",
-    author: {
-      name: "Elena Vance",
-      role: "Founder & Master Cleaning Specialist",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
-    },
+    image: "/images/service/service-3.jpg",
+    excerpt:
+      "Contact time, cleaning before disinfecting, and colour-coded zoning do more than any product claim on a label.",
+    author: { name: "Technical Services", role: "RedSky Facility Services" },
     content: {
-      intro: "Deep cleaning your home can often feel overwhelming when tackled all at once. The secret used by professional cleaners is working in logical zones—clearing clutter first, dusting from high surfaces down to the floor, and sanitizing touchpoints systematically.",
+      intro:
+        "Disinfection programmes often fail for procedural reasons rather than chemical ones. The product on the label is rarely the problem; how long it stays wet, and what was on the surface before it was applied, usually is.",
       sections: [
         {
-          heading: "1. The Kitchen: Start with High-Grease Zones",
+          heading: "Clean before you disinfect",
           paragraphs: [
-            "Begin by clearing countertops completely before wiping anything down. Grease particles naturally attract dust, creating a sticky film on range hoods, backsplashes, and cabinet doors.",
-            "Use a plant-based citrus degreaser and microfiber cloth rather than abrasive scouring pads. Work from top cabinets downward to the baseboards so falling debris is swept up in one final pass.",
+            "Disinfectants are deactivated by organic soil. Applying one to a visibly dirty surface wastes the chemical and leaves the surface contaminated. Cleaning and disinfection are two steps, in that order.",
+            "On high-traffic surfaces this means a detergent pass followed by a disinfectant pass, not a single wipe with a combined product applied to grime.",
+          ],
+        },
+        {
+          heading: "Respect the contact time",
+          paragraphs: [
+            "Every disinfectant has a required dwell time on the label — commonly somewhere between thirty seconds and ten minutes. If the surface is wiped dry before that time elapses, the claimed kill rate does not apply.",
+            "Build the routine so dwell time happens naturally: spray a run of surfaces, move on, come back. Anything that depends on a cleaner standing and waiting will not survive a busy shift.",
           ],
           checklist: [
-            "Wipe down upper and lower cabinet exterior faces",
-            "Degrease stovetop burner grates and range hood filters",
-            "Descale kitchen faucet aerators using warm white vinegar",
-            "Sanitize waste bin perimeters and floor kickplates",
+            "Confirm the required contact time for each product in use",
+            "Sequence the route so dwell time elapses without anyone waiting",
+            "Record the frequency, not just the fact, of disinfection",
+            "Re-check dilution rates if dispensers are refilled manually",
           ],
         },
         {
-          heading: "2. The Bathrooms: Give Natural Cleaners Dwell Time",
+          heading: "Zone with colour, and mean it",
           paragraphs: [
-            "One common mistake is spraying cleaner and immediately wiping it off. Plant-derived disinfectants need 3 to 5 minutes of 'dwell time' to effectively break down soap scum and sanitize surfaces.",
-            "Spray your shower tile and sinks first, step away to wipe mirrors and empty bins, and return to scrub when the solution has softened mineral deposits.",
+            "Colour-coded microfibre only prevents cross-contamination if the cloths are genuinely separated, laundered between sites and retired when they stop performing. A colour system that shares a single bucket is decoration.",
+            "Audit it by looking in the trolley unannounced rather than asking whether the system is followed.",
+          ],
+        },
+        {
+          heading: "Target the surfaces that matter",
+          paragraphs: [
+            "Door furniture, light switches, lift buttons, handrails, shared keyboards, kitchen taps, printer panels and bathroom locks carry far more transfer than large horizontal areas.",
+            "Frequency on those points matters more than broad coverage. A daily wipe of every desk is worth less than treating the twenty touchpoints the whole floor shares.",
+          ],
+        },
+      ],
+      proTip:
+        "Walk your site and list every surface touched by more than ten people a day. If a point on that list is not named in your cleaning specification, your specification has a hole in it.",
+      conclusion:
+        "Effective disinfection is mostly discipline: clean first, let the product dwell, keep the zones separate, and concentrate effort on shared touchpoints. None of it requires a premium chemical.",
+    },
+  },
+  {
+    slug: "cutting-waste-and-chemicals-without-cutting-standards",
+    title: "Cutting Waste and Chemical Use Without Dropping Your Standards",
+    category: "Sustainability",
+    date: "Jul 30, 2026",
+    readTime: "6 min read",
+    image: "/images/service/service-5.jpg",
+    excerpt:
+      "Metered dilution, microfibre and honest waste separation reduce both environmental impact and cost — and give you numbers you can report.",
+    author: { name: "Operations Team", role: "RedSky Facility Services" },
+    content: {
+      intro:
+        "Sustainability in cleaning is usually sold as a product swap. The larger gains are operational: using less chemical, less water and less single-use plastic to reach the same standard, and being able to evidence it when your organisation reports.",
+      sections: [
+        {
+          heading: "Fix dilution before you change products",
+          paragraphs: [
+            "Hand-mixed chemicals are routinely over-concentrated, which wastes product, leaves residue that attracts soil, and can damage surfaces. Metered dispensers remove the guesswork and typically cut concentrate use substantially.",
+            "The side benefit is consistency: every bottle on every site performs the same way, so a standard is reproducible rather than dependent on who mixed it.",
           ],
           checklist: [
-            "Descale glass shower doors and chrome fixtures",
-            "Disinfect high-touch door handles, flushers, and light switches",
-            "Scrub baseboards behind toilet tanks and around vanity plumbing",
+            "Install metered dispensers at each chemical store",
+            "Remove manual decanting from the routine entirely",
+            "Label every secondary container, without exception",
+            "Track concentrate purchased per square metre as your baseline",
           ],
         },
         {
-          heading: "3. Bedrooms & Living Areas: Focus on Hidden Dust",
+          heading: "Microfibre, laundered properly",
           paragraphs: [
-            "Dust settles in places we rarely look: ceiling fan blades, window tracks, curtain rods, and under beds. Use a dry electrostatic microfiber duster rather than feather dusters, which simply disperse particles back into the room.",
-            "Vacuum upholstery using a soft brush attachment and steam-mop hard floors with clean water or botanical floor rinse.",
+            "A microfibre system cuts both water and chemical use and outperforms cotton on soil capture. It only works if cloths are laundered correctly, without fabric softener, and retired once the fibres glaze.",
+            "Track cloth lifecycle. A microfibre programme where nobody retires worn stock drifts back to the performance of a cotton rag within a year.",
+          ],
+        },
+        {
+          heading: "Separate waste honestly",
+          paragraphs: [
+            "Most sites have recycling bins; far fewer have recycling that survives the bin room. If streams are combined at consolidation, the separation upstairs is theatre.",
+            "Audit the bin room, not the office. Ask your waste contractor for contamination rates and act on them — a high contamination rate sends the whole load to landfill.",
+          ],
+        },
+        {
+          heading: "Measure what you will be asked about",
+          paragraphs: [
+            "If your organisation reports on environmental performance, decide early which numbers you need: chemical concentrate per square metre, waste diverted from landfill, and water used in floor care are the three most often requested.",
+            "Build them into the monthly service report rather than reconstructing them at year end.",
           ],
         },
       ],
-      proTip: "Always clean top-to-bottom and dry-to-wet. Dust ceiling fans, mantels, and shelves before vacuuming or steam-mopping floors so you never clean the same surface twice.",
-      conclusion: "Taking on one room per weekend keeps the process manageable and rewarding. When you need extra hands for deep scrubbing or move-out cleaning, professional teams can take care of the heavy lifting so you can enjoy your clean home.",
+      proTip:
+        "Ask your contractor what they purchased in concentrate last year, in litres. If nobody can answer, there is no baseline, and any reduction claim being made is guesswork.",
+      conclusion:
+        "Lower impact and lower cost usually point the same direction in cleaning. Both come from using the right amount of the right product, and being able to prove it.",
     },
   },
   {
-    slug: "eco-friendly-products-for-cleaning",
-    title: "The Best Non-Toxic, Plant-Based Cleaners for Sensitive Homes",
-    category: "Eco Cleaning",
-    date: "Feb 03, 2025",
-    readTime: "4 min read",
-    image: "/images/image-gallery/2.jpg",
-    excerpt: "Discover how plant-derived formulations remove grime and sanitize effectively without harsh bleaches, synthetic perfumes, or volatile fumes.",
-    author: {
-      name: "Dr. Sophia Lin",
-      role: "Environmental Chemistry & Safety Lead",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
-    },
-    content: {
-      intro: "For decades, traditional cleaning companies relied on strong chemical fragrances and bleach to convince people a room was clean. Today, we know that heavy volatile organic compounds (VOCs) irritate airways, aggravate asthma, and leave chemical residues on everyday surfaces.",
-      sections: [
-        {
-          heading: "The Power of Botanical Surfactants",
-          paragraphs: [
-            "Natural surfactants derived from coconut and corn sugars break down grease and oils just as effectively as petroleum-based detergents, without stripping protective finishes or releasing toxic vapors.",
-            "When paired with pure citric acid and botanical extracts, they naturally dissolve mineral scale, soap scum, and water spots.",
-          ],
-        },
-        {
-          heading: "Why Bleach is Unnecessary for Everyday Homes",
-          paragraphs: [
-            "Chlorine bleach is corrosive, damages grout sealant, and creates toxic chloramine gas when mixed with common household ammonia or acidic residues.",
-            "Hospital-grade botanical disinfectants powered by thymol (extracted from the thyme plant) kill 99.9% of bacteria and viruses while remaining safe for food-prep surfaces, infants, and pets.",
-          ],
-          checklist: [
-            "Look for Green Seal (GS-37) or EPA Safer Choice certifications",
-            "Avoid products labeled 'Danger' or 'Corrosive'",
-            "Opt for fragrance-free or pure essential oil blends over synthetic perfumes",
-          ],
-        },
-      ],
-      proTip: "If you smell a strong chemical odor after cleaning, your indoor air has been filled with volatile compounds. A truly clean space should smell like fresh air, not bleach.",
-      conclusion: "Switching to green cleaning creates a healthier indoor environment for your family while keeping waterways clean. It is one of the easiest ways to improve everyday wellness at home.",
-    },
-  },
-  {
-    slug: "house-cleaning-services-before-moving-in",
-    title: "Why a Pre-Move-In Deep Clean is Essential Before Unpacking",
-    category: "Moving Tips",
-    date: "Jan 28, 2025",
-    readTime: "4 min read",
-    image: "/images/image-gallery/3.jpg",
-    excerpt: "Why sanitizing an empty house or apartment before furniture arrives is the most important step of any smooth relocation.",
-    author: {
-      name: "Marcus Sterling",
-      role: "Operations & Training Director",
-      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80",
-    },
-    content: {
-      intro: "Moving into a new home is exciting, but unpacking boxes into dusty cabinets or stepping onto unwashed carpet can quickly ruin that fresh start feeling. Cleaning an empty home before furniture arrives is ten times faster and far more thorough than doing it later.",
-      sections: [
-        {
-          heading: "Clean Inside the Places You Cannot Reach Later",
-          paragraphs: [
-            "Once dressers, sofas, and pantry goods are put away, cleaning behind and underneath them becomes difficult. An empty property allows full access to cabinet interiors, pantry shelves, refrigerator coils, and baseboards throughout.",
-            "Vacant rooms also allow professional steam extractors to clean carpets edge-to-edge without having to maneuver around heavy furniture.",
-          ],
-        },
-        {
-          heading: "Eradicate Previous Resident Allergens",
-          paragraphs: [
-            "Pet dander, hair, and dust mites from previous occupants often linger deep in carpet fibers and HVAC return vents. A pre-move-in clean using 4-stage HEPA filtration resets the home to a neutral, hygienic baseline.",
-          ],
-          checklist: [
-            "Disinfect inside all kitchen cabinets, drawers, and shelf liners",
-            "Deep clean inside the oven, broiler, and refrigerator interior",
-            "Scrub bathroom grout, polish faucets, and disinfect toilet bases",
-            "Vacuum window sills, tracks, and closet shelving",
-          ],
-        },
-      ],
-      proTip: "Schedule your pre-move-in cleaning for the day after the previous owner vacates, and at least 24 hours before your moving truck arrives. This gives freshly steam-mopped floors and cleaned carpets ample time to dry.",
-      conclusion: "A thorough move-in clean gives you complete confidence that your new space is truly fresh, sanitized, and ready for you and your loved ones to settle in.",
-    },
-  },
-  {
-    slug: "preventing-mold-and-grout-discoloration",
-    title: "How to Prevent Bathroom Grout Mold Without Using Harsh Bleach",
-    category: "Bathroom Care",
-    date: "Jan 18, 2025",
-    readTime: "3 min read",
-    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1024&q=80",
-    excerpt: "Natural mineral techniques and daily ventilation habits that keep tile grout lines bright and prevent moisture buildup.",
-    author: {
-      name: "David Miller",
-      role: "Quality Assurance Lead",
-      avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80",
-    },
-    content: {
-      intro: "Grout is naturally porous. In warm, humid bathrooms, moisture and soap residue seep into tile joints, creating the ideal environment for mildew and dark mold. Fortunately, you don't need caustic chemicals to keep it clean.",
-      sections: [
-        {
-          heading: "The Vinegar and Baking Soda Paste Method",
-          paragraphs: [
-            "For light grout discoloration, create a thick paste of baking soda and a few drops of plant-based liquid dish soap. Apply it along grout lines and spray with diluted white vinegar.",
-            "The gentle foaming action lifts mineral deposits from grout pores without eroding the surrounding cement or tile glaze.",
-          ],
-        },
-        {
-          heading: "Ventilation is 90% of Prevention",
-          paragraphs: [
-            "Mold cannot grow without sustained moisture. Running your bathroom exhaust fan during showers and for 20 minutes afterward reduces ambient humidity below the mold threshold.",
-            "Using a simple rubber squeegee on glass doors and shower walls takes under 30 seconds and eliminates 80% of standing water.",
-          ],
-        },
-      ],
-      proTip: "Keep a small handheld rubber squeegee in the shower. Taking 20 seconds to wipe down tile walls after your morning shower prevents 90% of hard-water spots and mildew before it starts.",
-      conclusion: "Consistent light maintenance and proper airflow are far more effective at preserving grout than harsh chemical bleaching.",
-    },
-  },
-  {
-    slug: "indoor-air-quality-hepa-vacuum-benefits",
-    title: "How 4-Stage HEPA Filtration Improves Indoor Air Quality in Winter",
-    category: "Air Quality",
-    date: "Jan 09, 2025",
-    readTime: "4 min read",
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1024&q=80",
-    excerpt: "Why standard vacuums blow fine dust back into the air and how true HEPA multi-stage filtration traps microscopic allergens.",
-    author: {
-      name: "Dr. Sophia Lin",
-      role: "Environmental Chemistry & Safety Lead",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
-    },
-    content: {
-      intro: "During colder months, windows stay shut and heating systems recirculate indoor air. Dust mites, pet dander, and fine particulate matter accumulate quickly on rugs, upholstered furniture, and curtains.",
-      sections: [
-        {
-          heading: "The Problem with Standard Vacuum Exhaust",
-          paragraphs: [
-            "Cheap vacuums without sealed HEPA systems trap large visible dirt but blow microscopic particles—down to 0.3 microns—straight back out of the exhaust into the room air you breathe.",
-            "This causes coughing, eye irritation, and musty smells shortly after cleaning.",
-          ],
-        },
-        {
-          heading: "True 4-Stage HEPA Trapping",
-          paragraphs: [
-            "Commercial 4-stage HEPA vacuums feature airtight gaskets and specialized dense filters that capture 99.97% of airborne allergens, preventing them from escaping back into the room.",
-            "Paired with color-coded microfiber cloths that electrostatically attract dust rather than scattering it, your home's air stays clean and easy to breathe.",
-          ],
-        },
-      ],
-      proTip: "Check your home HVAC air filters every 60 days during peak heating and cooling seasons. Upgrading to a MERV-11 or MERV-13 filter dramatically reduces airborne dust settling on furniture.",
-      conclusion: "Clean indoor air is just as important as clean countertops. Investing in proper filtration protects your family's respiratory health year-round.",
-    },
-  },
-  {
-    slug: "office-desk-sanitization-guide",
-    title: "High-Touch Surface Protocols for Shared Office Workstations",
-    category: "Commercial Care",
-    date: "Dec 22, 2024",
+    slug: "strata-common-area-cleaning-complaints",
+    title: "Why Strata Common-Area Complaints Keep Coming Back",
+    category: "Facility Management",
+    date: "Jul 11, 2026",
     readTime: "5 min read",
-    image: "/images/image-gallery/4.jpg",
-    excerpt: "Key touchpoints in open-plan offices, conference rooms, and kitchenettes that require daily sanitization to prevent workplace illness.",
-    author: {
-      name: "Marcus Sterling",
-      role: "Operations & Training Director",
-      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80",
-    },
+    image: "/images/service/service-4.jpg",
+    excerpt:
+      "In most buildings the cleaning is adequate and the communication is not. A published schedule fixes more complaints than an extra visit.",
+    author: { name: "Account Management", role: "RedSky Facility Services" },
     content: {
-      intro: "In collaborative modern offices, shared hot-desks and conference spaces see dozens of different hands each day. Studies show typical computer keyboards harbor hundreds of times more bacteria per square inch than a clean restroom fixture.",
+      intro:
+        "Committees frequently respond to common-area complaints by increasing the cleaning frequency, and are surprised when the complaints continue. In most buildings the underlying issue is that residents have no idea what is supposed to happen or when.",
       sections: [
         {
-          heading: "Top Touchpoints to Sanitize Daily",
+          heading: "Publish the schedule where residents can see it",
           paragraphs: [
-            "Computer mice, keyboard keys, telephone handsets, desk chair armrests, and conference room remote controls are prime transmission points for seasonal colds and viruses.",
-            "Using gentle non-corrosive alcohol-free wipes prevents damage to sensitive electronics while sanitizing effectively.",
+            "A single notice in the lobby listing what is cleaned, on which days, resolves a large share of complaints immediately. Most people are not objecting to the standard; they are objecting to not knowing whether anyone came.",
+            "It also redirects legitimate complaints to the right target. If the schedule says bin rooms are washed Tuesdays and it is Thursday, the complaint is specific and actionable.",
           ],
           checklist: [
-            "Wipe desktop power strips and monitor adjustment buttons",
-            "Sanitize breakroom refrigerator handles and water cooler taps",
-            "Disinfect conference phone microphones and stylus pens",
+            "Post the schedule in the lobby and in the building's resident portal",
+            "List the contractor's attendance days, not just the task list",
+            "Name who to contact and what information to include",
+            "Date the notice so residents know it is current",
+          ],
+        },
+        {
+          heading: "Separate cleaning problems from behaviour problems",
+          paragraphs: [
+            "Overflowing bin rooms, items dumped in corridors and odour in car parks are frequently resident behaviour, not cleaning failure. Treating them as cleaning failures increases cost and changes nothing.",
+            "Ask the contractor to photograph and report these rather than quietly resolving them. A record is what lets the committee act on the actual cause.",
+          ],
+        },
+        {
+          heading: "Get reporting a committee can use",
+          paragraphs: [
+            "A monthly report should be something a committee can table at a meeting without rewriting: attendance, tasks completed, exceptions, defects observed, and photographs.",
+            "That record also protects the building at handover, at insurance claim time and in any dispute about whether contracted work was performed.",
+          ],
+        },
+        {
+          heading: "Walk the building with your contractor quarterly",
+          paragraphs: [
+            "Twenty minutes on site with the account manager surfaces more than a quarter of emails. It is also when scope gaps become obvious — the courtyard nobody listed, the second bin room added after a refit.",
+            "Document any change as a scope variation so it is funded rather than absorbed and eventually dropped.",
           ],
         },
       ],
-      proTip: "Encourage a clear-desk policy at the end of each workday. When desks are free of loose paperwork, commercial cleaning teams can thoroughly wipe and sanitize the full work surface in seconds.",
-      conclusion: "A clean, well-maintained office reduces staff sick days, boosts workplace focus, and creates a welcoming environment for visiting clients.",
+      proTip:
+        "Before approving extra cleaning hours, check whether the complaints cluster on particular days. A clustering pattern usually points to a scheduling fix rather than a volume one.",
+      conclusion:
+        "Common-area satisfaction is mostly a communication problem wearing a cleaning problem's clothes. Publish the schedule, report honestly, and walk the building — then adjust frequency if complaints persist.",
     },
   },
 ];
 
+export const getPost = (slug: string) => blogPosts.find((p) => p.slug === slug);

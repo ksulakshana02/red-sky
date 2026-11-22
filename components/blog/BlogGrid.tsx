@@ -1,281 +1,179 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Clock, Calendar } from "lucide-react";
-import { BlogPost, blogPosts } from "@/lib/blogData";
-import { motion } from "framer-motion";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
+import { blogPosts, blogCategories } from "@/lib/blogData";
 
 export default function BlogGrid() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
-  const categories = [
-    "All",
-    "Organizing",
-    "Eco Cleaning",
-    "Moving Tips",
-    "Bathroom Care",
-    "Air Quality",
-    "Commercial Care",
-  ];
+  const filtered = useMemo(
+    () =>
+      activeCategory === "All"
+        ? blogPosts
+        : blogPosts.filter((p) => p.category === activeCategory),
+    [activeCategory],
+  );
 
-  const filteredPosts = blogPosts.filter((post) => {
-    if (activeCategory === "All") return true;
-    return post.category === activeCategory;
-  });
-
-  const featuredPost = filteredPosts[0];
-  const gridPosts = filteredPosts.slice(1);
+  const [featured, ...rest] = filtered;
 
   return (
-    <section className="py-8 sm:py-14 lg:py-16 bg-white relative z-10 font-[family-name:var(--font-parkinsans)]">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Category Filter Tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="flex items-center gap-2 sm:gap-2.5 flex-wrap justify-start sm:justify-center mb-8 sm:mb-12"
+    <section className="py-10 sm:py-14 lg:py-20 bg-white">
+      <div className="shell">
+        {/* Category filter */}
+        <div
+          role="group"
+          aria-label="Filter articles by topic"
+          className="flex items-center gap-2 sm:gap-2.5 flex-wrap justify-center mb-9 sm:mb-12"
         >
-          {categories.map((cat) => {
+          {blogCategories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] font-medium transition-all cursor-pointer ${
+                aria-pressed={isActive}
+                className={`min-h-11 px-4 sm:px-5 rounded-full text-[13px] sm:text-sm font-medium transition-colors cursor-pointer ${
                   isActive
-                    ? "bg-brand-600 text-white shadow-xs"
-                    : "bg-surface text-ink/80 hover:bg-slate-100 border border-slate-200/80"
+                    ? "bg-brand-600 text-white"
+                    : "bg-surface text-ink/80 hover:bg-surface-2 border border-line"
                 }`}
               >
-                {cat === "All" ? "All Articles" : cat}
+                {cat === "All" ? "All articles" : cat}
               </button>
             );
           })}
-        </motion.div>
+        </div>
 
-        {/* Featured Post Card (When "All" or if posts exist) */}
-        {featuredPost && (
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-10 sm:mb-14"
-          >
-            <div className="group rounded-[28px] sm:rounded-[36px] bg-brand-50 border border-brand-100/90 overflow-hidden shadow-2xs hover:shadow-md transition-all duration-300">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center p-5 sm:p-8 lg:p-10">
-                
-                {/* Photo (7 cols on lg) */}
-                <div className="lg:col-span-7">
+        <p className="sr-only" role="status">
+          {filtered.length} {filtered.length === 1 ? "article" : "articles"} shown
+        </p>
+
+        {/* Featured */}
+        {featured && (
+          <article className="group relative rounded-[28px] sm:rounded-[36px] bg-surface border border-line overflow-hidden mb-10 sm:mb-14">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center p-5 sm:p-8 lg:p-10">
+              <div className="lg:col-span-7">
+                <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-[22px] sm:rounded-[28px] overflow-hidden bg-surface-2">
+                  <Image
+                    src={featured.image}
+                    alt=""
+                    fill
+                    priority
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    sizes="(max-width: 1024px) 100vw, 55vw"
+                  />
+                </div>
+              </div>
+
+              <div className="lg:col-span-5">
+                <div className="flex items-center gap-2.5 mb-3 text-xs">
+                  <span className="px-3 py-1 rounded-full bg-brand-600 text-white font-semibold uppercase tracking-wide text-[11px]">
+                    {featured.category}
+                  </span>
+                  <span className="text-muted inline-flex items-center gap-1">
+                    <Calendar className="w-3.5 h-3.5" aria-hidden />
+                    {featured.date}
+                  </span>
+                </div>
+
+                <h2 className="text-[22px] sm:text-[28px] lg:text-[32px] font-medium text-ink leading-tight tracking-tight mb-3">
                   <Link
-                    href={`/blog/${featuredPost.slug}`}
-                    className="relative block w-full aspect-[16/10] sm:aspect-[16/9] rounded-[22px] sm:rounded-[28px] overflow-hidden bg-slate-100 shadow-2xs"
+                    href={`/blog/${featured.slug}`}
+                    className="before:absolute before:inset-0 outline-none hover:text-brand-700 transition-colors"
                   >
-                    <Image
-                      src={featuredPost.image}
-                      alt={featuredPost.title}
-                      fill
-                      className="object-cover group-hover:scale-103 transition-transform duration-500 rounded-[22px] sm:rounded-[28px]"
-                      priority
-                      sizes="(max-width: 1024px) 100vw, 55vw"
-                    />
+                    {featured.title}
                   </Link>
-                </div>
+                </h2>
 
-                {/* Content (5 cols on lg) */}
-                <div className="lg:col-span-5 flex flex-col justify-between">
-                  <div>
-                    {/* Meta */}
-                    <div className="flex items-center gap-2.5 text-xs text-slate-500 mb-3">
-                      <span className="px-3 py-1 rounded-full bg-white border border-brand-100 text-brand-600 font-medium text-[11px]">
-                        {featuredPost.category}
-                      </span>
-                      <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5" />
-                        {featuredPost.date}
-                      </span>
-                      <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5" />
-                        {featuredPost.readTime}
-                      </span>
-                    </div>
+                <p className="text-[15px] text-body/75 leading-relaxed mb-5">
+                  {featured.excerpt}
+                </p>
 
-                    {/* Title */}
-                    <h2 className="text-xl sm:text-2xl lg:text-[28px] font-normal font-serif text-ink leading-[1.25] mb-3 group-hover:text-brand-600 transition-colors">
-                      <Link href={`/blog/${featuredPost.slug}`}>
-                        {featuredPost.title}
-                      </Link>
-                    </h2>
-
-                    {/* Excerpt */}
-                    <p className="text-xs sm:text-sm text-ink/75 leading-relaxed font-normal mb-6">
-                      {featuredPost.excerpt}
-                    </p>
-                  </div>
-
-                  {/* Author Byline & Read Link */}
-                  <div className="pt-4 border-t border-brand-100/70 flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                      <div className="relative w-8 h-8 rounded-full overflow-hidden bg-slate-100 border border-slate-200">
-                        <Image
-                          src={featuredPost.author.avatar}
-                          alt={featuredPost.author.name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div className="text-xs">
-                        <span className="font-medium text-ink block leading-tight">
-                          {featuredPost.author.name}
-                        </span>
-                        <span className="text-slate-500 text-[11px]">
-                          {featuredPost.author.role}
-                        </span>
-                      </div>
-                    </div>
-
-                    <Link
-                      href={`/blog/${featuredPost.slug}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 hover:text-brand-700 transition-colors"
-                    >
-                      <span>Read guide</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-
-                </div>
-
+                <span className="inline-flex items-center gap-4 text-[13px] text-muted">
+                  <span className="inline-flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5" aria-hidden />
+                    {featured.readTime}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 font-semibold text-brand-700">
+                    Read article
+                    <ArrowRight
+                      className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                      aria-hidden
+                    />
+                  </span>
+                </span>
               </div>
             </div>
-          </motion.div>
+          </article>
         )}
 
-        {/* Regular Posts Grid */}
-        {gridPosts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {gridPosts.map((post, idx) => (
-              <motion.article
-                key={post.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.5, delay: (idx % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="group flex flex-col justify-between bg-white rounded-[26px] p-4 sm:p-5 border border-slate-200/80 hover:border-brand-200 hover:shadow-md transition-all duration-300"
-              >
-                <div>
-                  {/* Photo */}
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="relative block w-full aspect-[16/10] rounded-[20px] overflow-hidden mb-4 bg-slate-100 shadow-2xs"
-                  >
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover group-hover:scale-104 transition-transform duration-500 rounded-[20px]"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                  </Link>
-
-                  {/* Meta */}
-                  <div className="flex items-center gap-2 text-xs text-slate-500 mb-2.5">
-                    <span className="font-medium text-brand-600 text-[11px] uppercase tracking-wider">
-                      {post.category}
-                    </span>
-                    <span>•</span>
-                    <span className="text-slate-400 text-[11px]">
-                      {post.date}
-                    </span>
-                    <span>•</span>
-                    <span className="text-slate-400 text-[11px]">
-                      {post.readTime}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-base sm:text-lg font-normal font-serif text-ink leading-snug mb-2 group-hover:text-brand-600 transition-colors">
-                    <Link href={`/blog/${post.slug}`}>
-                      {post.title}
-                    </Link>
-                  </h3>
-
-                  {/* Excerpt */}
-                  <p className="text-xs sm:text-[13px] text-ink/70 leading-relaxed font-normal mb-4 line-clamp-2">
-                    {post.excerpt}
-                  </p>
+        {/* Grid */}
+        {rest.length > 0 && (
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {rest.map((post) => (
+              <li key={post.slug} className="group relative flex flex-col">
+                <div className="relative w-full aspect-[16/10] rounded-[22px] overflow-hidden mb-5 bg-surface ring-1 ring-line">
+                  <Image
+                    src={post.image}
+                    alt=""
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+                  />
                 </div>
 
-                {/* Footer with Author & Read More */}
-                <div className="pt-3 mt-2 border-t border-slate-100 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="relative w-7 h-7 rounded-full overflow-hidden bg-slate-100 border border-slate-200">
-                      <Image
-                        src={post.author.avatar}
-                        alt={post.author.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <span className="text-xs text-ink/80 font-normal">
-                      {post.author.name}
-                    </span>
-                  </div>
+                <div className="flex items-center gap-2.5 mb-2.5 text-xs">
+                  <span className="font-semibold uppercase tracking-wider text-brand-700">
+                    {post.category}
+                  </span>
+                  <span className="text-line-strong" aria-hidden>
+                    •
+                  </span>
+                  <span className="text-muted inline-flex items-center gap-1">
+                    <Calendar className="w-3.5 h-3.5" aria-hidden />
+                    {post.date}
+                  </span>
+                </div>
 
+                <h2 className="text-lg sm:text-xl font-medium text-ink leading-snug mb-2.5">
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-flex items-center gap-1 text-xs font-medium text-brand-600 hover:text-brand-700 transition-colors"
+                    className="before:absolute before:inset-0 outline-none group-hover:text-brand-700 transition-colors"
                   >
-                    <span>Read</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    {post.title}
                   </Link>
-                </div>
-              </motion.article>
+                </h2>
+
+                <p className="text-[14.5px] text-body/75 leading-relaxed mb-4 line-clamp-3">
+                  {post.excerpt}
+                </p>
+
+                <span className="mt-auto inline-flex items-center gap-1.5 text-sm text-muted">
+                  <Clock className="w-3.5 h-3.5" aria-hidden />
+                  {post.readTime}
+                </span>
+              </li>
             ))}
-          </div>
-        ) : (
-          filteredPosts.length === 0 && (
-            <div className="text-center py-12 text-slate-500 text-sm">
-              No articles found in this category.
-            </div>
-          )
+          </ul>
         )}
 
-        {/* Clean Service Booking Help Card */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98, y: 20 }}
-          whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 sm:mt-16 rounded-[24px] sm:rounded-[32px] p-6 sm:p-9 bg-brand-50 border border-brand-100 flex flex-col sm:flex-row items-center justify-between gap-6"
-        >
-          <div className="text-left max-w-xl">
-            <h3 className="text-lg sm:text-xl font-normal font-serif text-ink mb-1">
-              Prefer professional hands to handle the cleaning?
-            </h3>
-            <p className="text-xs sm:text-sm text-ink/70 font-normal leading-relaxed">
-              Book our vetted, non-toxic cleaning specialists for your home or office in under 60 seconds.
-            </p>
+        {filtered.length === 0 && (
+          <div className="text-center py-14">
+            <p className="text-ink font-medium mb-2">No articles in this topic yet.</p>
+            <button
+              type="button"
+              onClick={() => setActiveCategory("All")}
+              className="btn btn-secondary mt-3"
+            >
+              Show all articles
+            </button>
           </div>
-
-          <Link
-            href="/quote"
-            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-medium text-xs sm:text-sm transition-colors shadow-xs"
-          >
-            <span>Book a cleaning</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </motion.div>
-
+        )}
       </div>
     </section>
   );
 }
-

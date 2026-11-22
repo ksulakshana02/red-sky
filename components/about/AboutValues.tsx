@@ -1,47 +1,51 @@
 import React from "react";
-import { Leaf, BadgeDollarSign, Users, ShieldCheck } from "lucide-react";
+import { ClipboardList, Eye, HeartHandshake, Recycle } from "lucide-react";
 
 const values = [
   {
-    icon: Leaf,
-    title: "Safe, non-toxic products",
-    desc: "Plant-based formulas with no bleach, fumes or residue — safe for kids and pets.",
+    icon: ClipboardList,
+    title: "Write it down",
+    desc: "Scope, frequency, roster, response times. If it isn't in the document it isn't a commitment.",
   },
   {
-    icon: BadgeDollarSign,
-    title: "Honest, upfront pricing",
-    desc: "What we quote is what you pay. No hidden fees, ever.",
+    icon: Eye,
+    title: "Inspect, don't assume",
+    desc: "Scheduled audits with photographic evidence. Standards drift unless someone is looking.",
   },
   {
-    icon: Users,
-    title: "Respected, full-time cleaners",
-    desc: "Trained employees on fair wages — not rotating contractors.",
+    icon: HeartHandshake,
+    title: "Own the fix",
+    desc: "When something is missed you get a rectification date, and a name attached to it.",
   },
   {
-    icon: ShieldCheck,
-    title: "Insured & guaranteed",
-    desc: "Background-checked, fully insured, and a free re-clean if anything's missed.",
+    icon: Recycle,
+    title: "Lower impact as standard",
+    desc: "Metered dilution, microfibre, HEPA filtration and separated waste on every contract.",
   },
 ];
 
 export default function AboutValues() {
   return (
-    <section id="about-values" className="py-16 sm:py-24 bg-surface">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-10">
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="eyebrow mb-4">What we stand for</span>
-          <h2 className="text-[28px] sm:text-4xl lg:text-[44px] font-medium tracking-tight text-ink leading-tight">
-            What you can count on, every visit
+    <section id="about-values" className="py-16 sm:py-20 lg:py-24 bg-surface">
+      <div className="shell">
+        <div className="max-w-2xl mb-10 sm:mb-14">
+          <span className="eyebrow eyebrow-accent mb-4">How we operate</span>
+          <h2 className="text-[28px] sm:text-4xl lg:text-[44px] font-medium tracking-tight text-ink leading-tight mb-4">
+            Four rules, applied to every contract
           </h2>
+          <p className="text-body/80 text-base sm:text-lg">
+            Not values on a wall — the things that decide whether a contract is still
+            good two years in.
+          </p>
         </div>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {values.map(({ icon: Icon, title, desc }) => (
-            <li key={title} className="card card-hover p-6 sm:p-7">
+            <li key={title} className="card card-hover p-6 sm:p-7 h-full">
               <span className="w-12 h-12 rounded-2xl bg-brand-600 text-white flex items-center justify-center mb-5 shadow-[var(--shadow-brand)]">
                 <Icon className="w-5 h-5" aria-hidden />
               </span>
-              <h3 className="text-lg font-medium text-ink mb-2 [text-wrap:pretty]">{title}</h3>
+              <h3 className="text-lg font-medium text-ink mb-2">{title}</h3>
               <p className="text-[15px] text-body/75 leading-relaxed">{desc}</p>
             </li>
           ))}

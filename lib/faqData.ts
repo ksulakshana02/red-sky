@@ -1,133 +1,199 @@
+/**
+ * FAQ content — written for the people who actually buy facility services:
+ * facilities managers, operations managers, strata managers, practice
+ * managers and business managers.
+ *
+ * Answers avoid inventing figures, certificate numbers or guarantees the
+ * business has not signed up to. Anything commercial is phrased as "agreed
+ * in your contract" rather than as a fixed promise.
+ */
+
+export const faqCategories = [
+  "Contracts & Scope",
+  "Compliance & Safety",
+  "Pricing & Invoicing",
+  "Getting Started",
+  "Our Team",
+] as const;
+
+export type FaqCategory = (typeof faqCategories)[number];
+
 export interface FaqItem {
   id: string;
-  category: "General & Booking" | "Eco Products & Safety" | "Pricing & Payments" | "Home Access & Keys" | "Guarantees & Insurance";
+  category: FaqCategory;
   question: string;
   answer: string;
 }
 
 export const faqData: FaqItem[] = [
-  // General & Booking
+  /* ── Contracts & Scope ── */
   {
-    id: "g-1",
-    category: "General & Booking",
-    question: "What is included in a routine maintenance house clean?",
-    answer: "Our routine clean covers comprehensive room maintenance: dusting all reachable surfaces, wiping table tops, sanitizing kitchen counters, stove exterior, and sinks, deep scrubbing bathroom toilets, bathtubs, and showers, HEPA vacuuming all rugs and carpets, and steam-mopping hard floors with botanical sanitizers.",
+    id: "c-1",
+    category: "Contracts & Scope",
+    question: "What exactly is covered by a cleaning contract?",
+    answer:
+      "Every contract is built on a written scope of works that lists each area of your site, the tasks performed there, and how often. Daily tasks, weekly tasks and periodic works such as carpet extraction or high-level dusting are set out separately, with the month each periodic task falls due. You get that document before you sign, so there is never a debate about whether something was in scope.",
   },
   {
-    id: "g-2",
-    category: "General & Booking",
-    question: "How far in advance should I book my appointment?",
-    answer: "We recommend scheduling 2 to 4 days in advance to reserve your preferred arrival window (morning or afternoon). For time-sensitive move-outs or urgent situations, we also maintain dedicated on-call slots and can often accommodate same-day or next-day cleans.",
+    id: "c-2",
+    category: "Contracts & Scope",
+    question: "Can you take over several services so we deal with one supplier?",
+    answer:
+      "Yes — that is what our facility management offering is for. Cleaning, washroom hygiene, waste, grounds and maintenance coordination can all sit under one agreement with one account manager, one monthly report and one invoice. Most clients start with cleaning and add service lines as existing supplier contracts come up for renewal.",
   },
   {
-    id: "g-3",
-    category: "General & Booking",
-    question: "Do I need to be home while your cleaning team works?",
-    answer: "Not at all. Over 70% of our regular clients are at work or running errands during their clean. You can provide a lockbox code, smart lock guest PIN, or leave keys with building concierge. We send an arrival text when we start and a completion text when finished.",
+    id: "c-3",
+    category: "Contracts & Scope",
+    question: "Do you handle urgent or after-hours callouts?",
+    answer:
+      "Yes. Contracted sites get an after-hours number that reaches a supervisor rather than a message bank. Response times for urgent, standard and planned work are agreed in your contract so expectations are set in advance. Callouts outside the agreed scope are quoted before we attend unless you have authorised a standing limit.",
   },
   {
-    id: "g-4",
-    category: "General & Booking",
-    question: "Can I request the same cleaning technician for recurring visits?",
-    answer: "Yes, absolutely. For recurring weekly or bi-weekly housekeeping, we pair your home with a dedicated primary technician so they become familiar with your layout, preferences, and special care instructions.",
+    id: "c-4",
+    category: "Contracts & Scope",
+    question: "How long are your contracts and what happens if we are not happy?",
+    answer:
+      "Terms are negotiated to suit the site — commonly twelve or twenty-four months, with a break clause and an agreed notice period. If a standard slips, the rectification process and timeframe are written into the agreement, so you have a documented remedy rather than having to escalate by email and hope.",
+  },
+  {
+    id: "c-5",
+    category: "Contracts & Scope",
+    question: "Can the scope change once the contract has started?",
+    answer:
+      "Yes. Sites change — floors get fitted out, headcount moves, trading hours shift. We review the scope with you formally every quarter, and you can request a variation at any time. Variations are priced and documented before they take effect, never applied quietly to the next invoice.",
   },
 
-  // Eco Products & Safety
+  /* ── Compliance & Safety ── */
+  {
+    id: "s-1",
+    category: "Compliance & Safety",
+    question: "What safety documentation do you provide before starting on site?",
+    answer:
+      "Before mobilisation we provide a site-specific Safe Work Method Statement, the risk assessment behind it, Safety Data Sheets for every chemical we will bring, and certificates of currency for public liability and workers compensation. Where your site runs its own induction or contractor management system, our team completes it before the first shift.",
+  },
+  {
+    id: "s-2",
+    category: "Compliance & Safety",
+    question: "Are your cleaners police-checked and cleared to work on our site?",
+    answer:
+      "Every team member holds a current National Police Check. Anyone rostered to an education or childcare site also holds a current Working with Children Check, and anyone working in aged care or a clinical setting meets the screening and immunisation requirements for that sector. Records are held centrally and can be produced for an audit.",
+  },
+  {
+    id: "s-3",
+    category: "Compliance & Safety",
+    question: "What products and equipment do you use?",
+    answer:
+      "We default to low-VOC, low-odour chemistry diluted through metered dispensers so concentration is consistent and waste is low. Cleaning is done with colour-coded microfibre to prevent cross-contamination between zones, and vacuums are HEPA-filtered. If your site mandates particular products — a hospital-grade disinfectant, or a chemistry approved by your food-safety plan — we use yours instead.",
+  },
+  {
+    id: "s-4",
+    category: "Compliance & Safety",
+    question: "How do you handle an infection outbreak?",
+    answer:
+      "Outbreak response sits outside the standard daily scope and is called on when you need it. The response uses a documented routine: zoning the affected area, a hospital-grade disinfectant applied at the correct contact time, high-touch surfaces treated on a set frequency, and a written record of what was treated and when — which is what an accreditation body or public health unit will ask for afterwards.",
+  },
+  {
+    id: "s-5",
+    category: "Compliance & Safety",
+    question: "What are you doing to reduce environmental impact?",
+    answer:
+      "Low-VOC chemistry and metered dilution as standard, microfibre systems that cut both water and chemical use, HEPA filtration to keep fine dust out of the air, and waste separated into the streams your site is obliged to report on. Where you need diversion-rate data for your own sustainability reporting, we can include it in the monthly report.",
+  },
+
+  /* ── Pricing & Invoicing ── */
   {
     id: "p-1",
-    category: "Eco Products & Safety",
-    question: "Do I need to provide any cleaning products, vacuums, or towels?",
-    answer: "No. Our technicians arrive fully equipped with everything required: commercial 4-stage HEPA filtration vacuums, clean color-coded microfiber towels, extension poles, and Green Seal certified plant-based solutions. If you prefer us to use a specific specialty product on antique wood or delicate stone, simply leave it out with instructions.",
+    category: "Pricing & Invoicing",
+    question: "Why don't you publish prices?",
+    answer:
+      "Because a published price for facility services is almost always wrong. Cost depends on floor area, surface types, traffic, frequency, access hours, security requirements and how much periodic work the site needs. We measure the site, write the scope, and quote a fixed monthly figure against it — which is a number you can actually budget on.",
   },
   {
     id: "p-2",
-    category: "Eco Products & Safety",
-    question: "Are your cleaning solutions safe for cats, dogs, and young children?",
-    answer: "Yes, 100%. We avoid bleach, synthetic perfumes, and corrosive solvents. Our EPA-registered botanical formulas are powered by thyme extract and citric acid, which kill 99.9% of bacteria and viruses while leaving zero toxic fumes or chemical residues on surfaces where children and pets play.",
+    category: "Pricing & Invoicing",
+    question: "How is the contract priced and invoiced?",
+    answer:
+      "Ongoing cleaning is priced as a fixed monthly amount covering the agreed scope, invoiced monthly in arrears on 30-day terms unless we agree otherwise. Periodic works included in the scope are built into that figure. Additional works and callouts are quoted separately and appear as clearly itemised lines, never bundled into the base charge.",
   },
   {
     id: "p-3",
-    category: "Eco Products & Safety",
-    question: "What is your color-coded microfiber cloth system?",
-    answer: "To prevent any cross-contamination between rooms, we enforce a strict color protocol: red microfiber cloths are strictly reserved for toilets, yellow for kitchen counters and food preparation areas, and blue for living rooms and bedrooms. Fresh, sanitized sets are used for every appointment.",
+    category: "Pricing & Invoicing",
+    question: "Are consumables included?",
+    answer:
+      "Either way works. We can supply and manage paper, soap, sanitiser and bin liners and invoice them at cost plus an agreed margin, or we can order on your account and simply manage stock levels so you never run out. Whichever you choose is written into the contract, so there are no surprise consumable charges.",
   },
   {
     id: "p-4",
-    category: "Eco Products & Safety",
-    question: "Do your products leave strong chemical scents?",
-    answer: "No. Our solutions leave your space smelling naturally clean and neutral—like fresh air. We do not use artificial masking fragrances that can trigger headaches, allergies, or asthma.",
+    category: "Pricing & Invoicing",
+    question: "Will the price go up during the contract?",
+    answer:
+      "Only in the ways your contract allows. Typically that means a scheduled annual review tied to CPI or to award wage movements, applied at the anniversary date with notice. Nothing changes mid-term without a written variation that you have agreed to.",
   },
 
-  // Pricing & Payments
+  /* ── Getting Started ── */
   {
-    id: "pr-1",
-    category: "Pricing & Payments",
-    question: "How is pricing calculated for my home?",
-    answer: "Pricing is transparent and based on your property's square footage, the number of bedrooms and bathrooms, and the level of service chosen (Standard Maintenance, Deep Clean, or Move-In/Out). You receive a flat-rate price beforehand with no hourly surprises.",
+    id: "g-1",
+    category: "Getting Started",
+    question: "How do we get a quote?",
+    answer:
+      "Send us the site details through the enquiry form or call us. We will arrange a walkthrough — usually within a few business days — where we measure the areas, note the access and security requirements, and discuss what is and is not working now. You get a written scope and a fixed price back from that visit.",
   },
   {
-    id: "pr-2",
-    category: "Pricing & Payments",
-    question: "Are there any hidden travel, parking, or equipment fees?",
-    answer: "Never. The price quoted on our website or by our dispatch team is the exact amount you pay. Supplies, equipment, travel within our standard service area, and basic taxes are all included in your rate.",
+    id: "g-2",
+    category: "Getting Started",
+    question: "How quickly can you start?",
+    answer:
+      "For most sites, two to four weeks from acceptance. That window covers recruiting or assigning the crew, running inductions, ordering equipment and consumables, and setting up the reporting. Where you are in a bind — a supplier has walked, or a site has to open — we can mobilise faster with a temporary crew while the permanent roster is built.",
   },
   {
-    id: "pr-3",
-    category: "Pricing & Payments",
-    question: "When is payment processed?",
-    answer: "Payment is processed electronically only after your cleaning is completed. We accept all major credit/debit cards (Visa, MasterCard, American Express) and provide digital receipts for your records.",
+    id: "g-3",
+    category: "Getting Started",
+    question: "We already have a cleaning contractor. What does switching involve?",
+    answer:
+      "Very little on your side. You serve notice on your existing supplier; we handle the rest. We overlap the handover where your notice period allows so there is no gap in service, take a full condition record on day one so pre-existing issues are not attributed to us, and absorb any catch-up work the previous supplier left behind in the mobilisation.",
   },
   {
-    id: "pr-4",
-    category: "Pricing & Payments",
-    question: "Is tipping expected or required?",
-    answer: "Tipping is completely optional and never expected. If your cleaning team went above and beyond, tips can be given in cash or added to your electronic payment, and 100% goes directly to your technicians.",
+    id: "g-4",
+    category: "Getting Started",
+    question: "Do you service sites outside your home state?",
+    answer:
+      "We service multiple states and regularly run multi-site contracts for clients with portfolios across them. Tell us where the sites are when you enquire and we will confirm coverage honestly — including telling you if a particular location is better served by someone local.",
   },
-  {
-    id: "pr-5",
-    category: "Pricing & Payments",
-    question: "Is the estimated price guaranteed, or could it change on arrival?",
-    answer: "The estimate is accurate based on the details you entered (rooms, size, and cleaning tier). As long as the property matches, your rate is locked in. If a property needs unusual heavy restoration, our cleaner will discuss options with you before starting work.",
-  },
-  {
-    id: "pr-6",
-    category: "Pricing & Payments",
-    question: "How do the recurring frequency discounts work?",
-    answer: "Choose weekly (20% off), fortnightly (15% off), or monthly (10% off) and the discount applies automatically to every scheduled visit. There are no lock-in contracts — pause or adjust your schedule any time.",
-  },
-
-  // Home Access & Keys
-  {
-    id: "a-1",
-    category: "Home Access & Keys",
-    question: "How do you securely manage keys and access codes?",
-    answer: "Access codes and keys are tagged anonymously and stored in a secure digital vault accessible only to your assigned technician on the day of your clean. Keys are returned immediately to lockboxes or front desk concierge upon departure.",
-  },
-  {
-    id: "a-2",
-    category: "Home Access & Keys",
-    question: "What should I do with my pets during the cleaning appointment?",
-    answer: "We love pets! For their comfort and safety, we suggest keeping friendly dogs in a comfortable room or crate while technicians vacuum, and ensuring cats cannot accidentally dart through exterior doors as equipment is brought in.",
-  },
-
-  // Guarantees & Insurance
   {
     id: "g-5",
-    category: "Guarantees & Insurance",
-    question: "What is your 24-hour satisfaction guarantee?",
-    answer: "If any area or task on your service checklist was missed or does not meet your expectations, let us know within 24 hours. A supervisor will return to re-clean the specific area at no additional charge.",
+    category: "Getting Started",
+    question: "Can you take on a single small site?",
+    answer:
+      "Yes. A small office or a single childcare centre is a perfectly normal contract for us, and it is often how a larger portfolio relationship starts. The same written scope, inspection schedule and reporting apply regardless of site size.",
+  },
+
+  /* ── Our Team ── */
+  {
+    id: "t-1",
+    category: "Our Team",
+    question: "Will we get the same cleaners each visit?",
+    answer:
+      "Yes — consistency is most of what separates a good contract from a bad one. Each site has an assigned crew who learn its layout, quiet hours and quirks. When someone is on leave we send a trained relief cleaner who has been briefed on your site, not an unfamiliar casual.",
   },
   {
-    id: "g-6",
-    category: "Guarantees & Insurance",
-    question: "What is your rescheduling or cancellation policy?",
-    answer: "We understand that plans change. You can reschedule or cancel your appointment with zero penalty up to 24 hours prior to your scheduled arrival window by phone, email, or online.",
+    id: "t-2",
+    category: "Our Team",
+    question: "Are your cleaners employees or subcontractors?",
+    answer:
+      "Site crews are employed and paid to the relevant award, with superannuation, insurance and training handled by us. Specialist works such as high-rise façade access or electrical test and tag may be delivered by licensed partners, who are held to the same insurance, induction and safety requirements as our own staff.",
   },
   {
-    id: "g-7",
-    category: "Guarantees & Insurance",
-    question: "Are your technicians bonded, background-checked, and insured?",
-    answer: "Yes, completely. Every technician is a W-2 employed team member (not a temporary contractor) who has passed comprehensive nationwide criminal background checks. RedSky carries $2,000,000 in commercial liability and bonding to protect your home and belongings.",
+    id: "t-3",
+    category: "Our Team",
+    question: "Who do we contact when something goes wrong?",
+    answer:
+      "Your named account manager, directly — mobile and email, not a generic inbox. They inspect your site on a schedule, so they already know it when you call. If they are unavailable, the operations manager above them is listed on your contract as the escalation point.",
+  },
+  {
+    id: "t-4",
+    category: "Our Team",
+    question: "How do you make sure standards don't slip after the first month?",
+    answer:
+      "Scheduled supervisor inspections against the written scope, with photographs attached, and a monthly report that shows you the result. Anything scored below standard carries a rectification action with a date. Quarterly, we sit down with you and review performance against the KPIs in the contract rather than against impressions.",
   },
 ];
-

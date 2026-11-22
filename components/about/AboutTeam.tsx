@@ -1,43 +1,62 @@
 import React from "react";
-import Image from "next/image";
+import { Mail } from "lucide-react";
+import { site } from "@/lib/site";
 
-// TODO(client): replace with real team photos and names.
+/**
+ * TODO(client): replace with the real leadership team.
+ *
+ * Deliberately rendered as initials rather than photographs — a stock
+ * headshot presented as a named member of staff is a fabrication, and the
+ * monogram treatment reads as a design choice rather than a placeholder.
+ * Add a `photo` field here once you have real portraits.
+ */
 const team = [
-  { name: "Elena Vance", role: "Founder", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" },
-  { name: "Marcus Sterling", role: "Operations & Training", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" },
-  { name: "Dr. Sophia Lin", role: "Product & Safety Advisor", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80" },
-  { name: "David Miller", role: "Quality Assurance", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80" },
+  { name: "Operations Director", role: "Service delivery & mobilisation", initials: "OD" },
+  { name: "Account Management", role: "Client relationships & reporting", initials: "AM" },
+  { name: "HSEQ Manager", role: "Compliance, safety & quality systems", initials: "HQ" },
+  { name: "Business Development", role: "Tenders, scoping & new sites", initials: "BD" },
 ];
 
 export default function AboutTeam() {
   return (
-    <section id="about-team" className="py-16 sm:py-24 bg-white">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-10">
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="eyebrow mb-4">Our team</span>
-          <h2 className="text-[28px] sm:text-4xl lg:text-[44px] font-medium tracking-tight text-ink leading-tight mb-3">
-            The people behind every clean
+    <section id="about-team" className="py-16 sm:py-20 lg:py-24 bg-white">
+      <div className="shell">
+        <div className="max-w-2xl mb-10 sm:mb-14">
+          <span className="eyebrow mb-4">Your team</span>
+          <h2 className="text-[28px] sm:text-4xl lg:text-[44px] font-medium tracking-tight text-ink leading-tight mb-4">
+            The people you&apos;ll actually deal with
           </h2>
-          <p className="text-body/80">A small leadership team that trains, supports and checks the work of every cleaner.</p>
+          <p className="text-body/80 text-base sm:text-lg">
+            Four roles sit behind every contract. You get direct contact details for the
+            first two on day one.
+          </p>
         </div>
 
-        <ul className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {team.map((m) => (
-            <li key={m.name} className="group text-center">
-              <div className="relative aspect-square rounded-[28px] overflow-hidden bg-surface ring-1 ring-line mb-4">
-                <Image
-                  src={m.image}
-                  alt={m.name}
-                  fill
-                  sizes="(max-width: 1024px) 50vw, 300px"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <h3 className="text-base sm:text-lg font-medium text-ink">{m.name}</h3>
-              <p className="text-sm text-brand-600">{m.role}</p>
+            <li key={m.name} className="card p-6 h-full flex flex-col">
+              <span
+                className="w-14 h-14 rounded-2xl bg-accent-900 text-white flex items-center justify-center text-lg font-semibold mb-5"
+                aria-hidden
+              >
+                {m.initials}
+              </span>
+              <h3 className="text-[17px] font-medium text-ink mb-1">{m.name}</h3>
+              <p className="text-[14px] text-body/70 leading-relaxed">{m.role}</p>
             </li>
           ))}
         </ul>
+
+        <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4 rounded-[24px] border border-line bg-surface px-6 py-5">
+          <p className="text-[15px] text-body/85 flex-1">
+            <span className="font-semibold text-ink">Looking to join us?</span> We recruit
+            site crews, supervisors and account managers across every state we service.
+          </p>
+          <a href={`mailto:${site.careersEmail}`} className="btn btn-secondary shrink-0">
+            <Mail className="w-4 h-4 text-brand-600" aria-hidden />
+            {site.careersEmail}
+          </a>
+        </div>
       </div>
     </section>
   );
